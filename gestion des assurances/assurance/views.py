@@ -77,6 +77,11 @@ def compagnies(request):
 def produit(request):
     context = {
         'welcome_text':"welcomecompte",
+         
+        "first_name": "test nom ",
+        "last_name": "test prenom",
+        "address": "test adresse"
+    
     }
     return render(request, 'assurance/produit.html', context) 
 
