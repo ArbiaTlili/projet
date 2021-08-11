@@ -1,0 +1,30 @@
+    {% load static %}
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center mb-5">
+    <div class="container d-flex align-items-center">
+
+      
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <a href="index1.html" class="logo me-auto"><img src="{%static 'assets/img/logo.png' %}" alt="" class="img-fluid"></a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li class="dropdown"><a href="#"><span>Gestion des souscriptions des assurances</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="{% url 'sousvoyage' %}">gestion des souscription d'assurance voyage</a></li>
+               <li><a href="{% url 'souscrédit' %}">gestion des souscription d'assurance crédit</a></li>
+            </ul>
+          </li>
+          <li><a href="{% url 'compte1' %}">Mon compte</a></li>
+          
+
+          
+          <li><a href="{% url 'logout' %}" class="getstarted">logout</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+      <!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
