@@ -1,0 +1,34 @@
+{% extends "base1.html" %}
+{% load static %}
+{% block title %} Login {% endblock %}
+{% block content %}
+<table class="table table-striped table-bordered table-sm">  
+    <thead class="thead-dark">  
+    <tr>  
+       
+        <th>Produit assurance libelle_produit</th>  
+        <th>Produit assurance type_produit</th>  
+        <th>Produit assurance code_assureur</th>  
+        <th>Actions</th>  
+    </tr>  
+    </thead>  
+    <tbody>  
+{% for Produitassurance in Produitassurances %}  
+    <tr>  
+       
+        <td>{{ Produitassurance.libelle_produit }}</td>  
+        <td>{{ Produitassurance.type_produit }}</td>  
+        <td>{{ Produitassurance.code_assureur }}</td>  
+        <td>  
+            <a href="/assurance/produitAssurance/edit/{{ Produitassurance.code_produit }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+            <a href="/assurance/produitAssurance/delete/{{ Produitassurance.code_produit }}">Delete</a>  
+        </td>  
+    </tr>  
+{% endfor %}  
+    </tbody>  
+</table>  
+<br>  
+<br>  
+<center><a href="/assurance/produitAssurance" class="btn btn-primary">Add New Record</a></center>
+
+{% endblock %}

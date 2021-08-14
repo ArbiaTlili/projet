@@ -129,7 +129,7 @@ class Produitassurance(models.Model):
     part_banque =models.CharField(max_length=30)
     part_assureur =models.CharField(max_length=30)
     retenue_source=models.CharField(max_length=30)
-    TVA =models.IntegerField(null=False)
+    TVA =models.IntegerField()
     Frais_MEP_asssureur=models.CharField(max_length=30)
     Frais_MEP_banque =models.CharField(max_length=30)
     Niveau_validation =models.CharField(max_length=30)

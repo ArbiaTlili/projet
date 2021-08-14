@@ -25,5 +25,13 @@ urlpatterns = [
     path('compte2',views.compte2, name="compte2"),
 
     path('ajt_user/',views.ajt_user, name="ajt_user"),
+
+    # produit assurance
+
+    path('produitAssurance', views.produitAssurance ,name='produitAssurance'),  
+    path('produitAssurance/show',views.showPA),  
+    path('produitAssurance/edit/<int:id>', views.editPA),  
+    path('produitAssurance/update/<int:id>', views.updatePA),  
+    path('produitAssurance/delete/<int:id>', views.destroyPA),  
 ]
 

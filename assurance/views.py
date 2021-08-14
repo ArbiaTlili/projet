@@ -1,5 +1,12 @@
-from django.shortcuts import render
+
 from django.http import HttpResponse
+from rest_framework.renderers import TemplateHTMLRenderer
+from django.shortcuts import render, redirect  
+
+from assurance.forms import ProduitassuranceForm  
+from assurance.models import Produitassurance  
+import logging
+logger = logging.getLogger(__name__)
 
 # Create your views here.
 def index(request):
@@ -114,3 +121,49 @@ def ajt_user(request):
         'welcome_text':"welcomecompte",
     }
     return render(request, 'assurance/utilisateurs.html', context)
+# -----------------------------produitAssurance-----------------------------------
+def produitAssurance(request):  
+   
+    if request.method == "POST":  
+        form = ProduitassuranceForm(request.POST)  
+        logger.error("sssssssssssss")
+        logger.error(form.errors.as_data())
+        logger.error(form.is_valid())
+        if form.is_valid():
+            try:  
+                logger.error("save begin")
+                logger.error(form)
+                myform=form.save()  
+                
+                return redirect('produitAssurance/show')  
+            except Exception as e:  
+                logger.error( str( e))  
+    else:  
+        logger.error("else")
+        form = ProduitassuranceForm()  
+    return render(request,'produitAssurance/index.html',{'form':form})  
+def showPA(request):  
+    Produitassurances = Produitassurance.objects.all()  
+    return render(request,"produitAssurance/show.html",{'Produitassurances':Produitassurances})  
+def editPA(request, id):  
+    Produitassurance1 = Produitassurance.objects.get(code_produit=id)  
+    return render(request,'produitAssurance/edit.html', {'Produitassurance':Produitassurance1})  
+def updatePA(request, id):  
+    Produitassurance1 = Produitassurance.objects.get(code_produit=id)  
+    form = ProduitassuranceForm(request.POST, instance = Produitassurance1)  
+    if form.is_valid():
+        try:  
+                logger.error("save begin")
+                logger.error(form)
+                myform=form.save()  
+                
+                return redirect('produitAssurance/show')  
+        except Exception as e:  
+                logger.error( str( e))   
+
+         
+    return render(request, 'produitAssurance/edit.html', {'Produitassurance': Produitassurance1})  
+def destroyPA(request, id):  
+    Produitassurance = Produitassurance.objects.get(code_produit=id)  
+    Produitassurance.delete()  
+    return redirect("produitAssurance/show")

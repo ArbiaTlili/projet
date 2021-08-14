@@ -1,0 +1,54 @@
+{% extends "base1.html" %}
+{% load static %}
+{% block title %} Login {% endblock %}
+{% block content %}
+
+<form method="POST" class="post-form" action="/assurance/produitAssurance/update/{{Produitassurance.code_produit}}">  
+        {% csrf_token %}  
+    <div class="container">  
+<br>  
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <h3>Update Details</h3>  
+    </div>  
+  </div>  
+    <!-- <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Produitassurance code_produit:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="code_produit" id="id_code_produit" required maxlength="20" value="{{ Produitassurance.code_produit }}"/>  
+    </div>   -->
+  </div>  
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Produitassurance libelle_produit:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="libelle_produit" id="id_libelle_produit" required maxlength="100" value="{{ Produitassurance.libelle_produit }}" />  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Produitassurance type_produit:</label>  
+    <div class="col-sm-4">  
+        <input type="email" name="type_produit" id="id_type_produit" required maxlength="254" value="{{ Produitassurance.type_produit }}" />  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Produitassurance code_assureur:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="code_assureur" id="id_code_assureur" required maxlength="15" value="{{ Produitassurance.code_assureur }}" />  
+    </div>  
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Produitassurance Num_parteneriat:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="Num_parteneriat" id="id_Num_parteneriat" required maxlength="15" value="{{ Produitassurance.Num_parteneriat }}" />  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <button type="submit" class="btn btn-success">Update</button>  
+    </div>  
+  </div>  
+    </div>  
+</form> 
+
+{% endblock %}
