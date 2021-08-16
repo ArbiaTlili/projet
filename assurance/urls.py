@@ -4,19 +4,19 @@ from . import views
 
 
 urlpatterns = [
-    path('agentsécurité',views.index, name="agentsécurité"),
+    path('agentsécurité',views.base2, name="agentsécurité"),
     path('utilisateurs',views.utilisateurs, name="utilisateurs"),
     path('groupe',views.groupe, name="groupe"),
     path('droits',views.droits, name="droits"),
     path('privilège',views.privilège, name="privilège"),
     path('compte',views.compte, name="compte"),
 
-    path('clientèle',views.index1, name="clientèle"),
+    path('clientèle',views.base3, name="clientèle"),
     path('sousvoyage',views.sousvoyage, name="sousvoyage"),
     path('souscrédit',views.souscrédit, name="souscrédit"),
     path('compte1',views.compte1, name="compte1"),
 
-    path('backoffice',views.index2, name="backoffice"),
+    path('backoffice',views.base1, name="backoffice"),
     path('compagnies',views.compagnies, name="compagnies"),
     path('produit',views.produit, name="produit"),
     path('barémescrédit',views.barémescrédit, name="barémescrédit"),
