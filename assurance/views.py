@@ -9,11 +9,11 @@ import logging
 logger = logging.getLogger(__name__)
 
 # Create your views here.
-def index(request):
+def base2(request):
     context = {
         'welcome_text':"welcomecompte",
     }
-    return render(request, 'assurance/index.html', context)
+    return render(request, 'base2.html', context)
 
 def utilisateurs(request):
     context = {
@@ -45,11 +45,11 @@ def compte(request):
     }
     return render(request, 'assurance/compte.html', context)
 
-def index1(request):
+def base3(request):
     context = {
         'welcome_text':"welcomecompte",
     }
-    return render(request, 'assurance/index1.html', context)
+    return render(request, 'base3.html', context)
 
 def sousvoyage(request):
     context = {
@@ -69,11 +69,11 @@ def compte1(request):
     }
     return render(request, 'assurance/compte1.html', context)       
 
-def index2(request):
+def base1(request):
     context = {
         'welcome_text':"welcomecompte",
     }
-    return render(request, 'assurance/index2.html',context)
+    return render(request, 'base1.html',context)
 
 def compagnies(request):
     context = {

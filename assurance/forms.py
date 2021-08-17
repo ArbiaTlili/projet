@@ -1,6 +1,7 @@
 from django import forms  
-from assurance.models import Produitassurance ,Assureur 
+from assurance.models import Produitassurance ,Assureur ,Utilisateur
 class ProduitassuranceForm(forms.ModelForm):  
+
    
 
     class Meta:  
@@ -15,3 +16,11 @@ class AssureurForm(forms.ModelForm):
         fields = "__all__" 
 
 
+
+
+class utilisateurForm(forms.ModelForm):  
+   
+
+    class Meta:  
+        model = Utilisateur 
+        fields = "__all__" 

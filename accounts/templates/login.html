@@ -2,6 +2,19 @@
 {% load static %}
 {% block title %} Login {% endblock %}
 {% block content %}
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
 <div class="container-fluid mt-5">
     <div class="row mt-5">
         <div class="limiter">
@@ -12,45 +25,41 @@
                             Sign In
                         </span>
                     </div>
-    
-                    <form class="login100-form validate-form" action="login" method"post">
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+
+
+
+<form class="login100-form validate-form" action="login" method"post">
                     {% csrf_token %}
                     
     
-                        <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
-                            <span class="label-input100">Username</span>
-                            <input class="input100" type="text" name="username" placeholder="Enter username">
+                        <div class="wrap-input100 validate-input m-b-26"  style="padding: 20px;" data-validate="Username is required">
+                            <span>Username</span>
+                          <!-- {{ form.username }} -->
+                          <input  class="input100" type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">
+                          <span class="focus-input100"></span>
+                        </div>
+    
+                        <div class="wrap-input100 validate-input m-b-18"  style="padding: 20px;" data-validate = "Password is required">
+                            <span>Password</span>
+                          <input  class="input100" type="password" name="password" autocomplete="current-password" required="" id="id_password">
+                    
                             <span class="focus-input100"></span>
                         </div>
     
-                        <div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
-                            <span class="label-input100">Password</span>
-                            <input class="input100" type="password" name="pass" placeholder="Enter password">
-                            <span class="focus-input100"></span>
+
+ <div class="container-login100-form-btn"  style="justify-content: center;padding: 20px;">
+                                <input class="login100-form-btn" type="submit" value="login">
+                          
                         </div>
-    
-                        <div class="flex-sb-m w-full p-b-30">
-                            <div class="contact100-form-checkbox">
-                                <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-                                <label class="label-checkbox100" for="ckb1">
-                                    Remember me
-                                </label>
-                            </div>
-    
-                            <div>
-                                <a href="#" class="txt1">
-                                    Forgot Password?
-                                </a>
-                            </div>
-                        </div>
-    
-                        <div class="container-login100-form-btn">
-                            <button class="login100-form-btn" href="#">
-                                Login
-                            </button>
-                        </div>
-                    </form>
-                    <div>
+
+<input type="hidden" name="next" value="{{ next }}">
+</form>
+
+{# Assumes you setup the password_reset view in your URLconf #}
+
+ <div>
                     </div>{% for message in message %}
                     <h3>{{message}}</h3>
                     {% endfor %}
@@ -59,6 +68,4 @@
         </div>
     </div>
 </div>
-
 {% endblock %}
-
