@@ -1,4 +1,5 @@
 from django.urls import path
+from django.conf.urls import url
 from . import views
 
 
@@ -29,9 +30,18 @@ urlpatterns = [
     # produit assurance
 
     path('produitAssurance', views.produitAssurance ,name='produitAssurance'),  
-    path('produitAssurance/show',views.showPA),  
+    
+    path('produitAssurance/show',views.showPA), 
     path('produitAssurance/edit/<int:id>', views.editPA),  
     path('produitAssurance/update/<int:id>', views.updatePA),  
     path('produitAssurance/delete/<int:id>', views.destroyPA),  
+    # Assureur
+
+    path('Assureur', views.Assureurindex ,name='Assureurindex'),  
+    
+    path('Assureur/show',views.showA), 
+    path('Assureur/edit/<int:id>', views.editA),  
+    path('Assureur/update/<int:id>', views.updateA),  
+    path('Assureur/delete/<int:id>', views.destroyA),  
 ]
 

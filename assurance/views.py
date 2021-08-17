@@ -2,9 +2,9 @@
 from django.http import HttpResponse
 from rest_framework.renderers import TemplateHTMLRenderer
 from django.shortcuts import render, redirect  
-
-from assurance.forms import ProduitassuranceForm  
-from assurance.models import Produitassurance  
+from django.contrib import messages
+from assurance.forms import ProduitassuranceForm ,AssureurForm 
+from assurance.models import Produitassurance ,Assureur
 import logging
 logger = logging.getLogger(__name__)
 
@@ -131,18 +131,25 @@ def produitAssurance(request):
         logger.error(form.is_valid())
         if form.is_valid():
             try:  
-                logger.error("save begin")
-                logger.error(form)
+               
                 myform=form.save()  
-                
-                return redirect('produitAssurance/show')  
+                messages.success(request,"produit ajouter avec success")
+                return redirect('/assurance/produitAssurance/show')  
             except Exception as e:  
                 logger.error( str( e))  
     else:  
-        logger.error("else")
+        messages.error(request,"verifier tous les champs")
         form = ProduitassuranceForm()  
     return render(request,'produitAssurance/index.html',{'form':form})  
-def showPA(request):  
+def showPA(request): 
+
+    if request.method == 'GET': # If the form is submitted
+        
+        search_query = request.GET.get('search_box', None)
+        logger.error(search_query)
+        # Do whatever you need with the word the user looked for
+
+    # Your code
     Produitassurances = Produitassurance.objects.all()  
     return render(request,"produitAssurance/show.html",{'Produitassurances':Produitassurances})  
 def editPA(request, id):  
@@ -151,19 +158,72 @@ def editPA(request, id):
 def updatePA(request, id):  
     Produitassurance1 = Produitassurance.objects.get(code_produit=id)  
     form = ProduitassuranceForm(request.POST, instance = Produitassurance1)  
+    logger.error(form.errors.as_data())
     if form.is_valid():
         try:  
                 logger.error("save begin")
                 logger.error(form)
                 myform=form.save()  
                 
-                return redirect('produitAssurance/show')  
+                return redirect('/assurance/produitAssurance/show')  
         except Exception as e:  
                 logger.error( str( e))   
 
          
     return render(request, 'produitAssurance/edit.html', {'Produitassurance': Produitassurance1})  
 def destroyPA(request, id):  
-    Produitassurance = Produitassurance.objects.get(code_produit=id)  
-    Produitassurance.delete()  
-    return redirect("produitAssurance/show")
+    Produitassurance1 = Produitassurance.objects.get(code_produit=id)  
+    Produitassurance1.delete()  
+    return redirect("/assurance/produitAssurance/show")
+
+
+
+    # -----------------------------Assureur-----------------------------------
+def Assureurindex(request):  
+   
+    if request.method == "POST":  
+        form = AssureurForm(request.POST)  
+        logger.error("sssssssssssss")
+        logger.error(form.errors.as_data())
+     
+        if form.is_valid():
+            try:  
+               
+                myform=form.save()  
+                messages.success(request,"Assureur ajouter avec success")
+                return redirect('/assurance/Assureur/show')  
+            except Exception as e:  
+                logger.error( str( e))  
+    else:  
+        messages.error(request,"verifier tous les champs")
+        form = AssureurForm()  
+    return render(request,'Assureur/index.html',{'form':form})  
+def showA(request): 
+
+   
+    # Your code
+    Assureurs = Assureur.objects.all()  
+    return render(request,"Assureur/show.html",{'Assureurs':Assureurs})  
+def editA(request, id):  
+    Assureur1 = Assureur.objects.get(code_assureur=id)  
+    return render(request,'Assureur/edit.html', {'Assureur':Assureur1})  
+def updateA(request, id):  
+    Assureur1 = Assureur.objects.get(code_assureur=id)  
+    form = AssureurForm(request.POST, instance = Assureur1)  
+    
+    if form.is_valid():
+        try:  
+                logger.error("save begin")
+                logger.error(form)
+                myform=form.save()  
+                
+                return redirect('/assurance/Assureur/show')  
+        except Exception as e:  
+                logger.error( str( e))   
+
+         
+    return render(request, 'Assureur/edit.html', {'Assureur': Assureur1})  
+def destroyA(request, id):  
+    instance = Assureur.objects.get(code_assureur=id)
+    instance.delete() 
+    return redirect("/assurance/Assureur/show")

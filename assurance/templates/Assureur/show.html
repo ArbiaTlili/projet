@@ -1,0 +1,39 @@
+{% extends "base1.html" %}
+{% load static %}
+{% block title %} Login {% endblock %}
+{% block content %}
+ {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}" role="alert">
+          <p>{{ message }}</p>
+      </div>
+      {% endfor %}
+<table class="table table-striped table-bordered table-sm">  
+    <thead class="thead-dark">  
+    <tr>  
+       
+        <th> Nom_assureur</th>  
+        <th>Adresse</th>  
+        <th>Telephone</th>  
+        <th>Actions</th>  
+    </tr>  
+    </thead>  
+    <tbody>  
+{% for Assureur in Assureurs %}  
+    <tr>  
+       
+        <td>{{ Assureur.Nom_assureur }}</td>  
+        <td>{{ Assureur.Adresse }}</td>  
+        <td>{{ Assureur.Telephone }}</td> 
+        <td>   
+            <a href="/assurance/Assureur/edit/{{ Assureur.code_assureur }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+            <a href="/assurance/Assureur/delete/{{ Assureur.code_assureur }}">Delete</a>  
+        </td>  
+    </tr>  
+{% endfor %}  
+    </tbody>  
+</table>  
+<br>  
+<br>  
+<center><a href="/assurance/Assureur" class="btn btn-primary">Ajouter Assureur</a></center>
+
+{% endblock %}

@@ -125,7 +125,7 @@ class Produitassurance(models.Model):
     libelle_produit = models.CharField(max_length=20)
     Num_parteneriat = models.IntegerField(null=False)
     type_produit = models.CharField(max_length=30)
-    code_assureur =models.IntegerField(null=False)
+    code_assureur =models.ForeignKey(Assureur ,on_delete=models.CASCADE)
     part_banque =models.CharField(max_length=30)
     part_assureur =models.CharField(max_length=30)
     retenue_source=models.CharField(max_length=30)

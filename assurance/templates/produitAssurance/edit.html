@@ -2,53 +2,52 @@
 {% load static %}
 {% block title %} Login {% endblock %}
 {% block content %}
-
+ {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}" role="alert">
+          <p>{{ message }}</p>
+      </div>
+      {% endfor %}
 <form method="POST" class="post-form" action="/assurance/produitAssurance/update/{{Produitassurance.code_produit}}">  
         {% csrf_token %}  
-    <div class="container">  
+   <div class="container">  
 <br>  
     <div class="form-group row">  
     <label class="col-sm-1 col-form-label"></label>  
     <div class="col-sm-4">  
-    <h3>Update Details</h3>  
+    <h3></h3>  
     </div>  
   </div>  
-    <!-- <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Produitassurance code_produit:</label>  
-    <div class="col-sm-4">  
-        <input type="text" name="code_produit" id="id_code_produit" required maxlength="20" value="{{ Produitassurance.code_produit }}"/>  
-    </div>   -->
-  </div>  
-  <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Produitassurance libelle_produit:</label>  
-    <div class="col-sm-4">  
-        <input type="text" name="libelle_produit" id="id_libelle_produit" required maxlength="100" value="{{ Produitassurance.libelle_produit }}" />  
-    </div>  
-  </div>  
-    <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Produitassurance type_produit:</label>  
-    <div class="col-sm-4">  
-        <input type="email" name="type_produit" id="id_type_produit" required maxlength="254" value="{{ Produitassurance.type_produit }}" />  
-    </div>  
-  </div>  
-    <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Produitassurance code_assureur:</label>  
-    <div class="col-sm-4">  
-        <input type="text" name="code_assureur" id="id_code_assureur" required maxlength="15" value="{{ Produitassurance.code_assureur }}" />  
-    </div>  
-    <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Produitassurance Num_parteneriat:</label>  
-    <div class="col-sm-4">  
-        <input type="text" name="Num_parteneriat" id="id_Num_parteneriat" required maxlength="15" value="{{ Produitassurance.Num_parteneriat }}" />  
-    </div>  
-  </div>  
-    <div class="form-group row">  
+        
+
+<div id="div_id_libelle_produit" class="form-group"> <label for="id_libelle_produit" class=" requiredField">
+                Libelle produit<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="libelle_produit" maxlength="20" class="textinput textInput form-control" required="" value="{{Produitassurance.libelle_produit}}" id="id_libelle_produit"> </div> </div> <div id="div_id_Num_parteneriat" class="form-group"> <label for="id_Num_parteneriat" class=" requiredField">
+                Num parteneriat<span class="asteriskField">*</span> </label> <div class=""> <input type="number" name="Num_parteneriat" class="numberinput form-control" required="" id="id_Num_parteneriat" value="{{Produitassurance.Num_parteneriat}}"> </div> </div> <div id="div_id_type_produit" class="form-group"> <label for="id_type_produit" class=" requiredField">
+                Type produit<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="type_produit" maxlength="30" class="textinput textInput form-control" value="{{Produitassurance.type_produit}}" required=""  id="id_type_produit"> </div> </div> <div id="div_id_code_assureur" class="form-group"> <label for="id_code_assureur" class=" requiredField">
+                Code assureur<span class="asteriskField">*</span> </label> <div class=""> <select name="code_assureur" class="select form-control" required="" id="id_code_assureur"> <option value="{{Produitassurance.code_assureur.id}}" selected="">{{Produitassurance.code_assureur}}</option> 
+
+</select> </div> </div> <div id="div_id_part_banque" class="form-group"> <label for="id_part_banque" class=" requiredField">
+                Part banque<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="part_banque" value="{{Produitassurance.part_banque}}" maxlength="30" class="textinput textInput form-control" required="" id="id_part_banque"> </div> </div> <div id="div_id_part_assureur" class="form-group"> <label for="id_part_assureur" class=" requiredField">
+                Part assureur<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="part_assureur" value="{{Produitassurance.part_assureur}}" maxlength="30" class="textinput textInput form-control" required="" id="id_part_assureur"> </div> </div> <div id="div_id_retenue_source" class="form-group"> <label for="id_retenue_source" class=" requiredField">
+                Retenue source<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="retenue_source" value="{{Produitassurance.retenue_source}}" maxlength="30" class="textinput textInput form-control" required="" id="id_retenue_source"> </div> </div> <div id="div_id_TVA" class="form-group"> <label for="id_TVA" class=" requiredField">
+                TVA<span class="asteriskField">*</span> </label> <div class=""> <input type="number" name="TVA" class="numberinput form-control" value="{{Produitassurance.TVA}}" required="" id="id_TVA"> </div> </div> <div id="div_id_Frais_MEP_asssureur" class="form-group"> <label for="id_Frais_MEP_asssureur" class=" requiredField">
+                Frais MEP asssureur<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="Frais_MEP_asssureur" maxlength="30" value="{{Produitassurance.Frais_MEP_asssureur}}" class="textinput textInput form-control" required="" id="id_Frais_MEP_asssureur"> </div> </div> <div id="div_id_Frais_MEP_banque" class="form-group"> <label for="id_Frais_MEP_banque" class=" requiredField">
+                Frais MEP banque<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="Frais_MEP_banque" value="{{Produitassurance.Frais_MEP_banque}}" maxlength="30" class="textinput textInput form-control" required="" id="id_Frais_MEP_banque"> </div> </div> <div id="div_id_Niveau_validation" class="form-group"> <label for="id_Niveau_validation" class=" requiredField">
+                Niveau validation<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="Niveau_validation"  value="{{Produitassurance.Niveau_validation}}" maxlength="30" class="textinput textInput form-control" required="" id="id_Niveau_validation"> </div> </div> <div id="div_id_Periodicite_renversement" class="form-group"> <label for="id_Periodicite_renversement" class=" requiredField">
+                Periodicite renversement<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="Periodicite_renversement" value="{{Produitassurance.Periodicite_renversement}}" maxlength="30" class="textinput textInput form-control" required="" id="id_Periodicite_renversement"> </div> </div> <div id="div_id_age_seuil" class="form-group"> <label for="id_age_seuil" class=" requiredField">
+                Age seuil<span class="asteriskField">*</span> </label> <div class=""> <input type="number" name="age_seuil" class="numberinput form-control" value="{{Produitassurance.age_seuil}}"  required="" id="id_age_seuil"> </div> </div> <div id="div_id_montant_seuil" class="form-group"> <label for="id_montant_seuil" class=" requiredField">
+                Montant seuil<span class="asteriskField">*</span> </label> <div class=""> <input type="number" name="montant_seuil" class="numberinput form-control" value="{{Produitassurance.montant_seuil}}" required="" id="id_montant_seuil"> </div> </div> <div id="div_id_etat_produit" class="form-group"> <label for="id_etat_produit" class=" requiredField">
+                Etat produit<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="etat_produit" maxlength="30" value="{{Produitassurance.etat_produit}}" class="textinput textInput form-control" required="" id="id_etat_produit"> </div> </div>
+
+
+   
+
+    </div>
+   <div class="form-group row">  
     <label class="col-sm-1 col-form-label"></label>  
     <div class="col-sm-4">  
-    <button type="submit" class="btn btn-success">Update</button>  
+    <button type="submit" class="btn btn-primary">Submit</button>  
     </div>  
-  </div>  
-    </div>  
+  </div>   
 </form> 
 
 {% endblock %}

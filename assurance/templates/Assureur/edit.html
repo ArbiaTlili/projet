@@ -1,0 +1,42 @@
+{% extends "base1.html" %}
+{% load static %}
+{% block title %} Login {% endblock %}
+{% block content %}
+ {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}" role="alert">
+          <p>{{ message }}</p>
+      </div>
+      {% endfor %}
+<form method="POST" class="post-form" action="/assurance/Assureur/update/{{Assureur.code_assureur}}">  
+        {% csrf_token %}  
+    <div class="container">  
+<br>  
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <h3></h3>  
+    </div>  
+  </div>  
+        
+
+<div id="div_id_Nom_assureur" class="form-group"> <label for="id_Nom_assureur" class=" requiredField">
+                Nom assureur<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="Nom_assureur" value="{{Assureur.Nom_assureur}}" maxlength="40" class="textinput textInput form-control" required="" id="id_Nom_assureur"> </div> </div> <div id="div_id_Adresse" class="form-group"> <label for="id_Adresse" class=" requiredField">
+                Adresse<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="Adresse" value="{{Assureur.Adresse}}" maxlength="40" class="textinput textInput form-control" required="" id="id_Adresse"> </div> </div> <div id="div_id_contact" class="form-group"> <label for="id_contact" class=" requiredField">
+                Contact<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="contact" value="{{Assureur.contact}}" maxlength="40" class="textinput textInput form-control" required="" id="id_contact"> </div> </div> <div id="div_id_Telephone" class="form-group"> <label for="id_Telephone" class=" requiredField">
+                Telephone<span class="asteriskField">*</span> </label> <div class=""> <input type="tel" name="Telephone" value="{{Assureur.Telephone}}" maxlength="128" class="textinput textInput form-control is-invalid" required="" id="id_Telephone"> <p id="error_1_id_Telephone" class="invalid-feedback"><strong>Assureur with this Telephone already exists.</strong></p> </div> </div> <div id="div_id_fax" class="form-group"> <label for="id_fax" class=" requiredField">
+                Fax<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="fax" value="{{Assureur.fax}}" maxlength="20" class="textinput textInput form-control" required="" id="id_fax"> </div> </div> <div id="div_id_Email" class="form-group"> <label for="id_Email" class=" requiredField">
+                Email<span class="asteriskField">*</span> </label> <div class=""> <input type="email" name="Email" value="{{Assureur.Email}}" maxlength="254" class="emailinput form-control" required="" id="id_Email"> </div> </div> <div id="div_id_Agence" class="form-group"> <label for="id_Agence" class=" requiredField">
+                Agence<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="Agence" value="{{Assureur.Agence}}" maxlength="20" class="textinput textInput form-control" required="" id="id_Agence"> </div> </div>
+
+   
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <button type="submit" class="btn btn-primary">Submit</button>  
+    </div>  
+  </div>  
+
+    </div>
+</form> 
+
+{% endblock %}
