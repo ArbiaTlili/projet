@@ -258,12 +258,15 @@ def showB(request):
     return render(request,"Baremevoyage/show.html",{'Baremedevoyages':Baremedevoyages})  
 def editB(request, id):  
     Baremedevoyage1 = Baremedevoyage.objects.get(id_bareme_voyage=id)  
+    logger.error(Baremedevoyage1)
     return render(request,'Baremevoyage/edit.html', {'Baremedevoyage':Baremedevoyage1})  
 def updateB(request, id):  
     Baremedevoyage1 = Baremedevoyage.objects.get(id_bareme_voyage=id)  
     form = BaremeassurancevoyageForm(request.POST, instance=Baremedevoyage1) 
-    
-    if request.method == "POST":   
+    logger.error("save begin")
+    logger.error(Baremedevoyage1.produitassurance.code_produit)
+    if request.method == "POST":
+        logger.error(form.errors.as_data())           
         if form.is_valid():
             try:  
                 logger.error("save begin")
