@@ -1,0 +1,45 @@
+{% extends "base1.html" %}
+{% load static %}
+{% block title %} Ajout du barème voyage{% endblock %}
+{% block content %}
+ {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}" role="alert">
+          <p>{{ message }}</p>
+      </div>
+      {% endfor %}
+<table class="table table-striped table-bordered table-sm">  
+    <thead class="thead-dark">  
+    <tr>  
+       
+        <th> code_produit</th>  
+        <th>duree</th>  
+        <th>taux_assureur</th>  
+        <th>marge_banque</th> 
+        <th> etat_bareme</th>
+        <th>type_couverture </th>
+     
+    </tr>  
+    </thead>  
+    <tbody>  
+{% for Baremedevoyage in Baremedevoyages %}  
+    <tr>  
+       
+        <td>{{ Baremedevoyage.code_produit }}</td>  
+        <td>{{ Baremedevoyage.duree }}</td>  
+        <td>{{ Baremedevoyage.taux_assureur }}</td> 
+        <td>{{ Baremedevoyage.marge_banque }}</td> 
+        <td>{{ Baremedevoyage.etat_bareme }}</td> 
+        <td>{{ Baremedevoyage.type_couverture }}</td> 
+        <td>   
+            <a href="/assurance/Baremevoyage/edit/{{ Baremedevoyage.id_bareme_voyage }}"><span class="glyphicon glyphicon-pencil" >Modifier</span></a>  
+            <a href="/assurance/Baremevoyage/delete/{{ Baremedevoyage.id_bareme_voyage }}">Supprimer</a>  
+        </td>  
+    </tr>  
+{% endfor %}  
+    </tbody>  
+</table>  
+<br>  
+<br>  
+<center><a href="/assurance/Baremevoyage" class="btn btn-primary">Ajouter</a></center>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base1.html" %}
+{% load static %}
+{% block title %} Ajout du barème crédit{% endblock %}
+{% block content %}
+ {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}" role="alert">
+          <p>{{ message }}</p>
+      </div>
+      {% endfor %}
+<table class="table table-striped table-bordered table-sm">  
+    <thead class="thead-dark">  
+    <tr>  
+       
+        <th> code_produit</th>  
+        <th>age_min</th>  
+        <th>age_max</th> 
+        <th>duree_min </th> 
+        <th>duree_max</th> 
+        <th>taux_assureur</th>  
+        <th>marge_banque</th> 
+        <th> etat_bareme</th>
+      
+     
+    </tr>  
+    </thead>  
+    <tbody>  
+{% for Baremedecredit in Baremedecredits %}  
+    <tr>  
+       
+        <td>{{ Baremedecredit.code_produit }}</td>  
+        <td>{{ Baremedecredit.age_min }}</td>  
+        <td>{{ Baremedecredit.age_max }}</td> 
+        <td>{{ Baremedecredit.duree_min }}</td> 
+        <td>{{ Baremedecredit.duree_max }}</td>
+        <td>{{ Baremedecredit.taux_assureur }}</td>
+        <td>{{ Baremedecredit.marge_banque }}</td>
+        <td>{{ Baremedecredit.etat_bareme }}</td> 
+
+         
+        <td>   
+            <a href="/assurance/Baremecredit/edit/{{ Baremedecredit.id_bareme_credit }}"><span class="glyphicon glyphicon-pencil" >Modifier</span></a>  
+            <a href="/assurance/Baremecredit/delete/{{ Baremedecredit.id_bareme_credit }}">Supprimer</a>  
+        </td>  
+    </tr>  
+{% endfor %}  
+    </tbody>  
+</table>  
+<br>  
+<br>  
+<center><a href="/assurance/Baremecredit" class="btn btn-primary">Ajouter</a></center>
+
+{% endblock %}

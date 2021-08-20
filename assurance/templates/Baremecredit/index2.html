@@ -1,15 +1,15 @@
 {% extends "base1.html" %}
 {% load static %}
-{% block title %} Ajout d'un assureur{% endblock %}
+{% block title %} Ajout d'un barème d'assurance crédit{% endblock %}
 {% block content %}
 {% load crispy_forms_tags %}  
-<h1>Gestion produit assurance</h1>
+<h1>Gestion barème d'assurance crédit</h1>
  {% for message in messages %}
       <div class="alert alert-{{ message.tags }}" role="alert">
           <p>{{ message }}</p>
       </div>
       {% endfor %}
-<form method="POST" class="post-form" action="{% url 'Assureurindex' %}">  
+<form method="POST" class="post-form" action="{% url 'Baremecreditindex' %}">  
         {% csrf_token %}  
 
         
@@ -56,7 +56,7 @@
     <div class="form-group row">  
     <label class="col-sm-1 col-form-label"></label>  
     <div class="col-sm-4" >  
-    <button type="submit" class="btn btn-primary">Submit</button>  
+    <button type="submit" class="btn btn-primary">Ajouter</button>  
     </div>  
   </div>  
 

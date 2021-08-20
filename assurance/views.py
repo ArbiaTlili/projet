@@ -3,8 +3,8 @@ from django.http import HttpResponse
 from rest_framework.renderers import TemplateHTMLRenderer
 from django.shortcuts import render, redirect  
 from django.contrib import messages
-from assurance.forms import ProduitassuranceForm ,AssureurForm 
-from assurance.models import Produitassurance ,Assureur
+from assurance.forms import ProduitassuranceForm ,AssureurForm, BaremeassurancevoyageForm, BaremeassurancecreditForm  
+from assurance.models import Produitassurance ,Assureur, Baremedevoyage, Baremedecredit
 import logging
 logger = logging.getLogger(__name__)
 
@@ -227,3 +227,108 @@ def destroyA(request, id):
     instance = Assureur.objects.get(code_assureur=id)
     instance.delete() 
     return redirect("/assurance/Assureur/show")
+
+
+
+    # -----------------------------Bareme assurance voyage-----------------------------------
+def Baremevoyageindex(request):  
+   
+    if request.method == "POST":  
+        form = BaremeassurancevoyageForm(request.POST)  
+        logger.error("sssssssssssss")
+        logger.error(form.errors.as_data())
+     
+        if form.is_valid():
+            try:  
+               
+                myform=form.save()  
+                messages.success(request,"Barème voyage ajouté avec success")
+                return redirect('/assurance/Baremevoyage/show')  
+            except Exception as e:  
+                logger.error( str( e))  
+    else:  
+        messages.error(request,"verifier tous les champs")
+        form = BaremeassurancevoyageForm()  
+    return render(request,'Baremevoyage/index1.html',{'form':form})  
+def showB(request): 
+
+   
+    # Your code
+    Baremedevoyages = Baremedevoyage.objects.all()  
+    return render(request,"Baremevoyage/show.html",{'Baremedevoyages':Baremedevoyages})  
+def editB(request, id):  
+    Baremedevoyage1 = Baremedevoyage.objects.get(id_bareme_voyage=id)  
+    return render(request,'Baremevoyage/edit.html', {'Baremedevoyage':Baremedevoyage1})  
+def updateB(request, id):  
+    Baremedevoyage1 = Baremedevoyage.objects.get(id_bareme_voyage=id)  
+    form = BaremeassurancevoyageForm(request.POST, instance=Baremedevoyage1) 
+    
+    if request.method == "POST":   
+        if form.is_valid():
+            try:  
+                logger.error("save begin")
+                logger.error(form)
+                myform=form.save()  
+                messages.success(request, 'Update successful!')
+                return redirect('/assurance/Baremevoyage/show')  
+            except Exception as e:  
+                logger.error( str( e))   
+
+         
+    return render(request, 'Baremevoyage/edit.html', {'Baremedevoyage': Baremedevoyage1})  
+def destroyB(request, id):  
+    instance = Baremedevoyage.objects.get(id_bareme_voyage=id)
+    instance.delete()
+    messages.success(request, 'Deleted successful!')
+    return redirect("/assurance/Baremevoyage/show")
+
+ # -----------------------------Bareme assurance credit-----------------------------------
+def Baremecreditindex(request):  
+    if request.method == "POST":  
+        form = BaremeassurancecreditForm(request.POST)  
+        logger.error("sssssssssssss")
+        logger.error(form.errors.as_data())
+     
+        if form.is_valid():
+            try:  
+               
+                myform=form.save()  
+                messages.success(request,"Barème crédit ajouter avec success")
+                return redirect('/assurance/Baremecredit/show')  
+            except Exception as e:  
+                logger.error( str( e))  
+    else:  
+        messages.error(request,"verifier tous les champs")
+        form = BaremeassurancecreditForm()  
+    return render(request,'Baremecredit/index2.html',{'form':form})  
+def showC(request): 
+
+   
+    # Your code
+    Baremedecredits = Baremedecredit.objects.all()  
+    return render(request,"Baremecredit/show.html",{'Baremedecredits':Baremedecredits})  
+def editC(request, id):  
+    Baremedecredit1 = Baremedecredit.objects.get(id_bareme_credit=id)  
+    return render(request,'Baremecredit/edit.html', {'Baremedecredit':Baremedecredit1})  
+def updateC(request, id):  
+    Baremedecredit1 = Baremedecredit.objects.get(id_bareme_credit=id)  
+    form = BaremeassurancecreditForm(request.POST, instance = Baremedecredit1)  
+    
+    if form.is_valid():
+        try:  
+                logger.error("save begin")
+                logger.error(form)
+                myform=form.save()  
+                
+                return redirect('/assurance/Baremecredit/show')  
+        except Exception as e:  
+                logger.error( str( e))   
+
+         
+    return render(request, 'Baremecredit/edit.html', {'Baremedecredit': Baremedecredit1})  
+def destroyC(request, id):  
+    instance = Baremedecredit.objects.get(id_bareme_credit=id)
+    instance.delete() 
+    return redirect("/assurance/Baremecredit/show")
+
+

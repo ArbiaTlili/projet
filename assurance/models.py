@@ -125,7 +125,7 @@ class Produitassurance(models.Model):
     libelle_produit = models.CharField(max_length=20)
     Num_parteneriat = models.IntegerField(null=False)
     type_produit = models.CharField(max_length=30)
-    code_assureur =models.ForeignKey(Assureur ,on_delete=models.CASCADE)
+    code_assureur =models.ForeignKey('Assureur' ,on_delete=models.CASCADE)
     part_banque =models.CharField(max_length=30)
     part_assureur =models.CharField(max_length=30)
     retenue_source=models.CharField(max_length=30)
@@ -163,16 +163,15 @@ class Baremedevoyage(models.Model):
     id_bareme_voyage = models.AutoField(primary_key =True)
     code_produit = models.ForeignKey(
     'Produitassurance',
-    on_delete=models.CASCADE,related_name ='produitassurance'
-    )
+    on_delete=models.CASCADE,related_name = 'Produitassurance'
+    )  
     duree = models.IntegerField(null=False)
     taux_assureur = models.IntegerField(null=False)
     marge_banque = models.IntegerField(null=False)
     etat_bareme= models.CharField(max_length=30)      
     type_couverture = models.CharField(max_length=40)
     produitassurance = models.OneToOneField("Produitassurance", on_delete=models.CASCADE)
-   
-    
+
 
 class Souscriptiondecredit(models.Model):
     Num_souscription_credit = models.AutoField(primary_key = True)

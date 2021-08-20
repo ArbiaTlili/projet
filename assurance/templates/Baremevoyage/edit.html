@@ -1,0 +1,39 @@
+{% extends "base1.html" %}
+{% load static %}
+{% block title %} modifier barème voyage{% endblock %}
+{% block content %}
+ {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}" role="alert">
+          <p>{{ message }}</p>
+      </div>
+      {% endfor %}
+<form method="POST" class="post-form" action="/assurance/Baremevoyage/update/{{Baremedevoyage.id_bareme_voyage}}">  
+        {% csrf_token %}  
+    <div class="container">  
+<br>  
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <h3></h3>  
+    </div>  
+  </div>  
+        
+
+<div id="div_id_bareme_voyage" class="form-group"> <label for="id_bareme_voyage" class=" requiredField">
+                code_produit<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="code_produit" value="{{Baremedevoyage.code_produit}}" maxlength="40" class="textinput textInput form-control" required="" id="id_code_produit"> </div> </div> <div id="div_id_duree" class="form-group"> <label for="id_duree" class=" requiredField">
+                duree<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="duree" value="{{Baremedevoyage.duree}}" maxlength="40" class="textinput textInput form-control" required="" id="id_duree"> </div> </div> <div id="div_id_taux_assureur" class="form-group"> <label for="id_taux_assureur" class=" requiredField">
+                taux_assureur<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="taux_assureur" value="{{Baremedevoyage.taux_assureur}}" maxlength="40" class="textinput textInput form-control" required="" id="id_taux_assureur"> </div> </div> <div id="div_id_marge_banque" class="form-group"> <label for="id_marge_banque" class=" requiredField">
+                etat_bareme<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="etat_bareme" value="{{Baremedevoyage.etat_bareme}}" maxlength="128" class="textinput textInput form-control" required="" id="id_etat_bareme"> </div> </div> <div id="div_id_type_couverture" class="form-group"> <label for="id_type_couverture" class=" requiredField">
+                type_couverture<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="fax" value="{{Baremedevoyage.type_couverture}}" maxlength="40" class="textinput textInput form-control" required="" id="id_type_couverture"> </div> </div> 
+   
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <button type="submit" class="btn btn-primary">update</button>  
+    </div>  
+  </div>  
+
+    </div>
+</form> 
+
+{% endblock %}

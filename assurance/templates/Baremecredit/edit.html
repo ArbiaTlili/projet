@@ -1,0 +1,41 @@
+{% extends "base1.html" %}
+{% load static %}
+{% block title %} modifier barème crédit{% endblock %}
+{% block content %}
+ {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}" role="alert">
+          <p>{{ message }}</p>
+      </div>
+      {% endfor %}
+<form method="POST" class="post-form" action="/assurance/Baremecredit/update/{{Baremedecredit.id_bareme_credit}}">  
+        {% csrf_token %}  
+    <div class="container">  
+<br>  
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <h3></h3>  
+    </div>  
+  </div>  
+        
+
+<div id="div_id_bareme_credit" class="form-group"> <label for="id_bareme_credit" class=" requiredField">
+                code_produit<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="code_produit" value="{{Baremedecredit.code_produit}}" maxlength="40" class="textinput textInput form-control" required="" id="id_code_produit"> </div> </div> <div id="div_id_age_min" class="form-group"> <label for="id_age_min" class=" requiredField">
+                age_min<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="age_min" value="{{Baremedecredit.age_min}}" maxlength="40" class="textinput textInput form-control" required="" id="id_age_min"> </div> </div> <div id="div_id_age_max" class="form-group"> <label for="id_age_max" class=" requiredField">
+                age_max<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="age_max" value="{{Baremedecredit.age_max}}" maxlength="40" class="textinput textInput form-control" required="" id="id_age_max"> </div> </div> <div id="div_id_duree_min" class="form-group"> <label for="id_duree_min" class=" requiredField">
+                duree_min<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="duree_min" value="{{Baremedecredit.duree_min}}" maxlength="128" class="textinput textInput form-control" required="" id="id_duree_min"> </div> </div> <div id="div_id_duree_max" class="form-group"> <label for="id_duree_max" class=" requiredField">
+                duree_max<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="duree_max" value="{{Baremedecredit.duree_max}}" maxlength="40" class="textinput textInput form-control" required="" id="id_duree_max"> </div> </div> <div id="div_id_taux_assureur" class="form-group"> <label for="id_taux_assureur" class=" requiredField">
+                taux_assureur<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="taux_assureur" value="{{Baremedecredit.taux_assureur}}" maxlength="128" class="textinput textInput form-control" required="" id="id_taux_assureur"> </div> </div> <div id="div_id_marge_banque" class="form-group"> <label for="id_marge_banque" class=" requiredField">
+                marge_banque<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="marge_banque" value="{{Baremedecredit.marge_banque}}" maxlength="128" class="textinput textInput form-control" required="" id="id_marge_banque"> </div> </div> <div id="div_id_etat_bareme" class="form-group"> <label for="id_etat_bareme" class=" requiredField">
+                etat_bareme<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="etat_bareme" value="{{Baremedecredit.etat_bareme}}" maxlength="128" class="textinput textInput form-control" required="" id="id_etat_bareme"> </div> </div> 
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <button type="submit" class="btn btn-primary">update</button>  
+    </div>  
+  </div>  
+
+    </div>
+</form> 
+
+{% endblock %}
