@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import PermissionRequiredMixin
 import logging
 
 
@@ -17,6 +18,9 @@ def HomePage(request):
 def home(request):
     if request.user.is_authenticated:
         logger.error(request.user)
-        return render(request, 'home.html')
+        permission_required = 'catalog.can_mark_returned'
+        return render(request, 'page1.html')
+        permission_required = 'catalog.can_mark_returned'
+        return render(request, 'page2.html')
     return redirect('/accounts/login')
    
