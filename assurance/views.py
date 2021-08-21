@@ -3,8 +3,8 @@ from django.http import HttpResponse
 from rest_framework.renderers import TemplateHTMLRenderer
 from django.shortcuts import render, redirect  
 from django.contrib import messages
-from assurance.forms import ProduitassuranceForm ,AssureurForm, BaremeassurancevoyageForm, BaremeassurancecreditForm  
-from assurance.models import Produitassurance ,Assureur, Baremedevoyage, Baremedecredit
+from assurance.forms import ProduitassuranceForm ,AssureurForm, BaremeassurancevoyageForm, BaremeassurancecreditForm, SouscriptioncreditForm, SouscriptionvoyageForm  
+from assurance.models import Produitassurance ,Assureur, Baremedevoyage, Baremedecredit, Souscriptiondecredit,  Souscriptiondevoyage
 import logging
 logger = logging.getLogger(__name__)
 
@@ -333,5 +333,89 @@ def destroyC(request, id):
     instance = Baremedecredit.objects.get(id_bareme_credit=id)
     instance.delete() 
     return redirect("/assurance/Baremecredit/show")
+
+
+ # -----------------------------Souscription d'assurance credit-----------------------------------
+def Souscriptioncreditindex(request):  
+    if request.method == "POST":  
+        form = SouscriptioncreditForm(request.POST)  
+        logger.error("sssssssssssss")
+        logger.error(form.errors.as_data())
+     
+        if form.is_valid():
+            try:  
+               
+                myform=form.save()  
+                messages.success(request,"Souscription crédit ajouter avec success")
+                return redirect('/assurance/Souscriptioncredit/show')  
+            except Exception as e:  
+                logger.error( str( e))  
+    else:  
+        messages.error(request,"verifier tous les champs")
+        form = SouscriptioncreditForm()  
+    return render(request,'Souscriptioncredit/index3.html',{'form':form})  
+def showS(request): 
+
+   
+    # Your code
+    Souscriptiondecredits = Souscriptiondecredit.objects.all()  
+    return render(request,"Souscriptioncredit/show.html",{'Souscriptiondecredits':Souscriptiondecredits})  
+
+ 
+def destroyS(request, id):  
+    instance = Souscriptiondecredit.objects.get(Num_souscription_credit=id)
+    instance.delete() 
+    return redirect("/assurance/Souscriptioncredit/show")
+
+
+# -----------------------------Souscription d'assurance voyage-----------------------------------
+def Souscriptionvoyageindex(request):  
+    if request.method == "POST":  
+        form = SouscriptionvoyageForm(request.POST)  
+        logger.error("sssssssssssss")
+        logger.error(form.errors.as_data())
+     
+        if form.is_valid():
+            try:  
+               
+                myform=form.save()  
+                messages.success(request,"Souscription voyage ajouter avec success")
+                return redirect('/assurance/Souscriptionvoyage/show')  
+            except Exception as e:  
+                logger.error( str( e))  
+    else:  
+        messages.error(request,"verifier tous les champs")
+        form = SouscriptionvoyageForm()  
+    return render(request,'Souscriptionvoyage/index4.html',{'form':form})  
+def showSV(request): 
+
+   
+    # Your code
+    Souscriptiondevoyages = Souscriptiondevoyage.objects.all()  
+    return render(request,"Souscriptionvoyage/show.html",{'Souscriptiondevoyages':Souscriptiondevoyages})  
+def editSV(request, id):  
+    Souscriptiondevoyage1 = Souscriptiondevoyage.objects.get(Num_souscription_voyage=id)  
+    return render(request,'Souscriptionvoyage/edit.html', {'Souscriptiondevoyage':Souscriptiondevoyage1})  
+def updateSV(request, id):  
+    Souscriptiondevoyage1 = Souscriptiondevoyage.objects.get(Num_souscription_voyage=id)  
+    form = SouscriptionvoyageForm(request.POST, instance = Souscriptiondevoyage1)  
+    
+    if form.is_valid():
+        try:  
+                logger.error("save begin")
+                logger.error(form)
+                myform=form.save()  
+                
+                return redirect('/assurance/Souscriptionvoyage/show')  
+        except Exception as e:  
+                logger.error( str( e))   
+
+         
+    return render(request, 'Souscriptionvoyage/edit.html', {'Souscriptiondevoyage': Souscriptiondevoyage1})
+ 
+def destroySV(request, id):  
+    instance = Souscriptiondevoyage.objects.get(Num_souscription_voyage=id)
+    instance.delete() 
+    return redirect("/assurance/Souscriptionvoyage/show")
 
 

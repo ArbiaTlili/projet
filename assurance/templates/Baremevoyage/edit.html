@@ -9,8 +9,7 @@
       {% endfor %}
 <form method="POST" class="post-form" action="/assurance/Baremevoyage/update/{{Baremedevoyage.id_bareme_voyage}}">  
         {% csrf_token %}  
-  
-<div class="container">  
+    <div class="container">  
 <br>  
     <div class="form-group row">  
     <label class="col-sm-1 col-form-label"></label>  
@@ -21,20 +20,17 @@
         
 
 <div id="div_id_code_produit" class="form-group"> <label for="id_code_produit" class=" requiredField">
-                Code produit<span class="asteriskField">*</span> </label> <div class=""> <select name="code_produit" class="select form-control" required="" id="id_code_produit"> 
-                  <option value="{{Baremedevoyage.code_produit.code_produit}}" selected="">{{Baremedevoyage.code_produit}}</option> 
+                code_produit<span class="asteriskField">*</span> </label> <div class="">  <select name="code_produit" class="select form-control" required="" id="id_code_produit"> <option value="{{Baremedevoyage.code_produit.code_produit}}" selected="">{{Baremedevoyage.code_produit}}</option> 
 
-</select> </div> </div> <div id="div_id_duree" class="form-group"> <label for="id_duree" class=" requiredField">
-                Duree<span class="asteriskField">*</span> </label> <div class=""> <input type="number" name="duree" value="{{Baremedevoyage.duree}}" class="numberinput form-control" required="" id="id_duree"> </div> </div> <div id="div_id_taux_assureur" class="form-group"> <label for="id_taux_assureur" class=" requiredField">
-                Taux assureur<span class="asteriskField">*</span> </label> <div class=""> <input type="number" name="taux_assureur" class="numberinput form-control" value="{{Baremedevoyage.taux_assureur}}" required="" id="id_taux_assureur"> </div> </div> <div id="div_id_marge_banque" class="form-group"> <label for="id_marge_banque" class=" requiredField">
-                Marge banque<span class="asteriskField">*</span> </label> <div class=""> <input type="number" name="marge_banque" class="numberinput form-control" value="{{Baremedevoyage.marge_banque}}" required="" id="id_marge_banque"> </div> </div> <div id="div_id_etat_bareme" class="form-group"> <label for="id_etat_bareme" class=" requiredField">
-                Etat bareme<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="etat_bareme" maxlength="30" value="{{Baremedevoyage.etat_bareme}}" class="textinput textInput form-control" required="" id="id_etat_bareme"> </div> </div> <div id="div_id_type_couverture" class="form-group"> <label for="id_type_couverture" class=" requiredField">
-                Type couverture<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="type_couverture" maxlength="40" value="{{Baremedevoyage.type_couverture}}" class="textinput textInput form-control" required="" id="id_type_couverture"> </div> </div> <div id="div_id_produitassurance" class="form-group"> <label for="id_produitassurance" class=" requiredField">
-                Produitassurance<span class="asteriskField">*</span> </label> <div class=""> <select name="produitassurance" class="select form-control" required="" id="id_produitassurance"> <option value="{{Baremedevoyage.produitassurance.code_produit}}"  selected="">{{Baremedevoyage.produitassurance}}</option> 
+</select> </div> </div><div id="div_id_duree" class="form-group"> <label for="id_duree" class=" requiredField">
+                duree<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="duree" value="{{Baremedevoyage.duree}}" maxlength="40" class="textinput textInput form-control" required="" id="id_duree"> </div> </div> <div id="div_id_taux_assureur" class="form-group"> <label for="id_taux_assureur" class=" requiredField">
+                taux_assureur<span class="asteriskField">*</span> </label> <div class=""> <input type="number" name="taux_assureur" value="{{Baremedevoyage.taux_assureur}}" maxlength="40" class="numberinput numberInput form-control" required="" id="id_taux_assureur"> </div> </div> <div id="div_id_Marge banque" class="form-group"> <label for="id_Marge banque" class=" requiredField">
+                Marge banque<span class="asteriskField">*</span> </label> <div class=""> <input type="number" name="marge_banque" value="{{Baremedevoyage.marge_banque}}" class="numberinput form-control" required="" id="id_marge_banque"> </div> </div> <div id="div_id_etat_bareme" class="form-group"> <label for="id_etat_bareme" class=" requiredField">
+                etat_bareme<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="etat_bareme" value="{{Baremedevoyage.etat_bareme}}" maxlength="128" class="textinput textInput form-control" required="" id="id_etat_bareme"> </div> </div> <div id="div_id_type_couverture" class="form-group"> <label for="id_type_couverture" class=" requiredField">
+                type_couverture<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="type_couverture" value="{{Baremedevoyage.type_couverture}}" maxlength="40" class="textinput textInput form-control" required="" id="id_type_couverture"> </div> </div> 
+                Produitassurancee<span class="asteriskField">*</span> </label> <div class=""> <select name="produitassurancee" class="select form-control" required="" id="id_produitassurancee"> <option value="{{Baremedevoyage.produitassurancee.code_produit}}" selected="">{{Baremedevoyage.produitassurancee}}</option> 
+</select> </div> </div
 
-</select> </div> </div>
-
-  
     <div class="form-group row">  
     <label class="col-sm-1 col-form-label"></label>  
     <div class="col-sm-4">  

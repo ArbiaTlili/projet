@@ -145,7 +145,7 @@ class Baremedecredit(models.Model):
     id_bareme_credit = models.AutoField(primary_key = True) 
     code_produit = models.ForeignKey(
     'Produitassurance',
-    on_delete=models.CASCADE,related_name ='produitassurancee'
+    on_delete=models.CASCADE, related_name ='produitassurancee'
     )
     age_min =models.IntegerField(null=False)
     age_max =models.IntegerField(null=False)
@@ -191,7 +191,14 @@ class Souscriptiondecredit(models.Model):
 
 class Souscriptiondevoyage(models.Model):
     Num_souscription_voyage = models.AutoField(primary_key = True)
-    id_client = models.IntegerField(null=False)
+    Num_cin_passager = models.ForeignKey(
+    'Clientpassager',
+    on_delete=models.CASCADE, null=False
+    )
+    Num_fiche_client = models.ForeignKey(
+    'ClientUIB',
+    on_delete=models.CASCADE, null=False
+    )
     type_couverture = models.ForeignKey(
     'Baremedevoyage',
     on_delete=models.CASCADE,

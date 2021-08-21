@@ -1,0 +1,54 @@
+{% extends "base3.html" %}
+{% load static %}
+{% block title %} {% endblock %}
+{% block content %}
+ {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}" role="alert">
+          <p>{{ message }}</p>
+      </div>
+      {% endfor %}
+<table class="table table-striped table-bordered table-sm">  
+    <thead class="thead-dark">  
+    <tr>  
+       
+        <th> Num_cin_passager</th>  
+        <th>Num_fiche_client</th>  
+        <th>type_couverture</th> 
+        <th>montant_assurance </th> 
+        <th>duree</th> 
+        <th>code_produit</th>  
+        <th>date_debut</th> 
+        <th> type_client</th>
+        <th> etat_souscription_credit</th>
+      
+     
+    </tr>  
+    </thead>  
+    <tbody>  
+{% for Souscriptiondevoyage in Souscriptiondevoyages %}  
+    <tr>  
+       
+        <td>{{ Souscriptiondevoyage.Num_cin_passager }}</td>  
+        <td>{{ Souscriptiondevoyage.Num_fiche_client }}</td>  
+        <td>{{ Souscriptiondevoyage.type_couverture }}</td> 
+        <td>{{ Souscriptiondevoyage.montant_assurance }}</td> 
+        <td>{{ Souscriptiondevoyage.duree }}</td>
+        <td>{{ Souscriptiondevoyage.code_produit }}</td>
+        <td>{{ Souscriptiondevoyage.date_debut }}</td>
+        <td>{{ Souscriptiondevoyage.type_client }}</td> 
+        <td>{{ Souscriptiondevoyage.etat_sous_credit }}</td> 
+
+         
+        <td>   
+            <a href="/assurance/Souscriptionvoyage/edit/{{ Souscriptiondevoyage.Num_souscription_voyage }}"><span class="glyphicon glyphicon-pencil" >Modifier</span></a>  
+            <a href="/assurance/Souscriptionvoyage/delete/{{ Souscriptiondevoyage.Num_souscription_voyage }}">Supprimer</a>  
+        </td>  
+    </tr>  
+{% endfor %}  
+    </tbody>  
+</table>  
+<br>  
+<br>  
+<center><a href="/assurance/Souscriptionvoyage" class="btn btn-primary">Ajouter</a></center>
+
+{% endblock %}

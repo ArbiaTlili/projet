@@ -62,4 +62,20 @@ urlpatterns = [
     path('Baremecredit/edit/<int:id>', views.editC),  
     path('Baremecredit/update/<int:id>', views.updateC),  
     path('Baremecredit/delete/<int:id>', views.destroyC),  
+
+
+  #Souscriptiondecredit
+
+    path('Souscriptioncredit', views.Souscriptioncreditindex ,name='Souscriptioncreditindex'),  
+    path('Souscriptioncredit/show',views.showS), 
+    path('Souscriptioncredit/delete/<int:id>', views.destroyS),
+
+#Souscriptiondevoyage
+
+    path('Souscriptionvoyage', views.Souscriptionvoyageindex ,name='Souscriptionvoyageindex'),  
+    path('Souscriptionvoyage/show',views.showSV), 
+    path('Souscriptionvoyage/edit/<int:id>', views.editSV),  
+    path('Souscriptionvoyage/update/<int:id>', views.updateSV),  
+    path('Souscriptionvoyage/delete/<int:id>', views.destroySV),
+
 ]
