@@ -263,8 +263,8 @@ def editB(request, id):
 def updateB(request, id):  
     Baremedevoyage1 = Baremedevoyage.objects.get(id_bareme_voyage=id)  
     form = BaremeassurancevoyageForm(request.POST, instance=Baremedevoyage1) 
-    logger.error("save begin")
-    logger.error(Baremedevoyage1.produitassurance.code_produit)
+  
+    
     if request.method == "POST":
         logger.error(form.errors.as_data())           
         if form.is_valid():

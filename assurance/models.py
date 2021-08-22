@@ -170,7 +170,7 @@ class Baremedevoyage(models.Model):
     marge_banque = models.IntegerField(null=False)
     etat_bareme= models.CharField(max_length=30)      
     type_couverture = models.CharField(max_length=40)
-    produitassurance = models.OneToOneField("Produitassurance", on_delete=models.CASCADE)
+   
 
 
 class Souscriptiondecredit(models.Model):
