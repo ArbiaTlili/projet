@@ -1,0 +1,65 @@
+{% extends "base3.html" %}
+{% load static %}
+{% block title %} Ajout {% endblock %}
+{% block content %}
+{% load crispy_forms_tags %}  
+<h1>Gestion souscription voyage</h1>
+ {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}" role="alert">
+          <p>{{ message }}</p>
+      </div>
+      {% endfor %}
+<form method="POST" class="post-form" action="{% url 'Souscriptionvoyageindex' %}">  
+        {% csrf_token %}  
+
+        
+    <div class="container">  
+<br>  
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <h3></h3>  
+    </div>  
+  </div>  
+        {{ form|crispy }}
+    <!-- <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">produit assurance code_produit:</label>  
+    <div class="col-sm-4">  
+      {{ form.code_produit }}  
+    </div>  
+  </div>  
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">produit assurance libelle_produit:</label>  
+    <div class="col-sm-4" style="background-color: brown;">  
+      {{ form.libelle_produit }}  
+    </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">produit assurance type_produit:</label>  
+    <div class="col-sm-4" style="background-color: brown;">  
+      {{ form.type_produit }}  
+    </div>  
+  </div>  
+  
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">produit assurance code_assureur:</label>  
+    <div class="col-sm-4" style="background-color: brown;">  
+      {{ form.code_assureur }}  
+    </div>  
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">produit assurance Num_parteneriat:</label>  
+    <div class="col-sm-4" style="background-color: brown;">  
+      {{ form.Num_parteneriat }}  
+    </div>  
+  </div>  
+     -->
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4" >  
+    <button type="submit" class="btn btn-primary">Ajouter</button>  
+    </div>  
+  </div>  
+
+    </div>  
+</form>
+{% endblock %}

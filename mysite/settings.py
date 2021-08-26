@@ -146,5 +146,6 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-LOGIN_REDIRECT_URL = "/assurance/produit"
+LOGIN_REDIRECT_URL = "/assurance/backoffice"
+LOGIN_REDIRECT_URL = "/assurance/clientèle"
 LOGOUT_REDIRECT_URL = "/accounts/login"

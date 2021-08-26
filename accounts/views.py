@@ -12,15 +12,15 @@ def logout(request):
 def LoginPage(request):
     return render(request, 'login.html')
 
-def HomePage(request):
-    return render(request, 'home.html')
+
 
 def home(request):
     if request.user.is_authenticated:
         logger.error(request.user)
-        permission_required = 'catalog.can_mark_returned'
-        return render(request, 'page1.html')
-        permission_required = 'catalog.can_mark_returned'
-        return render(request, 'page2.html')
+        permission_required = 'assurance.can_add_souscriptiondecredit','assurance.can_edit_souscriptiondecredit','assurance.can_add_souscriptiondevoyage','assurance.can_edit_souscriptiondevoyage','assurance.can_delete_souscriptiondevoyage'
+        return render(request, 'base3.html')
+        permission_required = 'assurance.can_edit_assureur', 'assurance.can_add_assureur','assurance.can_add_baremedecredit','assurance.can_edit_baremedecredit','assurance.can_add_baremedevoyage','assurance.can_edit_baremedevoyage','assurance.can_add_produitassurance','assurance.can_edit_produitassurance','assurance.can_delete_produitassurance'
+        return render(request, 'base1.html')
+    
     return redirect('/accounts/login')
    

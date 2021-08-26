@@ -12,6 +12,12 @@ body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
 }
+.container{
+  color: #e24d55;
+  text-decoration: none;
+  background: #e1444d;
+} 
+  
 
 a {
   text-decoration: none;
