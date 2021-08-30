@@ -169,7 +169,13 @@ class Baremedevoyage(models.Model):
     taux_assureur = models.IntegerField(null=False)
     marge_banque = models.IntegerField(null=False)
     etat_bareme= models.CharField(max_length=30)      
-    type_couverture = models.CharField(max_length=40)
+    I='Individuel'
+    F='Familiale'
+    COUVERTURE_CHOICES = [   
+      ('I', 'Individuel'),
+      ('F', 'Familiale'),
+      ]
+    type_couverture = models.CharField(choices=COUVERTURE_CHOICES, max_length=40)
    
 
 
@@ -189,8 +195,16 @@ class Souscriptiondecredit(models.Model):
 
    
 
+
 class Souscriptiondevoyage(models.Model):
     Num_souscription_voyage = models.AutoField(primary_key = True)
+    UIB='client UIB'
+    P='client passager'
+    CLIENT_CHOICES = [   
+      ('UIB', 'client UIB'),
+      ('P', 'client passager'),
+      ]
+    type_client = models.CharField(choices=CLIENT_CHOICES, max_length=40)
     Num_cin_passager = models.ForeignKey(
     'Clientpassager',
     on_delete=models.CASCADE, null=False
@@ -199,16 +213,19 @@ class Souscriptiondevoyage(models.Model):
     'ClientUIB',
     on_delete=models.CASCADE, null=False
     )
-    type_couverture = models.ForeignKey(
-    'Baremedevoyage',
-    on_delete=models.CASCADE,
-    )
-    montant_assurance = models.IntegerField(null=False)
+    Num_compte = models.IntegerField(null=True)
+    code_assureur =models.IntegerField(null=False)
+    I='Individuel'
+    F='Familiale'
+    COUVERTURE_CHOICES = [   
+      ('I', 'Individuel'),
+      ('F', 'Familiale'),
+      ]
+    type_couverture = models.CharField(choices=COUVERTURE_CHOICES, max_length=40)
     duree = models.IntegerField(null=False)
-    code_produit =models.IntegerField(null=False)
     date_debut =models.DateTimeField(auto_now=True) 
-    type_client = models.CharField(max_length=40)
-    etat_sous_credit = models.CharField(max_length=40)
+    montant_assurance = models.IntegerField(null=False)
+   
     
 
     

@@ -10,99 +10,22 @@ logger = logging.getLogger(__name__)
 
 # Create your views here.
 def base2(request):
-    context = {
-        'welcome_text':"welcomecompte",
-    }
+ 
     return render(request, 'base2.html', context)
 
-def utilisateurs(request):
-    context = {
-        'welcome_text':"welcomecompte",
-    }
-    return render(request, 'assurance/utilisateurs.html', context)
-
-def groupe(request):
-    context = {
-        'welcome_text':"welcomecompte",
-    }
-    return render(request, 'assurance/groupe.html', context)
-
-def droits(request):
-    context = {
-        'welcome_text':"welcomecompte",
-    }
-    return render(request, 'assurance/droits.html', context)
-
-def privilège(request):
-    context = {
-        'welcome_text':"welcomecompte",
-    }
-    return render(request, 'assurance/privilège.html', context)
-
-def compte(request):
-    context = {
-        'welcome_text':"welcomecompte",
-    }
-    return render(request, 'assurance/compte.html', context)
 
 def base3(request):
-    context = {
-        'welcome_text':"welcomecompte",
-    }
-    return render(request, 'base3.html', context)
-
-def sousvoyage(request):
-    context = {
-        'welcome_text':"welcomecompte",
-    }
-    return render(request, 'assurance/sousvoyage.html', context)
-
-def souscrédit(request):
-    context = {
-        'welcome_text':"welcomecompte",
-    }
-    return render(request, 'assurance/souscrédit.html', context) 
-
-def compte1(request):
-    context = {
-        'welcome_text':"welcomecompte",
-    }
-    return render(request, 'assurance/compte1.html', context)       
+ 
+    return render(request, 'base3.html')
+  
 
 def base1(request):
-    context = {
-        'welcome_text':"welcomecompte",
-    }
-    return render(request, 'base1.html',context)
+  
+    return render(request, 'base1.html')
 
-def compagnies(request):
-    context = {
-        'welcome_text':"welcomecompte",
-    }
-    return render(request, 'assurance/compagnies.html', context)
+ 
 
-def produit(request):
-    context = {
-        'welcome_text':"welcomecompte",
-         
-        "first_name": "test nom ",
-        "last_name": "test prenom",
-        "address": "test adresse"
-    
-    }
-    return render(request, 'assurance/produit.html', context) 
-
-def barémescrédit(request):
-    context = {
-        'welcome_text':"welcomecompte",
-    }
-    return render(request, 'assurance/barémescrédit.html', context)  
-
-def barémesvoyage(request):
-    context = {
-        'welcome_text':"welcomecompte",
-    }
-    return render(request, 'assurance/barémesvoyage.html', context) 
+ 
 
 def décision(request):
     context = {
@@ -110,17 +33,7 @@ def décision(request):
     }
     return render(request, 'assurance/décision.html', context)
      
-def compte2(request):
-    context = {
-        'welcome_text':"welcomecompte",
-    }
-    return render(request, 'assurance/compte2.html', context)  
 
-def ajt_user(request):
-    context = {
-        'welcome_text':"welcomecompte",
-    }
-    return render(request, 'assurance/utilisateurs.html', context)
 # -----------------------------produitAssurance-----------------------------------
 def produitAssurance(request):  
    

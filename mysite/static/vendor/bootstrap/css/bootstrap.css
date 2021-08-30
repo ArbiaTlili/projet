@@ -257,7 +257,7 @@ textarea {
 
 table {
   border-collapse: collapse;
-  max-width: 10000px;
+  max-width: 1000px;
 }
 
 caption {
@@ -553,7 +553,7 @@ samp {
 code {
   padding: 0.2rem 0.4rem;
   font-size: 90%;
-  color: #bd4147;
+  color: #0e0d0d;
   background-color: #f8f9fa;
   border-radius: 0.25rem;
 }
@@ -598,7 +598,6 @@ pre code {
   max-height: 340px;
   overflow-y: scroll;
 }
-
 .container {
   margin-right: auto;
   margin-left: auto;
