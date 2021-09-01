@@ -11,7 +11,8 @@ urlpatterns = [
     path('clientèle',views.base3, name="clientèle"),
     path('backoffice',views.base1, name="backoffice"),
     path('décision',views.décision, name="décision"),
-  
+  #home
+  path('home',views.home, name="home"),
     # produit assurance
 
     path('produitAssurance', views.produitAssurance ,name='produitAssurance'),  

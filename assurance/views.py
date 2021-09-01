@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from assurance.forms import ProduitassuranceForm ,AssureurForm, BaremeassurancevoyageForm, BaremeassurancecreditForm, SouscriptioncreditForm, SouscriptionvoyageForm  
 from assurance.models import Produitassurance ,Assureur, Baremedevoyage, Baremedecredit, Souscriptiondecredit,  Souscriptiondevoyage
+from django.contrib.auth.models import Permission
 import logging
 logger = logging.getLogger(__name__)
 
@@ -23,6 +24,21 @@ def base1(request):
   
     return render(request, 'base1.html')
 
+
+def home(request):
+    perm_tuple = [( x.name) for x in Permission.objects.filter(user=request.user)]
+    logger.error(perm_tuple)
+    if request.user.is_authenticated:
+        logger.error('Can add produitassurance' in perm_tuple)
+        if 'Can add produitassurance' in perm_tuple:
+            return render(request, 'base1.html')
+        elif 'Can add souscriptiondecredit' in perm_tuple:
+            return render(request, 'base3.html')
+        # permission_required = 'assurance.can_add_souscriptiondecredit','assurance.can_edit_souscriptiondecredit','assurance.can_add_souscriptiondevoyage','assurance.can_edit_souscriptiondevoyage','assurance.can_delete_souscriptiondevoyage'
+        
+        # permission_required = 'assurance.can_edit_assureur', 'assurance.can_add_assureur','assurance.can_add_baremedecredit','assurance.can_edit_baremedecredit','assurance.can_add_baremedevoyage','assurance.can_edit_baremedevoyage','assurance.can_add_produitassurance','assurance.can_edit_produitassurance','assurance.can_delete_produitassurance'
+        
+    return redirect('/accounts/login')
  
 
  

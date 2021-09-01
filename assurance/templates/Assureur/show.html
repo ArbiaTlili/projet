@@ -2,6 +2,12 @@
 {% load static %}
 {% block title %} {% endblock %}
 {% block content %}
+<div  class="container">
+  <!-- Content here -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
  {% for message in messages %}
       <div class="alert alert-{{ message.tags }}" role="alert">
           <p>{{ message }}</p>
@@ -25,8 +31,8 @@
         <td>{{ Assureur.Adresse }}</td>  
         <td>{{ Assureur.Telephone }}</td> 
         <td>   
-            <a href="/assurance/Assureur/edit/{{ Assureur.code_assureur }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
-            <a href="/assurance/Assureur/delete/{{ Assureur.code_assureur }}">Delete</a>  
+            <a href="/assurance/Assureur/edit/{{ Assureur.code_assureur }}"class="btn btn-warning waves-effect"><i class="bi bi-pencil-square"></i></a>  
+             
         </td>  
     </tr>  
 {% endfor %}  
@@ -34,6 +40,6 @@
 </table>  
 <br>  
 <br>  
-<center><a href="/assurance/Assureur" class="btn btn-primary">Ajouter Assureur</a></center>
-
+<center><a href="/assurance/Assureur" ><button type="button" class="btn btn-info add-new"><i class="fa fa-plus">Add New</i></button></a></center>
+</div>
 {% endblock %}

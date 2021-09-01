@@ -215,6 +215,10 @@ class Souscriptiondevoyage(models.Model):
     )
     Num_compte = models.IntegerField(null=True)
     code_assureur =models.IntegerField(null=False)
+    code_produit = models.ForeignKey(
+    'Produitassurance',
+    on_delete=models.CASCADE, null=True
+    )
     I='Individuel'
     F='Familiale'
     COUVERTURE_CHOICES = [   
