@@ -48,7 +48,15 @@ def décision(request):
         'welcome_text':"welcomecompte",
     }
     return render(request, 'assurance/décision.html', context)
+
      
+def base4(request):
+      
+    return render(request, 'base4.html')
+
+def base5(request):
+      
+    return render(request, 'base5.html')    
 
 # -----------------------------produitAssurance-----------------------------------
 def produitAssurance(request):  

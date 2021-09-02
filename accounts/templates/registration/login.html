@@ -1,7 +1,6 @@
-
 {% extends "base.html" %}
 {% load static %}
-{% block title %} Login {% endblock %}
+{% block title %}  {% endblock %}
 {% block content %}
 
 {% if form.errors %}
@@ -16,57 +15,61 @@
     <p>Please login to see this page.</p>
     {% endif %}
 {% endif %}
-<div class="container-fluid mt-5">
-    <div class="row mt-5">
-        <div class="limiter">
-            <div class="container-login100">
-                <div class="wrap-login100">
-                    <div class="login100-form-title" style="background-image: url(images/bg-01.jpg);">
-                        <span class="login100-form-title-1">
-                            Sign In
-                        </span>
-                    </div>
-<form method="post" action="{% url 'login' %}">
+
+{% comment %} login {% endcomment %}
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <form class="col-md-9"method="post" action="{% url 'login' %}">
 {% csrf_token %}
+                <div class="AppForm shadow-lg">
+                    <div class="row">
+                        <div class="col-md-6 d-flex justify-content-center align-items-center">
+                            <div class="AppFormLeft">
 
+                                <h1>Login</h1>
+                                <div class="form-group position-relative mb-4">
+                                     <input type="text" class="form-control border-top-0 border-right-0 border-left-0 rounded-0 shadow-none" id="username"
+                                        placeholder="Username"{{ form.username }} 
 
+                                        <i class="fa fa-user-o"></i>
+                                </div>
+                                <div class="form-group position-relative mb-5">
+                                    <input type="password" class="form-control border-top-0 border-right-0 border-left-0 rounded-0 shadow-none" id="password"
+                                        placeholder="Password"{{ form.password }} 
+                               
+                                        <i class="fa fa-key"></i>
 
-<form class="login100-form validate-form" action="login" method"post">
-                    {% csrf_token %}
-                    
-    
-                        <div class="wrap-input100 validate-input m-b-26"  style="padding: 20px;" data-validate="Username is required">
-                            <span>Username</span>
-                          <!-- {{ form.username }} -->
-                          <input  class="input100" type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">
-                          <span class="focus-input100"></span>
-                        </div>
-    
-                        <div class="wrap-input100 validate-input m-b-18"  style="padding: 20px;" data-validate = "Password is required">
-                            <span>Password</span>
-                          <input  class="input100" type="password" name="password" autocomplete="current-password" required="" id="id_password">
-                    
-                            <span class="focus-input100"></span>
-                        </div>
-    
+                                </div>
+                                
 
- <div class="container-login100-form-btn"  style="justify-content: center;padding: 20px;">
-                                <input class="login100-form-btn" type="submit" value="login">
-                          
-                        </div>
+                                <input class="btn btn-danger btn-block shadow border-0 py-2 text-uppercase "  type="submit" value="login"/>
+                                
 
-<input type="hidden" name="next" value="{{ next }}">
-</form>
+                                <p class="text-center mt-5">
+                                    Don't have an account?
+                                    <span>
+                                        Create your account
+                                    </span>
 
-{# Assumes you setup the password_reset view in your URLconf #}
-
- <div>
-                    </div>{% for message in message %}
+                                </p>
+{% for message in message %}
                     <h3>{{message}}</h3>
                     {% endfor %}
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="AppFormRight position-relative d-flex justify-content-center flex-column align-items-center text-center p-5 text-white">
+                            <div class="w">
+  <div class="a"><a href="https://www.uib.com.tn/images/banners-uib/NotreOffre/Clients-PLATINE/UIB--Clients-PLATINE-ESPACE-HDG-.jpg", target="_blank"></a></div></div>
+
+                                <div class="rotate"><div><img src="{%static 'assets/img/logo.png' %}" alt="" class="img-fluid"></div></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+<input type="hidden" name="next" value="{{ next }}">
+            </form>
         </div>
     </div>
-</div>
-{% endblock %}
+ {% endblock %}
