@@ -1,4 +1,4 @@
-{% extends "base1.html" %}
+{% extends "base3.html" %}
 {% load static %}
 {% block title %} {% endblock %}
 {% block content %}
@@ -11,7 +11,7 @@
       {% endfor %}
 <form method="POST" class="post-form" action="{% url 'beneficiaire' %}">  
         {% csrf_token %}  
-
+<body>
         
     <div class="container">  
 <br>  
@@ -31,5 +31,6 @@
   </div>  
 
     </div>  
+    </body> 
 </form>
 {% endblock %}
