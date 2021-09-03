@@ -3,8 +3,8 @@ from django.http import HttpResponse
 from rest_framework.renderers import TemplateHTMLRenderer
 from django.shortcuts import render, redirect  
 from django.contrib import messages
-from assurance.forms import ProduitassuranceForm ,AssureurForm, BaremeassurancevoyageForm, BaremeassurancecreditForm, SouscriptioncreditForm, SouscriptionvoyageForm  
-from assurance.models import Produitassurance ,Assureur, Baremedevoyage, Baremedecredit, Souscriptiondecredit,  Souscriptiondevoyage
+from assurance.forms import ProduitassuranceForm ,AssureurForm, BaremeassurancevoyageForm, BaremeassurancecreditForm, SouscriptioncreditForm, SouscriptionvoyageForm, beneficiaireForm  
+from assurance.models import Produitassurance ,Assureur, Baremedevoyage, Baremedecredit, Souscriptiondecredit,  Souscriptiondevoyage, Beneficiaire
 from django.contrib.auth.models import Permission
 import logging
 logger = logging.getLogger(__name__)
@@ -356,3 +356,23 @@ def destroySV(request, id):
     return redirect("/assurance/Souscriptionvoyage/show")
 
 
+# -----------------------------beneficiaire-----------------------------------
+def beneficiaire(request):  
+   
+    if request.method == "POST":  
+        form = beneficiaireForm(request.POST)  
+        logger.error("sssssssssssss")
+        logger.error(form.errors.as_data())
+        logger.error(form.is_valid())
+        if form.is_valid():
+            try:  
+               
+                myform=form.save()  
+                messages.success(request,"bénéficiaire ajouter avec success")
+                return redirect('/assurance/beneficiaire')  
+            except Exception as e:  
+                logger.error( str( e))  
+    else:  
+        messages.error(request,"verifier tous les champs")
+        form = beneficiaireForm()  
+    return render(request,'beneficiaire/index.html',{'form':form}) 

@@ -67,5 +67,7 @@ urlpatterns = [
     path('Souscriptionvoyage/edit/<int:id>', views.editSV),  
     path('Souscriptionvoyage/update/<int:id>', views.updateSV),  
     path('Souscriptionvoyage/delete/<int:id>', views.destroySV),
+  #Beneficiaire
+  path('beneficiaire', views.beneficiaire ,name='beneficiaire'),
 
 ]
