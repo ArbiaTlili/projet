@@ -40,11 +40,9 @@
   ======================================================== -->
 </head>
 
-<body>
+
   
-       <div class="container">
-         <h1>{{ welcome_text }}<h1>
-    </div>
+      
   
   <!-- ======= Header ======= -->
  <header id="header" style="position: sticky;" class="fixed-top d-flex align-items-center">
@@ -78,8 +76,7 @@
 
   <!-- ======= Hero Section ======= -->
   
-  {% block content %}
-  {% endblock %}
+
  
 
     <!-- ======= About Section ======= -->
@@ -88,8 +85,15 @@
 
   <!-- Template Main JS File -->
  <script src="{% static 'assets/js/main.js' %}"></script>
+<body>
+ <div class="container">
 
+{% block content %}
+{% endblock %}
+
+</div>
 </body>
+
 
 </html>
 
