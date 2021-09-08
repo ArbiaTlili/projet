@@ -176,6 +176,7 @@ class Baremedevoyage(models.Model):
       ('F', 'Familiale'),
       ]
     type_couverture = models.CharField(choices=COUVERTURE_CHOICES, max_length=40)
+  
    
 
 
@@ -191,7 +192,7 @@ class Souscriptiondecredit(models.Model):
     )
     montant_assurance = models.IntegerField(null=False)
     etat_sous_credit = models.CharField(max_length=20)
-    
+    beneficiaires = models.CharField( null=True,max_length=40)
 
    
 
@@ -229,7 +230,7 @@ class Souscriptiondevoyage(models.Model):
     duree = models.IntegerField(null=False)
     date_debut =models.DateTimeField(auto_now=True) 
     montant_assurance = models.IntegerField(null=False)
-   
+    beneficiaires = models.CharField( null=True, max_length=40)
     
 
     

@@ -274,6 +274,7 @@ def destroyC(request, id):
 
  # -----------------------------Souscription d'assurance credit-----------------------------------
 def Souscriptioncreditindex(request):  
+     
     if request.method == "POST":  
         form = SouscriptioncreditForm(request.POST)  
         logger.error("sssssssssssss")
@@ -290,7 +291,7 @@ def Souscriptioncreditindex(request):
     else:  
         messages.error(request,"verifier tous les champs")
         form = SouscriptioncreditForm()  
-    return render(request,'Souscriptioncredit/index3.html',{'form':form})  
+    return render(request,'Souscriptioncredit/index3.html',{'form':form,'Beneficiaires':Beneficiaires})  
 def showS(request): 
 
    
@@ -306,7 +307,8 @@ def destroyS(request, id):
 
 
 # -----------------------------Souscription d'assurance voyage-----------------------------------
-def Souscriptionvoyageindex(request):  
+def Souscriptionvoyageindex(request):
+    Beneficiaires = Beneficiaire.objects.all()     
     if request.method == "POST":  
         form = SouscriptionvoyageForm(request.POST)  
         logger.error("sssssssssssss")
@@ -323,7 +325,7 @@ def Souscriptionvoyageindex(request):
     else:  
         messages.error(request,"verifier tous les champs")
         form = SouscriptionvoyageForm()  
-    return render(request,'Souscriptionvoyage/index4.html',{'form':form})  
+    return render(request,'Souscriptionvoyage/index4.html',{'form':form,'Beneficiaires':Beneficiaires})  
 def showSV(request): 
 
    

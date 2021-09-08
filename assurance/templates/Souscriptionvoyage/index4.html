@@ -22,8 +22,23 @@
     </div>  
   </div>  
         {{ form|crispy }}
-   
-    <div class="form-group row">  
+
+  <div id="div_id2" class="form-group">    <div class="multi-field-wrapper">
+      <div class="multi-fields">
+        <div class="multi-field">
+          <select type="text" class="select form-control" onchange="addBenefits(event)" name="stuff[]"> {% for beneficiaire in Beneficiaires %}
+           <option value="{{ beneficiaire.id_beneficiaire }}">{{ beneficiaire.nom_beneficiaire }}</option>
+            {% endfor %}
+          </select>
+          <button type="button" class="remove-field">Remove</button>
+        </div>
+      </div>
+    <button type="button" class="add-field">Add field</button>
+  </div>
+  </div>
+  
+  
+<div id="div_id1" class="form-group">    
     <label class="col-sm-1 col-form-label"></label>  
     <div class="col-sm-4" >  
     <button type="submit" class="btn btn-primary">Ajouter</button>  
@@ -32,4 +47,31 @@
 
     </div>  
 </form>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+    $('.multi-field-wrapper').each(function() {
+
+    var $wrapper = $('.multi-fields', this);
+    console.log( $wrapper)
+      $('div_id_beneficiaires').hide
+    $(".add-field", $(this)).click(function(e) {
+        $('.multi-field:first-child', $wrapper).clone(true).appendTo($wrapper).find('select').val('').focus();
+  
+      });
+    $('.multi-field .remove-field', $wrapper).click(function() {
+        if ($('.multi-field', $wrapper).length > 1)
+            $(this).parent('.multi-field').remove();
+    });
+});
+</script>
+<script>
+function addBenefits(e){
+  console.log("hello there",e.target.value)
+  $('div_id_beneficiaires').val (e.target.value);
+
+console.log("hello there",e.target.value)
+
+
+}
+</script>
 {% endblock %}
