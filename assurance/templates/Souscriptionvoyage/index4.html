@@ -9,11 +9,11 @@
           <p>{{ message }}</p>
       </div>
       {% endfor %}
-<form method="POST" class="post-form" action="{% url 'Souscriptionvoyageindex' %}">  
+<form method="POST" class="post-form" action="{% url 'Souscriptionvoyageindex' %}" >  
         {% csrf_token %}  
 
         
-    <div class="container">  
+    <div class="container" onload="script();"> 
 <br>  
     <div class="form-group row">  
     <label class="col-sm-1 col-form-label"></label>  
@@ -47,13 +47,14 @@
 
     </div>  
 </form>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
 <script>
     $('.multi-field-wrapper').each(function() {
 
     var $wrapper = $('.multi-fields', this);
+$('#div_id_beneficiaires').hide()
     console.log( $wrapper)
-      $('div_id_beneficiaires').hide
+     
     $(".add-field", $(this)).click(function(e) {
         $('.multi-field:first-child', $wrapper).clone(true).appendTo($wrapper).find('select').val('').focus();
   
@@ -67,10 +68,19 @@
 <script>
 function addBenefits(e){
   console.log("hello there",e.target.value)
-  $('div_id_beneficiaires').val (e.target.value);
+  $('#div_id_beneficiaires').text ($('#div_id_beneficiaires').text () + ','+e.target.value);
 
-console.log("hello there",e.target.value)
+console.log($('#div_id_beneficiaires').val() )
 
+
+}
+</script>
+<script>
+document.onload = function script(){
+
+  
+
+console.log("hello there")
 
 }
 </script>
