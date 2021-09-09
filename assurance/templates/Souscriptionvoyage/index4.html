@@ -2,13 +2,33 @@
 {% load static %}
 {% block title %}{% endblock %}
 {% block content %}
-{% load crispy_forms_tags %}  
-<center><h1>Gestion souscription voyage</h1></center>
+{% load crispy_forms_tags %} 
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="panel" >
+                <div class="panel-heading" style="background-color:rgba(0, 0, 0, 0.2);" >
+                    <div class="row">
+                        <div class="col  col-xs-12">
+                            <h4 class="title">Formulaire de la souscription d'assurance voyage</h4>
+                            
+                        </div>
+                        <div class="col-sm-1 col-xs-12 text-right">
+                            <div class="btn_group">
+                                <a href="/assurance/Souscriptionvoyage/show" ><button type="submit" class="btn btn-primary pull-right">Consulter</button></a> 
+                                
+                            </div>
+                        </div>
+                    </div>
+                  </div>
  {% for message in messages %}
       <div class="alert alert-{{ message.tags }}" role="alert">
           <p>{{ message }}</p>
       </div>
       {% endfor %}
+      
 <form method="POST" class="post-form" action="{% url 'Souscriptionvoyageindex' %}" >  
         {% csrf_token %}  
 
@@ -84,4 +104,5 @@ console.log("hello there")
 
 }
 </script>
+
 {% endblock %}

@@ -62,21 +62,7 @@ class ClientUIB(models.Model):
 
    
 
-class Clientpassager(models.Model):
-  Num_cin_passager = models.AutoField(primary_key = True)
-  Nom = models.CharField(max_length=40)
-  Prenom = models.CharField(max_length=40)
-  Date_Naissance = models.DateTimeField(auto_now=True)
-  Lieu_Naissance = models.CharField(max_length=40)
-  Adresse = models.CharField(max_length=40)
-  Profession = models.CharField(max_length=40)
-  Telephone = PhoneNumberField(null=False, blank=False, unique=True)
-  Categorie_client =models.CharField(max_length=20)
-  Declaration_maladie = models.CharField(max_length=40)
-    
 
-   
-  
 
 class Comptebancaire(models.Model):
   code_NCP = models.AutoField(primary_key = True)
@@ -133,7 +119,6 @@ class Produitassurance(models.Model):
     Frais_MEP_asssureur=models.CharField(max_length=30)
     Frais_MEP_banque =models.CharField(max_length=30)
     Niveau_validation =models.CharField(max_length=30)
-    Periodicite_renversement =models.CharField(max_length=30)
     age_seuil =models.IntegerField(null=False)
     montant_seuil =models.IntegerField(null=False)
     etat_produit =models.CharField(max_length=30)
@@ -168,7 +153,13 @@ class Baremedevoyage(models.Model):
     duree = models.IntegerField(null=False)
     taux_assureur = models.IntegerField(null=False)
     marge_banque = models.IntegerField(null=False)
-    etat_bareme= models.CharField(max_length=30)      
+    Valide='Valide'
+    En_attente='En attente'
+    COUVERTURE_CHOICES = [   
+      ('Valide', 'Valide'),
+      ('En attente', 'En attente'),
+      ]
+    etat_bareme= models.CharField(choices=COUVERTURE_CHOICES, max_length=40)      
     I='Individuel'
     F='Familiale'
     COUVERTURE_CHOICES = [   
@@ -190,7 +181,13 @@ class Souscriptiondecredit(models.Model):
     on_delete=models.CASCADE,
     )
     montant_assurance = models.IntegerField(null=False)
-    etat_sous_credit = models.CharField(max_length=20)
+    Valide='Valide'
+    En_attente='En attente'
+    COUVERTURE_CHOICES = [   
+      ('Valide', 'Valide'),
+      ('En attente', 'En attente'),
+      ]
+    etat_sous_credit =models.CharField(choices=COUVERTURE_CHOICES, max_length=40)
     
 
    
@@ -198,23 +195,15 @@ class Souscriptiondecredit(models.Model):
 
 class Souscriptiondevoyage(models.Model):
     Num_souscription_voyage = models.AutoField(primary_key = True)
-    UIB='client UIB'
-    P='client passager'
-    CLIENT_CHOICES = [   
-      ('UIB', 'client UIB'),
-      ('P', 'client passager'),
-      ]
-    type_client = models.CharField(choices=CLIENT_CHOICES, max_length=40)
-    Num_cin_passager = models.ForeignKey(
-    'Clientpassager',
-    on_delete=models.CASCADE, null=False
-    )
     Num_fiche_client = models.ForeignKey(
     'ClientUIB',
-    on_delete=models.CASCADE, null=False
+    on_delete=models.CASCADE,
     )
     Num_compte = models.IntegerField(null=True)
-    code_assureur =models.IntegerField(null=False)
+    code_assureur = models.ForeignKey(
+    'Assureur',
+    on_delete=models.CASCADE,
+    )
     code_produit = models.ForeignKey(
     'Produitassurance',
     on_delete=models.CASCADE, null=True
@@ -226,7 +215,7 @@ class Souscriptiondevoyage(models.Model):
       ('F', 'Familiale'),
       ]
     type_couverture = models.CharField(choices=COUVERTURE_CHOICES, max_length=40)
-    duree = models.IntegerField(null=False)
+    duree = models.CharField(max_length=40)
     date_debut =models.DateTimeField(auto_now=True) 
     montant_assurance = models.IntegerField(null=False)
    
@@ -241,7 +230,6 @@ class Beneficiaire(models.Model):
     nom_beneficiaire = models.CharField(max_length=40)
     prenom_beneficiaire = models.CharField(max_length=40)
     date_naissance = models.DateTimeField(auto_now=True)
-    type_document = models.CharField(max_length=40)
     relation =  models.CharField(max_length=40)  
     num_document = models.IntegerField(null=False)
     

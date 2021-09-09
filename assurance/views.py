@@ -381,6 +381,10 @@ def beneficiaire(request):
         form = beneficiaireForm()  
     return render(request,'beneficiaire/index.html',{'form':form}) 
 
+def showb(request): 
 
-
+   
+    # Your code
+    Beneficiaires = Beneficiaire.objects.all()  
+    return render(request,"beneficiaire/show.html",{'Beneficiaires':Beneficiaires}) 
 
