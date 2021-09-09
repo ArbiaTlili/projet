@@ -101,7 +101,7 @@ def updatePA(request, id):
                 logger.error("save begin")
                 logger.error(form)
                 myform=form.save()  
-                
+                messages.success(request, 'Update successful!')
                 return redirect('/assurance/produitAssurance/show')  
         except Exception as e:  
                 logger.error( str( e))   
@@ -110,7 +110,8 @@ def updatePA(request, id):
     return render(request, 'produitAssurance/edit.html', {'Produitassurance': Produitassurance1})  
 def destroyPA(request, id):  
     Produitassurance1 = Produitassurance.objects.get(code_produit=id)  
-    Produitassurance1.delete()  
+    Produitassurance1.delete() 
+    messages.error(request, 'Delete successful!')
     return redirect("/assurance/produitAssurance/show")
 
 
@@ -153,7 +154,7 @@ def updateA(request, id):
                 logger.error("save begin")
                 logger.error(form)
                 myform=form.save()  
-                
+                messages.success(request, 'Update successful!')
                 return redirect('/assurance/Assureur/show')  
         except Exception as e:  
                 logger.error( str( e))   
@@ -163,6 +164,7 @@ def updateA(request, id):
 def destroyA(request, id):  
     instance = Assureur.objects.get(code_assureur=id)
     instance.delete() 
+    messages.error(request, 'Delete successful!')
     return redirect("/assurance/Assureur/show")
 
 
@@ -259,7 +261,7 @@ def updateC(request, id):
                 logger.error("save begin")
                 logger.error(form)
                 myform=form.save()  
-                
+                messages.success(request, 'Update successful!')
                 return redirect('/assurance/Baremecredit/show')  
         except Exception as e:  
                 logger.error( str( e))   
@@ -269,12 +271,12 @@ def updateC(request, id):
 def destroyC(request, id):  
     instance = Baremedecredit.objects.get(id_bareme_credit=id)
     instance.delete() 
+    messages.danger(request, 'Delete successful!')
     return redirect("/assurance/Baremecredit/show")
 
 
  # -----------------------------Souscription d'assurance credit-----------------------------------
 def Souscriptioncreditindex(request):  
-     
     if request.method == "POST":  
         form = SouscriptioncreditForm(request.POST)  
         logger.error("sssssssssssss")
@@ -291,7 +293,7 @@ def Souscriptioncreditindex(request):
     else:  
         messages.error(request,"verifier tous les champs")
         form = SouscriptioncreditForm()  
-    return render(request,'Souscriptioncredit/index3.html',{'form':form,'Beneficiaires':Beneficiaires})  
+    return render(request,'Souscriptioncredit/index3.html',{'form':form})  
 def showS(request): 
 
    
@@ -303,6 +305,7 @@ def showS(request):
 def destroyS(request, id):  
     instance = Souscriptiondecredit.objects.get(Num_souscription_credit=id)
     instance.delete() 
+    messages.error(request, 'Delete successful!')
     return redirect("/assurance/Souscriptioncredit/show")
 
 
@@ -357,7 +360,6 @@ def destroySV(request, id):
     instance.delete() 
     return redirect("/assurance/Souscriptionvoyage/show")
 
-
 # -----------------------------beneficiaire-----------------------------------
 def beneficiaire(request):  
    
@@ -378,3 +380,7 @@ def beneficiaire(request):
         messages.error(request,"verifier tous les champs")
         form = beneficiaireForm()  
     return render(request,'beneficiaire/index.html',{'form':form}) 
+
+
+
+
