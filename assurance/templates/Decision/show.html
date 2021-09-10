@@ -38,6 +38,12 @@
         <td>    
             <a href="/assurance/decision/edit/{{ Souscriptiondecredit.Num_souscription_credit }}"class="btn btn-warning waves-effect"><i class="bi bi-pencil-square"></i></a>  
         </td>  
+        <td id="target1">    
+            <button value={{ Souscriptiondecredit.Num_souscription_credit }} id="at" class="btn btn-warning waves-effect"><i class="bi bi-pencil"></i></button>  
+        </td>  
+        <td id="target">    
+            <button value={{ Souscriptiondecredit.Num_souscription_credit }} id="valide" class="btn btn-warning waves-effect"><i class="bi bi-box"></i></button>  
+        </td>  
     </tr>  
 {% endfor %}  
     </tbody>  
@@ -46,4 +52,48 @@
 <br>  
 <center><a href="/assurance/Souscriptioncredit" class="btn btn-primary"<button type="button" class="btn btn-info add-new"><i class="fa fa-plus">Add New</i></button></a></center>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+<script>
+$( "#target" ).click(function() {
+  alert( "Handler for .click() called." );
+});
+</script>
+<script >
+$('#at').on('click', function(){
+    alert ("aa")
+              $.ajax({
+             url: '/assurance/decision/update1',
+             method : 'POST',
+             data: $('#at').val().serialize(),
+             beforeSend: function() {
+              // things to do before submit
+             },
+             success: function(response) {
+
+              alert("done")
+              }
+              });
+  return false;
+
+});
+</script>
+<script >
+$('#valide').click( function(){
+      alert ("aa")
+              $.ajax({
+             url: '/assurance/decision/update1',
+             method : 'POST',
+             data: $('#valide').val().serialize(),
+             beforeSend: function() {
+              // things to do before submit
+             },
+             success: function(response) {
+
+              alert(response)
+              }
+              });
+  return false;
+
+});
+</script>
 {% endblock %}

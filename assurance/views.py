@@ -399,10 +399,18 @@ def showD(request):
 def editD(request, id):  
     Souscriptiondecredit1 = Souscriptiondecredit.objects.get(Num_souscription_credit=id)  
     return render(request,'Decision/edit.html', {'Souscriptiondecredit':Souscriptiondecredit1})  
-def updateD(request, id):  
+def updateD1(request, id):  
+    Souscriptiondecredit1 = Souscriptiondecredit.objects.get(Num_souscription_credit=id)  
+    return render(request,'Decision/edit.html', {'Souscriptiondecredit':Souscriptiondecredit1})      
+def updateD2( id):  
+    Souscriptiondecredit1 = Souscriptiondecredit.objects.get(Num_souscription_credit=id)  
+    return render(request,'Decision/edit.html', {'Souscriptiondecredit':Souscriptiondecredit1})      
+def updateD( id):
+    logger.critical('Payment system is not responding')
+    logger.error("form.errors.as_data()")  
     Souscriptiondecredit1 = Souscriptiondecredit.objects.get(Num_souscription_credit=id)  
     form = SouscriptioncreditForm(request.POST, instance = Souscriptiondecredit1)  
-    
+    logger.error(form.errors.as_data())
     if form.is_valid():
         try:  
                 logger.error("save begin")

@@ -218,7 +218,7 @@ class Souscriptiondevoyage(models.Model):
     duree = models.CharField(max_length=40)
     date_debut =models.DateTimeField(auto_now=True) 
     montant_assurance = models.IntegerField(null=False)
-   
+    beneficiaires= models.CharField(null=True,  blank=True, max_length=40)
     
 
     

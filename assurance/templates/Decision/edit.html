@@ -7,7 +7,7 @@
           <p>{{ message }}</p>
       </div>
       {% endfor %}
-<form method="POST" class="post-form" action="/assurance/Souscriptioncredit/update/{{Souscriptiondecredit.Num_souscription_credit}}">  
+<form method="POST" class="post-form" action="/assurance/decision/update/{{Souscriptiondecredit.Num_souscription_credit}}">  
         {% csrf_token %}  
    <div class="container">  
 <br>  
@@ -20,7 +20,7 @@
         
 
  <div id="div_id_etat_sous_credit" class="form-group"> <label for="id_etat_sous_credit" class=" requiredField">
-                 etat_souscription_credit<span class="asteriskField">*</span> </label> <div class=""> <select name="etat_sous_credit" class="select form-control" required="" id="id_etat_sous_credit"> <option value="{{Souscriptiondecredit.etat_sous_credit.etat_sous_credit}}" selected="">{{Souscriptiondevoyage.etat_sous_credit}}</option> 
+                 Etat souscription crédit<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="Etat souscription crédit"  value="{{Souscriptiondecredit.etat_sous_credit}}" maxlength="30" class="textinput textInput form-control" required="" id="id_etat_sous_credit"> </div> </div>
 </select> </div> </div>
                 
     <div class="form-group row">  

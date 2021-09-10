@@ -73,6 +73,7 @@
 
     var $wrapper = $('.multi-fields', this);
 $('#div_id_beneficiaires').hide()
+$('.multi-field-wrapper').hide()
     console.log( $wrapper)
      
     $(".add-field", $(this)).click(function(e) {
@@ -87,22 +88,30 @@ $('#div_id_beneficiaires').hide()
 </script>
 <script>
 function addBenefits(e){
-  console.log("hello there",e.target.value)
+ alert ($('#div_id_beneficiaires').text ())
   $('#div_id_beneficiaires').text ($('#div_id_beneficiaires').text () + ','+e.target.value);
 
-console.log($('#div_id_beneficiaires').val() )
+
 
 
 }
 </script>
 <script>
-document.onload = function script(){
+$('#id_type_couverture').change(function(e) {
+  $('#id_type_couverture option:selected').text()
+ 
+   var value = $("#id_type_couverture option:selected");
+            if (  value.text()=== "Familiale")
+            $('.multi-field-wrapper').show()
+             else 
+             $('.multi-field-wrapper').hide()
+});
 
-  
-
-console.log("hello there")
-
-}
+</script>
+<script>
+$('#div_id_beneficiaires').change(function(e) {
+  $('#id_type_couverture option:selected').text()
+});
 </script>
 
 {% endblock %}

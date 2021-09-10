@@ -75,5 +75,7 @@ urlpatterns = [
 #Decision
     path('decision/show',views.showD, name= 'Decision'), 
     path('decision/edit/<int:id>', views.editD),  
-    path('decision/update/<int:id>', views.updateD), 
+    path('decision/update/<int:id>', views.updateD),
+    path('decision/update1', views.updateD1), 
+    path('decision/update2', views.updateD2),
 ]
