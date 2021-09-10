@@ -56,7 +56,15 @@ def base4(request):
 
 def base5(request):
       
-    return render(request, 'base5.html')    
+    return render(request, 'base5.html') 
+
+def navbar(request):
+      
+    return render(request, 'navbar.html')  
+
+def navbar1(request):
+      
+    return render(request, 'navbar1.html')          
 
 # -----------------------------produitAssurance-----------------------------------
 def produitAssurance(request):  

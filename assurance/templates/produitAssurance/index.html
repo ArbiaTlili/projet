@@ -1,4 +1,4 @@
-{% extends "base1.html" %}
+{% extends "navbar.html" %}
 {% load static %}
 {% block title %} {% endblock %}
 {% block content %}
@@ -23,11 +23,7 @@
                         </div>
                     </div>
                   </div>
- {% for message in messages %}
-      <div class="alert alert-{{ message.tags }}" role="alert">
-          <p>{{ message }}</p>
-      </div>
-      {% endfor %}
+ 
 <form method="POST" class="post-form" action="{% url 'produitAssurance' %}">  
         {% csrf_token %}  
 

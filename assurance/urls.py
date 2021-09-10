@@ -11,10 +11,8 @@ urlpatterns = [
     path('clientèle',views.base3, name="clientèle"),
     path('backoffice',views.base1, name="backoffice"),
     path('décision',views.décision, name="décision"),
-    #client
-    path('client',views.base4, name="client"),
-    #about
-    path('about',views.base5, name="about"),
+    path('navbar',views.navbar, name="navbar"),
+    path('navbar1',views.navbar1, name="navbar1"),
     #home
     path('home',views.home, name="home"),
     # produit assurance

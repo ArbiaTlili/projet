@@ -1,4 +1,4 @@
-{% extends "base1.html" %}
+{% extends "navbar.html" %}
 {% load static %}
 {% block title %} {% endblock %}
 {% block content %}
@@ -32,7 +32,7 @@
         <td>{{ Assureur.Telephone }}</td> 
         <td>   
             <a href="/assurance/Assureur/edit/{{ Assureur.code_assureur }}"class="btn btn-warning waves-effect"><i class="bi bi-pencil-square"></i></a>  
-             
+              
         </td>  
     </tr>  
 {% endfor %}  

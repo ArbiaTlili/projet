@@ -1,4 +1,4 @@
-{% extends "base1.html" %}
+{% extends "navbar.html" %}
 {% load static %}
 {% block title %} {% endblock %}
 {% block content %}
@@ -23,7 +23,7 @@
                         </div>
                     </div>
                   </div>
-<center><h1>Gestion barème d'assurance crédit</h1></center>
+
  {% for message in messages %}
       <div class="alert alert-{{ message.tags }}" role="alert">
           <p>{{ message }}</p>
