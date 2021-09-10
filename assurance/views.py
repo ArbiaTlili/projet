@@ -388,3 +388,31 @@ def showb(request):
     Beneficiaires = Beneficiaire.objects.all()  
     return render(request,"beneficiaire/show.html",{'Beneficiaires':Beneficiaires}) 
 
+# -----------------------------Decision-----------------------------------
+
+def showD(request): 
+
+   
+    # Your code
+    Souscriptiondecredits = Souscriptiondecredit.objects.all()  
+    return render(request,"Decision/show.html",{'Souscriptiondecredits':Souscriptiondecredits})  
+def editD(request, id):  
+    Souscriptiondecredit1 = Souscriptiondecredit.objects.get(Num_souscription_credit=id)  
+    return render(request,'Decision/edit.html', {'Souscriptiondecredit':Souscriptiondecredit1})  
+def updateD(request, id):  
+    Souscriptiondecredit1 = Souscriptiondecredit.objects.get(Num_souscription_credit=id)  
+    form = SouscriptioncreditForm(request.POST, instance = Souscriptiondecredit1)  
+    
+    if form.is_valid():
+        try:  
+                logger.error("save begin")
+                logger.error(form)
+                myform=form.save()  
+                
+                return redirect('/assurance/Decision/show')  
+        except Exception as e:  
+                logger.error( str( e))   
+
+         
+    return render(request, 'Decision/edit.html', {'Souscriptiondecredit': Souscriptiondecredit1})
+ 

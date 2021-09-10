@@ -1,0 +1,49 @@
+{% extends "base1.html" %}
+{% load static %}
+{% block title %} {% endblock %}
+{% block content %}
+<div  class="container">
+  <!-- Content here -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}" role="alert">
+          <p>{{ message }}</p>
+      </div>
+      {% endfor %}
+<table class="table table-striped table-bordered table-sm">  
+    <thead class="thead-dark">  
+    <tr>  
+       
+        <th> Num_souscription_credit</th>  
+        <th>Num_dossierCredit </th>  
+        <th>code_produit</th>  
+        <th>montant_assurance</th> 
+        <th>etat_souscription_credit </th>
+        <th>Actions</th>
+    </tr>  
+    </thead>  
+    <tbody>  
+{% for Souscriptiondecredit in Souscriptiondecredits %}  
+    <tr>  
+       
+        <td>{{ Souscriptiondecredit.Num_souscription_credit }}</td>  
+        <td>{{ Souscriptiondecredit.Num_dossierCredit }}</td>  
+        <td>{{ Souscriptiondecredit.code_produit }}</td> 
+        <td>{{ Souscriptiondecredit.montant_assurance }}</td> 
+        <td>{{ Souscriptiondecredit.etat_sous_credit }}</td> 
+        
+        <td>    
+            <a href="/assurance/decision/edit/{{ Souscriptiondecredit.Num_souscription_credit }}"class="btn btn-warning waves-effect"><i class="bi bi-pencil-square"></i></a>  
+        </td>  
+    </tr>  
+{% endfor %}  
+    </tbody>  
+</table>  
+<br>  
+<br>  
+<center><a href="/assurance/Souscriptioncredit" class="btn btn-primary"<button type="button" class="btn btn-info add-new"><i class="fa fa-plus">Add New</i></button></a></center>
+</div>
+{% endblock %}

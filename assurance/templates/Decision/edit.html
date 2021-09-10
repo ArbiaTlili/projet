@@ -1,0 +1,36 @@
+{% extends "base1.html" %}
+{% load static %}
+{% block title %} {% endblock %}
+{% block content %}
+ {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}" role="alert">
+          <p>{{ message }}</p>
+      </div>
+      {% endfor %}
+<form method="POST" class="post-form" action="/assurance/Souscriptioncredit/update/{{Souscriptiondecredit.Num_souscription_credit}}">  
+        {% csrf_token %}  
+   <div class="container">  
+<br>  
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <h3></h3>  
+    </div>  
+  </div>  
+        
+
+ <div id="div_id_etat_sous_credit" class="form-group"> <label for="id_etat_sous_credit" class=" requiredField">
+                 etat_souscription_credit<span class="asteriskField">*</span> </label> <div class=""> <select name="etat_sous_credit" class="select form-control" required="" id="id_etat_sous_credit"> <option value="{{Souscriptiondecredit.etat_sous_credit.etat_sous_credit}}" selected="">{{Souscriptiondevoyage.etat_sous_credit}}</option> 
+</select> </div> </div>
+                
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <button type="submit" class="btn btn-primary">update</button>  
+    </div>  
+  </div>  
+
+    </div>
+</form> 
+
+{% endblock %}

@@ -70,4 +70,10 @@ urlpatterns = [
 #Beneficiaire
     path('beneficiaire', views.beneficiaire ,name='beneficiaire'),
     path('beneficiaire/show',views.showb), 
+
+
+#Decision
+    path('decision/show',views.showD, name= 'Decision'), 
+    path('decision/edit/<int:id>', views.editD),  
+    path('decision/update/<int:id>', views.updateD), 
 ]
