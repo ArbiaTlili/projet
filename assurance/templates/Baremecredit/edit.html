@@ -2,14 +2,19 @@
 {% load static %}
 {% block title %} modifier barème crédit{% endblock %}
 {% block content %}
- {% for message in messages %}
-      <div class="alert alert-{{ message.tags }}" role="alert">
-          <p>{{ message }}</p>
-      </div>
-      {% endfor %}
+ 
+         <div class="container">
+         <div class="table-wrapper">
+  <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+						<h2><b>Page modifier barème crédit</b></h2>
+					</div>
+          </div>
+          </div>
 <form method="POST" class="post-form" action="/assurance/Baremecredit/update/{{Baremedecredit.id_bareme_credit}}">  
         {% csrf_token %}  
-   <div class="container">  
+   
 <br>  
     <div class="form-group row">  
     <label class="col-sm-1 col-form-label"></label>  

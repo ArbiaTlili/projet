@@ -8,31 +8,33 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div class="panel">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col  col-xs-12">
-                            <h4 class="title">Formulaire des assureurs</h4>
-                            
-                        </div>
-                        <div class="col-sm-1 col-xs-12 text-right">
-                            <div class="btn_group">
-                                <a href="/assurance/Assureur/show" ><button type="submit" class="btn btn-primary pull-right">Consulter</button></a> 
-                                
-                            </div>
-                        </div>
-                    </div>
-                  </div>
+<div class="container"> 
  {% for message in messages %}
       <div class="alert alert-{{ message.tags }}" role="alert">
           <p>{{ message }}</p>
       </div>
       {% endfor %}
+      <div class="table-wrapper">
+  <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+						<h2><b>Formulaire d'assureur</b></h2>
+					</div>
+					<div class="col-sm-6">
+                   
+
+						 <a href="/assurance/Assureur/show" ><button type="submit" class="btn btn-info pull-right">Consulter</button></a> 
+										
+					</div>
+                </div>
+            </div>
+
 <form method="POST" class="post-form" action="{% url 'Assureurindex' %}">  
         {% csrf_token %}  
 
         
-    <div class="container">  
+     
+    
 <br>  
     <div class="form-group row">  
     <label class="col-sm-1 col-form-label"></label>  
@@ -41,44 +43,15 @@
     </div>  
   </div>  
         {{ form|crispy }}
-    <!-- <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">produit assurance code_produit:</label>  
-    <div class="col-sm-4">  
-      {{ form.code_produit }}  
-    </div>  
-  </div>  
-  <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">produit assurance libelle_produit:</label>  
-    <div class="col-sm-4" style="background-color: brown;">  
-      {{ form.libelle_produit }}  
-    </div>  
-  </div>  
-    <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">produit assurance type_produit:</label>  
-    <div class="col-sm-4" style="background-color: brown;">  
-      {{ form.type_produit }}  
-    </div>  
-  </div>  
-  
-    <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">produit assurance code_assureur:</label>  
-    <div class="col-sm-4" style="background-color: brown;">  
-      {{ form.code_assureur }}  
-    </div>  
-    <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">produit assurance Num_parteneriat:</label>  
-    <div class="col-sm-4" style="background-color: brown;">  
-      {{ form.Num_parteneriat }}  
-    </div>  
-  </div>  
-     -->
+    
     <div class="form-group row">  
     <label class="col-sm-1 col-form-label"></label>  
     <div class="col-sm-4" >  
-    <button type="submit" class="btn btn-primary">Ajouter</button>  
+    <center><button type="submit" class="btn btn-primary">Ajouter</button> </center> 
     </div>  
   </div>  
 
+    </div> 
     </div>  
 </form>
 {% endblock %}

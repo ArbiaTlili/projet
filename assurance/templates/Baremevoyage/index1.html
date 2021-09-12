@@ -7,32 +7,31 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div class="panel">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col  col-xs-12">
-                            <h4 class="title">Formulaire du barème d'assurance voyage</h4>
-                            
-                        </div>
-                        <div class="col-sm-1 col-xs-12 text-right">
-                            <div class="btn_group">
-                                <a href="/assurance/Baremevoyage/show" ><button type="submit" class="btn btn-primary pull-right">Consulter</button></a> 
-                                
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-
+<div class="container"> 
  {% for message in messages %}
       <div class="alert alert-{{ message.tags }}" role="alert">
           <p>{{ message }}</p>
       </div>
       {% endfor %}
+      <div class="table-wrapper">
+  <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+						<h2><b>Formulaire du barème d'assurance voyage</b></h2>
+					</div>
+					<div class="col-sm-6">
+                   
+
+						 <a href="/assurance/Baremevoyage/show" ><button type="submit" class="btn btn-info pull-right">Consulter</button></a> 
+										
+					</div>
+                </div>
+            </div>
 <form method="POST" class="post-form" action="{% url 'Baremevoyageindex' %}">  
         {% csrf_token %}  
 
         
-    <div class="container">  
+   
 <br>  
     <div class="form-group row">  
     <label class="col-sm-1 col-form-label"></label>  

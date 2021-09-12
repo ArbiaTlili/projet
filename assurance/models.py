@@ -60,7 +60,8 @@ class ClientUIB(models.Model):
   Categorie_client = models.CharField(max_length=20)
   Declaration_maladie = models.CharField(max_length=40)
 
-   
+def __str__(self):
+    return self.Num_fiche_client
 
 
 
@@ -87,7 +88,8 @@ class Credit(models.Model):
     Date_deblocage = models.DateTimeField(auto_now=True)
     Durée_crédit = models.CharField(max_length=40)
     
-
+def __str__(self):
+    return self.Num_dossierCredit
    
 
 
@@ -102,6 +104,8 @@ class Assureur(models.Model):
     Email = models.EmailField(max_length=254)
     Agence = models.CharField(max_length=20)
     
+def __str__(self):
+    return self.code_assureur
 
     
     
@@ -123,8 +127,10 @@ class Produitassurance(models.Model):
     montant_seuil =models.IntegerField(null=False)
     etat_produit =models.CharField(max_length=30)
     
+def __str__(self):
+    return "code_produit"
 
-   
+
 
 class Baremedecredit(models.Model):
     id_bareme_credit = models.AutoField(primary_key = True) 
@@ -189,7 +195,7 @@ class Souscriptiondecredit(models.Model):
       ]
     etat_sous_credit =models.CharField(choices=COUVERTURE_CHOICES, max_length=40)
     
-
+    
    
 
 

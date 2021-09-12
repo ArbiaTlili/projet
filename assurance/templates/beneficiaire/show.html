@@ -2,21 +2,37 @@
 {% load static %}
 {% block title %} {% endblock %}
 {% block content %}
-<div  class="container">
-  <!-- Content here -->
+<link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<div  class="container">
+  <!-- Content here -->
  {% for message in messages %}
       <div class="alert alert-{{ message.tags }}" role="alert">
           <p>{{ message }}</p>
       </div>
       {% endfor %}
-      <div class="panel panel-default work-progress-table">
-									  <!-- Default panel contents -->
-									<div class="panel-heading"><h2>Liste des bénéficiaires</h2></div>
-      </div>                           
+
+   <div class="table-wrapper">
+  <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+						<h2><b>Liste barème des bénéficiaire</b></h2>
+					</div>
+					<div class="col-sm-6">
+                   
+
+						<a href="/assurance/beneficiaire" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New </span></a>
+										
+					</div>
+                </div>
+            </div>                           
 <table class="table table-striped table-bordered table-sm">  
     <thead class="thead-dark">  
     <tr>  
@@ -45,6 +61,6 @@
 </table>  
 <br>  
 <br>  
-<center><a href="/assurance/beneficiaire" class="btn btn-primary"<button type="button" class="btn btn-info add-new"><i class="fa fa-plus">Add New</i></button></a></center>
+
 </div>
 {% endblock %}

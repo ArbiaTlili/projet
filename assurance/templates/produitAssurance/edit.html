@@ -2,14 +2,19 @@
 {% load static %}
 {% block title %} modifier {% endblock %}
 {% block content %}
- {% for message in messages %}
-      <div class="alert alert-{{ message.tags }}" role="alert">
-          <p>{{ message }}</p>
-      </div>
-      {% endfor %}
+ 
+           <div class="container">
+         <div class="table-wrapper">
+  <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+						<h2><b>Page modifier produit d'assurance</b></h2>
+					</div>
+          </div>
+          </div>
 <form method="POST" class="post-form" action="/assurance/produitAssurance/update/{{Produitassurance.code_produit}}">  
         {% csrf_token %}  
-   <div class="container">  
+   
 <br>  
     <div class="form-group row">  
     <label class="col-sm-1 col-form-label"></label>  
@@ -32,8 +37,8 @@
                 TVA<span class="asteriskField">*</span> </label> <div class=""> <input type="number" name="TVA" class="numberinput form-control" value="{{Produitassurance.TVA}}" required="" id="id_TVA"> </div> </div> <div id="div_id_Frais_MEP_asssureur" class="form-group"> <label for="id_Frais_MEP_asssureur" class=" requiredField">
                 Frais MEP asssureur<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="Frais_MEP_asssureur" maxlength="30" value="{{Produitassurance.Frais_MEP_asssureur}}" class="textinput textInput form-control" required="" id="id_Frais_MEP_asssureur"> </div> </div> <div id="div_id_Frais_MEP_banque" class="form-group"> <label for="id_Frais_MEP_banque" class=" requiredField">
                 Frais MEP banque<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="Frais_MEP_banque" value="{{Produitassurance.Frais_MEP_banque}}" maxlength="30" class="textinput textInput form-control" required="" id="id_Frais_MEP_banque"> </div> </div> <div id="div_id_Niveau_validation" class="form-group"> <label for="id_Niveau_validation" class=" requiredField">
-                Niveau validation<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="Niveau_validation"  value="{{Produitassurance.Niveau_validation}}" maxlength="30" class="textinput textInput form-control" required="" id="id_Niveau_validation"> </div> </div> <div id="div_id_Periodicite_renversement" class="form-group"> <label for="id_Periodicite_renversement" class=" requiredField">
-                Periodicite renversement<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="Periodicite_renversement" value="{{Produitassurance.Periodicite_renversement}}" maxlength="30" class="textinput textInput form-control" required="" id="id_Periodicite_renversement"> </div> </div> <div id="div_id_age_seuil" class="form-group"> <label for="id_age_seuil" class=" requiredField">
+                Niveau validation<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="Niveau_validation"  value="{{Produitassurance.Niveau_validation}}" maxlength="30" class="textinput textInput form-control" required="" id="id_Niveau_validation"> </div> </div> <div id="div_id_Age seuil" class="form-group"> <label for="id_Age seuil" class=" requiredField">
+                
                 Age seuil<span class="asteriskField">*</span> </label> <div class=""> <input type="number" name="age_seuil" class="numberinput form-control" value="{{Produitassurance.age_seuil}}"  required="" id="id_age_seuil"> </div> </div> <div id="div_id_montant_seuil" class="form-group"> <label for="id_montant_seuil" class=" requiredField">
                 Montant seuil<span class="asteriskField">*</span> </label> <div class=""> <input type="number" name="montant_seuil" class="numberinput form-control" value="{{Produitassurance.montant_seuil}}" required="" id="id_montant_seuil"> </div> </div> <div id="div_id_etat_produit" class="form-group"> <label for="id_etat_produit" class=" requiredField">
                 Etat produit<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="etat_produit" maxlength="30" value="{{Produitassurance.etat_produit}}" class="textinput textInput form-control" required="" id="id_etat_produit"> </div> </div>

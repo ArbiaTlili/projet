@@ -2,14 +2,19 @@
 {% load static %}
 {% block title %} modifier barème voyage{% endblock %}
 {% block content %}
- {% for message in messages %}
-      <div class="alert alert-{{ message.tags }}" role="alert">
-          <p>{{ message }}</p>
-      </div>
-      {% endfor %}
+ 
+         <div class="container">
+         <div class="table-wrapper">
+  <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+						<h2><b>Page modifier baréme voyage</b></h2>
+					</div>
+          </div>
+          </div>
 <form method="POST" class="post-form" action="/assurance/Baremevoyage/update/{{Baremedevoyage.id_bareme_voyage}}">  
         {% csrf_token %}  
-    <div class="container">  
+     
 <br>  
     <div class="form-group row">  
     <label class="col-sm-1 col-form-label"></label>  
@@ -23,7 +28,7 @@
                 code_produit<span class="asteriskField">*</span> </label> <div class="">  <select name="code_produit" class="select form-control" required="" id="id_code_produit"> <option value="{{Baremedevoyage.code_produit.code_produit}}" selected="">{{Baremedevoyage.code_produit}}</option> 
 
 </select> </div> </div><div id="div_id_duree" class="form-group"> <label for="id_duree" class=" requiredField">
-                duree<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="duree" value="{{Baremedevoyage.duree}}" maxlength="40" class="textinput textInput form-control" required="" id="id_duree"> </div> </div> <div id="div_id_taux_assureur" class="form-group"> <label for="id_taux_assureur" class=" requiredField">
+                duree<span class="asteriskField">*</span> </label> <div class=""> <input type="number" name="duree" value="{{Baremedevoyage.duree}}" maxlength="40" class="textinput textInput form-control" required="" id="id_duree"> </div> </div> <div id="div_id_taux_assureur" class="form-group"> <label for="id_taux_assureur" class=" requiredField">
                 taux_assureur<span class="asteriskField">*</span> </label> <div class=""> <input type="number" name="taux_assureur" value="{{Baremedevoyage.taux_assureur}}" maxlength="40" class="numberinput numberInput form-control" required="" id="id_taux_assureur"> </div> </div> <div id="div_id_Marge banque" class="form-group"> <label for="id_Marge banque" class=" requiredField">
                 Marge banque<span class="asteriskField">*</span> </label> <div class=""> <input type="number" name="marge_banque" value="{{Baremedevoyage.marge_banque}}" class="numberinput form-control" required="" id="id_marge_banque"> </div> </div> <div id="div_id_etat_bareme" class="form-group"> <label for="id_etat_bareme" class=" requiredField">
                 etat_bareme<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="etat_bareme" value="{{Baremedevoyage.etat_bareme}}" maxlength="128" class="textinput textInput form-control" required="" id="id_etat_bareme"> </div> </div> <div id="div_id_type_couverture" class="form-group"> <label for="id_type_couverture" class=" requiredField">
