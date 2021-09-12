@@ -83,7 +83,7 @@ def produitAssurance(request):
             except Exception as e:  
                 logger.error( str( e))  
     else:  
-        messages.error(request,"verifier tous les champs")
+        messages.warning(request,"verifier tous les champs")
         form = ProduitassuranceForm()  
     return render(request,'produitAssurance/index.html',{'form':form})  
 def showPA(request): 
@@ -119,7 +119,7 @@ def updatePA(request, id):
 def destroyPA(request, id):  
     Produitassurance1 = Produitassurance.objects.get(code_produit=id)  
     Produitassurance1.delete() 
-    messages.error(request, 'Delete successful!')
+    messages.warning(request, 'Delete successful!')
     return redirect("/assurance/produitAssurance/show")
 
 
@@ -141,7 +141,7 @@ def Assureurindex(request):
             except Exception as e:  
                 logger.error( str( e))  
     else:  
-        messages.error(request,"verifier tous les champs")
+        messages.warning(request,"verifier tous les champs")
         form = AssureurForm()  
     return render(request,'Assureur/index.html',{'form':form})  
 def showA(request): 
@@ -172,7 +172,7 @@ def updateA(request, id):
 def destroyA(request, id):  
     instance = Assureur.objects.get(code_assureur=id)
     instance.delete() 
-    messages.error(request, 'Delete successful!')
+    messages.warning(request, 'Delete successful!')
     return redirect("/assurance/Assureur/show")
 
 
@@ -194,7 +194,7 @@ def Baremevoyageindex(request):
             except Exception as e:  
                 logger.error( str( e))  
     else:  
-        messages.error(request,"verifier tous les champs")
+        messages.warning(request,"verifier tous les champs")
         form = BaremeassurancevoyageForm()  
     return render(request,'Baremevoyage/index1.html',{'form':form})  
 def showB(request): 
@@ -229,7 +229,7 @@ def updateB(request, id):
 def destroyB(request, id):  
     instance = Baremedevoyage.objects.get(id_bareme_voyage=id)
     instance.delete()
-    messages.success(request, 'Deleted successful!')
+    messages.warning(request, 'Deleted successful!')
     return redirect("/assurance/Baremevoyage/show")
 
  # -----------------------------Bareme assurance credit-----------------------------------
@@ -248,7 +248,7 @@ def Baremecreditindex(request):
             except Exception as e:  
                 logger.error( str( e))  
     else:  
-        messages.error(request,"verifier tous les champs")
+        messages.warning(request,"verifier tous les champs")
         form = BaremeassurancecreditForm()  
     return render(request,'Baremecredit/index2.html',{'form':form})  
 def showC(request): 
@@ -279,7 +279,7 @@ def updateC(request, id):
 def destroyC(request, id):  
     instance = Baremedecredit.objects.get(id_bareme_credit=id)
     instance.delete() 
-    messages.danger(request, 'Delete successful!')
+    messages.warning(request, 'Delete successful!')
     return redirect("/assurance/Baremecredit/show")
 
 
@@ -299,7 +299,7 @@ def Souscriptioncreditindex(request):
             except Exception as e:  
                 logger.error( str( e))  
     else:  
-        messages.error(request,"verifier tous les champs")
+        messages.warning(request,"verifier tous les champs")
         form = SouscriptioncreditForm()  
     return render(request,'Souscriptioncredit/index3.html',{'form':form})  
 def showS(request): 
@@ -313,7 +313,7 @@ def showS(request):
 def destroyS(request, id):  
     instance = Souscriptiondecredit.objects.get(Num_souscription_credit=id)
     instance.delete() 
-    messages.error(request, 'Delete successful!')
+    messages.warning(request, 'Delete successful!')
     return redirect("/assurance/Souscriptioncredit/show")
 
 
@@ -334,7 +334,7 @@ def Souscriptionvoyageindex(request):
             except Exception as e:  
                 logger.error( str( e))  
     else:  
-        messages.error(request,"verifier tous les champs")
+        messages.warning(request,"verifier tous les champs")
         form = SouscriptionvoyageForm()  
     return render(request,'Souscriptionvoyage/index4.html',{'form':form,'Beneficiaires':Beneficiaires})  
 def showSV(request): 
@@ -366,6 +366,7 @@ def updateSV(request, id):
 def destroySV(request, id):  
     instance = Souscriptiondevoyage.objects.get(Num_souscription_voyage=id)
     instance.delete() 
+    messages.warning(request, 'Delete successful!')
     return redirect("/assurance/Souscriptionvoyage/show")
 
 # -----------------------------beneficiaire-----------------------------------
@@ -385,7 +386,7 @@ def beneficiaire(request):
             except Exception as e:  
                 logger.error( str( e))  
     else:  
-        messages.error(request,"verifier tous les champs")
+        messages.warning(request,"verifier tous les champs")
         form = beneficiaireForm()  
     return render(request,'beneficiaire/index.html',{'form':form}) 
 

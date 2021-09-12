@@ -10,6 +10,7 @@ body{
     color: #3a3e42 !important;
 }
 .AppForm .AppFormLeft h1{
+  font-family: cursive;
     font-size: 35px;
 }
 .AppForm .AppFormLeft input:focus{
@@ -19,13 +20,16 @@ body{
    font-size: 15px;
 }
 .AppForm .AppFormLeft i{
+ 
     position: absolute;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
 }
 .AppForm .AppFormLeft a{
+  
     color: #3a3e42 ;
+    
 }
 .btn{
     background: #e7372d;
@@ -44,7 +48,7 @@ body{
     color: #495057;
     background-color: #fff;
     background-clip: padding-box;
-   
+    
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
@@ -54,7 +58,7 @@ body{
     border-radius: 30px;
 }
 .AppForm .AppFormLeft p span{
-  color: #007bff;
+  color: #f7f9fc;
 }
 .AppForm .AppFormRight{
     background-image: url("{%static 'assets/img/logo.png' %}" );

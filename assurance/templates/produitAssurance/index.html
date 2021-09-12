@@ -1,5 +1,7 @@
 {% extends "navbar.html" %}
 {% load static %}
+
+
 {% block title %} {% endblock %}
 {% block content %}
 {% load crispy_forms_tags %}  
@@ -13,7 +15,8 @@
       <div class="alert alert-{{ message.tags }}" role="alert">
           <p>{{ message }}</p>
       </div>
-      {% endfor %}         
+      {% endfor %}
+               
  <div class="table-wrapper">
   <div class="table-title">
                 <div class="row">
