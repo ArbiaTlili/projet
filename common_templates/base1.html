@@ -67,11 +67,11 @@ https://templatemo.com/tm-562-space-dynamic
 
       
       <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="{% url 'home' %}" class="logo me-auto"><img src="{%static 'assets/img/logo.png' %}" alt="" class="img-fluid"></a>
+      <a href="{% url 'backoffice' %}" class="logo me-auto"><img src="{%static 'assets/img/logo.png' %}" alt="" class="img-fluid"></a>
 
       <nav id="navbar" class="navbar">
         <ul>
-         
+         <li><a href="{% url 'backoffice' %}" class="nav-link">Accueil</a></li>
           <li class="dropdown"><a href="#"><span>Gestion des assurances</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="{% url 'Assureurindex' %}">gestion des compagnies d'assurance</a></li>

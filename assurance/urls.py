@@ -15,7 +15,7 @@ urlpatterns = [
     path('navbar1',views.navbar1, name="navbar1"),
     #home
     path('home',views.home, name="home"),
-    path('home1',views.home1, name="home1"),
+   
     # produit assurance
 
     path('produitAssurance', views.produitAssurance ,name='produitAssurance'),  
