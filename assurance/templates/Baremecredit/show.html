@@ -1,18 +1,37 @@
-{% extends "base1.html" %}
+{% extends "navbar.html" %}
 {% load static %}
 {% block title %}{% endblock %}
 {% block content %}
-<div  class="container">
-  <!-- Content here -->
+<link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<div  class="container">
+  <!-- Content here -->
  {% for message in messages %}
       <div class="alert alert-{{ message.tags }}" role="alert">
           <p>{{ message }}</p>
       </div>
       {% endfor %}
+      <div class="table-wrapper">
+  <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+						<h2><b>Liste du barème de crédit</b></h2>
+					</div>
+					<div class="col-sm-6">
+                   
+
+						<a href="/assurance/Baremecredit" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New </span></a>
+										
+					</div>
+                </div>
+            </div>
 <table class="table table-striped table-bordered table-sm">  
     <thead class="thead-dark">  
     <tr>  
@@ -20,8 +39,8 @@
         <th> code_produit</th>  
         <th>age_min</th>  
         <th>age_max</th> 
-        <th>duree_min </th> 
-        <th>duree_max</th> 
+        <th>durée </th> 
+        
         <th>taux_assureur</th>  
         <th>marge_banque</th> 
         <th> etat_bareme</th>
@@ -36,8 +55,8 @@
         <td>{{ Baremedecredit.code_produit }}</td>  
         <td>{{ Baremedecredit.age_min }}</td>  
         <td>{{ Baremedecredit.age_max }}</td> 
-        <td>{{ Baremedecredit.duree_min }}</td> 
-        <td>{{ Baremedecredit.duree_max }}</td>
+        <td>{{ Baremedecredit.duree }}</td> 
+        
         <td>{{ Baremedecredit.taux_assureur }}</td>
         <td>{{ Baremedecredit.marge_banque }}</td>
         <td>{{ Baremedecredit.etat_bareme }}</td> 
@@ -53,6 +72,6 @@
 </table>  
 <br>  
 <br>  
-<center><a href="/assurance/Baremecredit" ><button type="button" class="btn btn-info add-new"><i class="fa fa-plus">Add New</i></button></a></center>
+
 </div>
 {% endblock %}

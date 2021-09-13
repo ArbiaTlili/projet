@@ -1,19 +1,38 @@
-{% extends "base3.html" %}
+{% extends "navbar1.html" %}
 {% load static %}
 {% block title %} {% endblock %}
 {% block content %}
 {% load crispy_forms_tags %}  
-<center><h1>Ajouter bénéficiaire</h1></center>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="container"> 
  {% for message in messages %}
       <div class="alert alert-{{ message.tags }}" role="alert">
           <p>{{ message }}</p>
       </div>
       {% endfor %}
+      <div class="table-wrapper">
+  <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+						<h2><b>Formulaire d'un bénéficiaire</b></h2>
+					</div>
+					<div class="col-sm-6">
+                   
+
+						 <a href="/assurance/beneficiaire/show" ><button type="submit" class="btn btn-info pull-right">Consulter</button></a> 
+										
+					</div>
+                </div>
+            </div>
 <form method="POST" class="post-form" action="{% url 'beneficiaire' %}">  
         {% csrf_token %}  
 <body>
         
-    <div class="container">  
+     
 <br>  
     <div class="form-group row">  
     <label class="col-sm-1 col-form-label"></label>  

@@ -1,4 +1,4 @@
-{% extends "navbar1.html" %}
+{% extends "navbar.html" %}
 {% load static %}
 {% block title %} {% endblock %}
 {% block content %}
@@ -18,20 +18,15 @@
           <p>{{ message }}</p>
       </div>
       {% endfor %}
-        <div class="table-wrapper">
+      <div class="table-wrapper">
   <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
 						<h2><b>Liste des souscriptions crédit</b></h2>
 					</div>
-					<div class="col-sm-6">
-                   
-
-						<a href="/assurance/Souscriptioncredit" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New </span></a>
-										
-					</div>
+					
                 </div>
-            </div> 
+            </div>                 
 <table class="table table-striped table-bordered table-sm">  
     <thead class="thead-dark">  
     <tr>  
@@ -52,14 +47,66 @@
         <td>{{ Souscriptiondecredit.Num_dossierCredit }}</td>  
         <td>{{ Souscriptiondecredit.code_produit }}</td> 
         <td>{{ Souscriptiondecredit.montant_assurance }}</td> 
-        <td>{{ Souscriptiondecredit.etat_sous_credit }}</td> 
+        <td id="{{ Souscriptiondecredit.Num_souscription_credit }}">{{ Souscriptiondecredit.etat_sous_credit }}</td> 
         
         <td>    
-            <a href="/assurance/Souscriptioncredit/delete/{{ Souscriptiondecredit.Num_souscription_credit }}"class="btn btn-danger px-3" class="bi bi-trash"><i class="bi bi-trash"></i></a>  
+            <a href="/assurance/decision/edit/{{ Souscriptiondecredit.Num_souscription_credit }}"class="btn btn-warning waves-effect"><i class="bi bi-pencil-square"></i></a>  
+        </td>  
+        <td >    
+            <button value={{ Souscriptiondecredit.Num_souscription_credit }} id="at" class="btn btn-warning waves-effect target"><i class="bi bi-pencil"></i></button>  
+        </td>  
+        <td >    
+            <button value={{ Souscriptiondecredit.Num_souscription_credit }} id="valide" class="btn btn-warning waves-effect target1"><i class="bi bi-box"></i></button>  
         </td>  
     </tr>  
 {% endfor %}  
     </tbody>  
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+<script>
+$( "#target" ).click(function() {
+  alert( "Handler for .click() called." );
+});
+</script>
+<script >
+$('.target1').on('click', function(){
+  
+              $.ajax({
+             url: '/assurance/decision/update1',
+             method : 'POST',
+             data: {id:$('.target1').val()},
+             beforeSend: function() {
+              // things to do before submit
+             },
+             success: function(response) {
+                 $('#'+$('.target1').val() ).text("En attente");      
+              
+              }
+              });
+  return false;
+
+});
+</script>
+<script >
+$('.target').click( function(){
+  
+       
+              $.ajax({
+             url: '/assurance/decision/update2',
+             method : 'POST',
+             data: {id:$('.target').val()},
+             beforeSend: function() {
+              // things to do before submit
+             },
+             success: function(response) {
+
+               $('#'+$('.target').val() ).text("Valide");      
+              }
+              });
+  return false;
+
+});
+</script>
 </table>  
 <br>  
 <br>  

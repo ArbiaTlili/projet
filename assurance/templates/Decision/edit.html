@@ -1,0 +1,41 @@
+{% extends "navbar.html" %}
+{% load static %}
+{% block title %} {% endblock %}
+{% block content %}
+ 
+         <div class="container">
+         <div class="table-wrapper">
+  <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+						<h2><b>Page modifier Décision</b></h2>
+					</div>
+          </div>
+          </div>
+<form method="POST" class="post-form" action="/assurance/decision/update/{{Souscriptiondecredit.Num_souscription_credit}}">  
+        {% csrf_token %}  
+    
+<br>  
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <h3></h3>  
+    </div>  
+  </div>  
+        
+
+ <div id="div_id_etat_sous_credit" class="form-group"> <label for="id_etat_sous_credit" class=" requiredField">
+                 Etat souscription crédit<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="Etat souscription crédit"  value="{{Souscriptiondecredit.etat_sous_credit}}" maxlength="30" class="textinput textInput form-control" required="" id="id_etat_sous_credit"> </div> </div>
+</select> </div> </div>
+                
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <button type="submit" class="btn btn-primary">update</button>  
+    </div>  
+  </div>  
+
+    </div>
+</form> 
+
+{% endblock %}

@@ -6,6 +6,9 @@ from django.contrib import messages
 from assurance.forms import ProduitassuranceForm ,AssureurForm, BaremeassurancevoyageForm, BaremeassurancecreditForm, SouscriptioncreditForm, SouscriptionvoyageForm, beneficiaireForm  
 from assurance.models import Produitassurance ,Assureur, Baremedevoyage, Baremedecredit, Souscriptiondecredit,  Souscriptiondevoyage, Beneficiaire
 from django.contrib.auth.models import Permission
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+from django.core import serializers
 import logging
 logger = logging.getLogger(__name__)
 
@@ -56,7 +59,15 @@ def base4(request):
 
 def base5(request):
       
-    return render(request, 'base5.html')    
+    return render(request, 'base5.html') 
+
+def navbar(request):
+      
+    return render(request, 'navbar.html')  
+
+def navbar1(request):
+      
+    return render(request, 'navbar1.html')          
 
 # -----------------------------produitAssurance-----------------------------------
 def produitAssurance(request):  
@@ -75,7 +86,7 @@ def produitAssurance(request):
             except Exception as e:  
                 logger.error( str( e))  
     else:  
-        messages.error(request,"verifier tous les champs")
+        messages.warning(request,"verifier tous les champs")
         form = ProduitassuranceForm()  
     return render(request,'produitAssurance/index.html',{'form':form})  
 def showPA(request): 
@@ -101,7 +112,7 @@ def updatePA(request, id):
                 logger.error("save begin")
                 logger.error(form)
                 myform=form.save()  
-                
+                messages.success(request, 'Update successful!')
                 return redirect('/assurance/produitAssurance/show')  
         except Exception as e:  
                 logger.error( str( e))   
@@ -110,7 +121,8 @@ def updatePA(request, id):
     return render(request, 'produitAssurance/edit.html', {'Produitassurance': Produitassurance1})  
 def destroyPA(request, id):  
     Produitassurance1 = Produitassurance.objects.get(code_produit=id)  
-    Produitassurance1.delete()  
+    Produitassurance1.delete() 
+    messages.warning(request, 'Delete successful!')
     return redirect("/assurance/produitAssurance/show")
 
 
@@ -132,7 +144,7 @@ def Assureurindex(request):
             except Exception as e:  
                 logger.error( str( e))  
     else:  
-        messages.error(request,"verifier tous les champs")
+        messages.warning(request,"verifier tous les champs")
         form = AssureurForm()  
     return render(request,'Assureur/index.html',{'form':form})  
 def showA(request): 
@@ -153,7 +165,7 @@ def updateA(request, id):
                 logger.error("save begin")
                 logger.error(form)
                 myform=form.save()  
-                
+                messages.success(request, 'Update successful!')
                 return redirect('/assurance/Assureur/show')  
         except Exception as e:  
                 logger.error( str( e))   
@@ -163,6 +175,7 @@ def updateA(request, id):
 def destroyA(request, id):  
     instance = Assureur.objects.get(code_assureur=id)
     instance.delete() 
+    messages.warning(request, 'Delete successful!')
     return redirect("/assurance/Assureur/show")
 
 
@@ -184,7 +197,7 @@ def Baremevoyageindex(request):
             except Exception as e:  
                 logger.error( str( e))  
     else:  
-        messages.error(request,"verifier tous les champs")
+        messages.warning(request,"verifier tous les champs")
         form = BaremeassurancevoyageForm()  
     return render(request,'Baremevoyage/index1.html',{'form':form})  
 def showB(request): 
@@ -219,7 +232,7 @@ def updateB(request, id):
 def destroyB(request, id):  
     instance = Baremedevoyage.objects.get(id_bareme_voyage=id)
     instance.delete()
-    messages.success(request, 'Deleted successful!')
+    messages.warning(request, 'Deleted successful!')
     return redirect("/assurance/Baremevoyage/show")
 
  # -----------------------------Bareme assurance credit-----------------------------------
@@ -238,7 +251,7 @@ def Baremecreditindex(request):
             except Exception as e:  
                 logger.error( str( e))  
     else:  
-        messages.error(request,"verifier tous les champs")
+        messages.warning(request,"verifier tous les champs")
         form = BaremeassurancecreditForm()  
     return render(request,'Baremecredit/index2.html',{'form':form})  
 def showC(request): 
@@ -259,7 +272,7 @@ def updateC(request, id):
                 logger.error("save begin")
                 logger.error(form)
                 myform=form.save()  
-                
+                messages.success(request, 'Update successful!')
                 return redirect('/assurance/Baremecredit/show')  
         except Exception as e:  
                 logger.error( str( e))   
@@ -269,12 +282,12 @@ def updateC(request, id):
 def destroyC(request, id):  
     instance = Baremedecredit.objects.get(id_bareme_credit=id)
     instance.delete() 
+    messages.warning(request, 'Delete successful!')
     return redirect("/assurance/Baremecredit/show")
 
 
  # -----------------------------Souscription d'assurance credit-----------------------------------
 def Souscriptioncreditindex(request):  
-     
     if request.method == "POST":  
         form = SouscriptioncreditForm(request.POST)  
         logger.error("sssssssssssss")
@@ -289,9 +302,9 @@ def Souscriptioncreditindex(request):
             except Exception as e:  
                 logger.error( str( e))  
     else:  
-        messages.error(request,"verifier tous les champs")
+        messages.warning(request,"verifier tous les champs")
         form = SouscriptioncreditForm()  
-    return render(request,'Souscriptioncredit/index3.html',{'form':form,'Beneficiaires':Beneficiaires})  
+    return render(request,'Souscriptioncredit/index3.html',{'form':form})  
 def showS(request): 
 
    
@@ -303,6 +316,7 @@ def showS(request):
 def destroyS(request, id):  
     instance = Souscriptiondecredit.objects.get(Num_souscription_credit=id)
     instance.delete() 
+    messages.warning(request, 'Delete successful!')
     return redirect("/assurance/Souscriptioncredit/show")
 
 
@@ -323,7 +337,7 @@ def Souscriptionvoyageindex(request):
             except Exception as e:  
                 logger.error( str( e))  
     else:  
-        messages.error(request,"verifier tous les champs")
+        messages.warning(request,"verifier tous les champs")
         form = SouscriptionvoyageForm()  
     return render(request,'Souscriptionvoyage/index4.html',{'form':form,'Beneficiaires':Beneficiaires})  
 def showSV(request): 
@@ -355,8 +369,8 @@ def updateSV(request, id):
 def destroySV(request, id):  
     instance = Souscriptiondevoyage.objects.get(Num_souscription_voyage=id)
     instance.delete() 
+    messages.warning(request, 'Delete successful!')
     return redirect("/assurance/Souscriptionvoyage/show")
-
 
 # -----------------------------beneficiaire-----------------------------------
 def beneficiaire(request):  
@@ -375,6 +389,68 @@ def beneficiaire(request):
             except Exception as e:  
                 logger.error( str( e))  
     else:  
-        messages.error(request,"verifier tous les champs")
+        messages.warning(request,"verifier tous les champs")
         form = beneficiaireForm()  
     return render(request,'beneficiaire/index.html',{'form':form}) 
+
+def showb(request): 
+
+   
+    # Your code
+    Beneficiaires = Beneficiaire.objects.all()  
+    return render(request,"beneficiaire/show.html",{'Beneficiaires':Beneficiaires}) 
+
+# -----------------------------Decision-----------------------------------
+
+def showD(request): 
+
+   
+    # Your code
+    Souscriptiondecredits = Souscriptiondecredit.objects.all()  
+    return render(request,"Decision/show.html",{'Souscriptiondecredits':Souscriptiondecredits})  
+def editD(request, id):  
+    Souscriptiondecredit1 = Souscriptiondecredit.objects.get(Num_souscription_credit=id)  
+    return render(request,'Decision/edit.html', {'Souscriptiondecredit':Souscriptiondecredit1})  
+@csrf_exempt    
+def updateD1(request):
+    if request.is_ajax and request.method == "POST":
+        for key in request.POST:  # "for key in request.GET" works too.
+    # Add filtering logic here.
+            valuelist = request.POST.getlist(key)
+            logger.error(valuelist[0])
+        Souscriptiondecredit1 = Souscriptiondecredit.objects.get(Num_souscription_credit=valuelist[0])  
+        Souscriptiondecredit1.etat_sous_credit="En attente"
+        Souscriptiondecredit1.save()
+        return JsonResponse({"data": "done"}, status=200) 
+    return JsonResponse({"data": "error"}, status=400)        
+@csrf_exempt  
+def updateD2( request): 
+    if request.is_ajax and request.method == "POST":
+        for key in request.POST:  # "for key in request.GET" works too.
+    # Add filtering logic here.
+            valuelist = request.POST.getlist(key)
+            logger.error(valuelist[0])
+        Souscriptiondecredit1 = Souscriptiondecredit.objects.get(Num_souscription_credit=valuelist[0])  
+        Souscriptiondecredit1.etat_sous_credit="Valide"
+        Souscriptiondecredit1.save()
+        return JsonResponse({"data": "done"}, status=200) 
+    return JsonResponse({"data": "error"}, status=400)             
+def updateD( request):
+    logger.critical('Payment system is not responding')
+    logger.error("form.errors.as_data()")  
+    Souscriptiondecredit1 = Souscriptiondecredit.objects.get(Num_souscription_credit=id)  
+    form = SouscriptioncreditForm(request.POST, instance = Souscriptiondecredit1)  
+    logger.error(form.errors.as_data())
+    if form.is_valid():
+        try:  
+                logger.error("save begin")
+                logger.error(form)
+                myform=form.save()  
+                
+                return redirect('/assurance/Decision/show')  
+        except Exception as e:  
+                logger.error( str( e))   
+
+         
+    return render(request, 'Decision/edit.html', {'Souscriptiondecredit': Souscriptiondecredit1})
+ 

@@ -1,19 +1,39 @@
-{% extends "base3.html" %}
+{% extends "navbar1.html" %}
 {% load static %}
 {% block title %}{% endblock %}
 {% block content %}
-{% load crispy_forms_tags %}  
-<center><h1>Gestion souscription voyage</h1></center>
+{% load crispy_forms_tags %} 
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
  {% for message in messages %}
       <div class="alert alert-{{ message.tags }}" role="alert">
           <p>{{ message }}</p>
       </div>
       {% endfor %}
+      <div class="container">          
+ <div class="table-wrapper">
+  <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+						<h2><b>Formulaire de souscription voyage</b></h2>
+					</div>
+					<div class="col-sm-6">
+                   
+
+						 <a href="/assurance/Souscriptionvoyage/show" ><button type="submit" class="btn btn-info pull-right">Consulter</button></a> 
+										
+					</div>
+                </div>
+            </div>
 <form method="POST" class="post-form" action="{% url 'Souscriptionvoyageindex' %}" >  
         {% csrf_token %}  
 
         
-    <div class="container" onload="script();"> 
+    <div  onload="script();"> 
 <br>  
     <div class="form-group row">  
     <label class="col-sm-1 col-form-label"></label>  
@@ -41,7 +61,7 @@
 <div id="div_id1" class="form-group">    
     <label class="col-sm-1 col-form-label"></label>  
     <div class="col-sm-4" >  
-    <button type="submit" class="btn btn-primary">Ajouter</button>  
+    <center><button type="submit" class="btn btn-primary">Ajouter</button> </center> 
     </div>  
   </div>  
 
@@ -53,6 +73,7 @@
 
     var $wrapper = $('.multi-fields', this);
 $('#div_id_beneficiaires').hide()
+$('.multi-field-wrapper').hide()
     console.log( $wrapper)
      
     $(".add-field", $(this)).click(function(e) {
@@ -67,21 +88,30 @@ $('#div_id_beneficiaires').hide()
 </script>
 <script>
 function addBenefits(e){
-  console.log("hello there",e.target.value)
+ alert ($('#div_id_beneficiaires').text ())
   $('#div_id_beneficiaires').text ($('#div_id_beneficiaires').text () + ','+e.target.value);
 
-console.log($('#div_id_beneficiaires').val() )
+
 
 
 }
 </script>
 <script>
-document.onload = function script(){
+$('#id_type_couverture').change(function(e) {
+  $('#id_type_couverture option:selected').text()
+ 
+   var value = $("#id_type_couverture option:selected");
+            if (  value.text()=== "Familiale")
+            $('.multi-field-wrapper').show()
+             else 
+             $('.multi-field-wrapper').hide()
+});
 
-  
-
-console.log("hello there")
-
-}
 </script>
+<script>
+$('#div_id_beneficiaires').change(function(e) {
+  $('#id_type_couverture option:selected').text()
+});
+</script>
+
 {% endblock %}

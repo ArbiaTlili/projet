@@ -1,15 +1,20 @@
-{% extends "base3.html" %}
+{% extends "navbar1.html" %}
 {% load static %}
 {% block title %} {% endblock %}
 {% block content %}
- {% for message in messages %}
-      <div class="alert alert-{{ message.tags }}" role="alert">
-          <p>{{ message }}</p>
-      </div>
-      {% endfor %}
+ 
+      <div class="container">
+         <div class="table-wrapper">
+  <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+						<h2><b>Page modifier souscription voyage</b></h2>
+					</div>
+          </div>
+          </div>
 <form method="POST" class="post-form" action="/assurance/Souscriptionvoyage/update/{{Souscriptiondevoyage.Num_souscription_voyage}}">  
         {% csrf_token %}  
-   <div class="container">  
+     
 <br>  
     <div class="form-group row">  
     <label class="col-sm-1 col-form-label"></label>  
@@ -19,17 +24,19 @@
   </div>  
         
 
-<div id="div_id_type_client" class="form-group"> <label for="id_type_client" class=" requiredField">
-                type_client<span class="asteriskField">*</span> </label> <div class=""><input type="text" name="type_client" value="{{Souscriptiondevoyage.type_client}}" maxlength="128" class="textinput textInput form-control" required="" id="id_type_client"> </div> </div><div id="div_id_Num_cin_passager" class="form-group"> <label for="id_Num_cin_passager" class=" requiredField">
-                Numéro cin passager<span class="asteriskField">*</span> </label> <div class=""> <select name="Num_cin_passager" class="select form-control" required="" id="id_Num_cin_passager"> <option value="{{Souscriptiondevoyage.Num_cin_passager.Num_cin_passager}}" selected="">{{Souscriptiondevoyage.Num_cin_passager}}</option> 
-</select> </div> </div><div id="div_id_Num_fiche_client" class="form-group"> <label for="id_Num_fiche_client" class=" requiredField">
+
+                
+                <div id="div_id_Num_fiche_client" class="form-group"> <label for="id_Num_fiche_client" class=" requiredField">
                 Num_fiche_client<span class="asteriskField">*</span> </label> <div class=""> <select name="Num_fiche_client" class="select form-control" required="" id="id_Num_fiche_client"> <option value="{{Souscriptiondevoyage.Num_fiche_client.Num_fiche_client}}" selected="">{{Souscriptiondevoyage.Num_fiche_client}}</option> 
-</select> </div> </div> <div id="div_id_type_couverture" class="form-group"> <label for="id_type_couverture" class=" requiredField">
-                type_couverture<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="type_couverture" value="{{Souscriptiondevoyage.type_couverture}}" maxlength="128" class="textinput textInput form-control" required="" id="id_type_couverture"> </div> </div> <div id="div_id_montant_assurance" class="form-group"> <label for="id_montant_assurance" class=" requiredField">
+</select> </div> </div> <div id="div_id_code_produit" class="form-group"> <label for="id_code_produit" class=" requiredField">
+                code_produit<span class="asteriskField">*</span> </label> <div class=""><select name="code_produit" class="select form-control" required="" id="id_code_produit"> <option value="{{Souscriptiondevoyage.code_produit.code_produit}}" selected="">{{Souscriptiondevoyage.code_produit}}</option> 
+</select></div> </div><div id="div_id_type_couverture" class="form-group"> <label for="id_type_couverture" class=" requiredField">
+                type_couverture<span class="asteriskField">*</span> </label> <div class=""> <select name="type_couverture" class="select form-control" required="" id="id_type_couverture"> <option value="{{Souscriptiondevoyage.type_couverture}}" selected="">{{Souscriptiondevoyage.type_couverture}}</option> 
+</select></div> </div> <div id="div_id_montant_assurance" class="form-group"> <label for="id_montant_assurance" class=" requiredField">
                 montant_assurance<span class="asteriskField">*</span> </label> <div class=""> <input type="number" name="montant_assurance" value="{{Souscriptiondevoyage.montant_assurance}}" class="numberinput form-control" required="" id="id_montant_assurance"> </div> </div> <div id="div_id_duree" class="form-group"> <label for="id_duree" class=" requiredField">
-                duree<span class="asteriskField">*</span> </label> <div class=""> <input type="number" name="duree" value="{{Souscriptiondevoyage.duree}}" class="numberinput form-control" required="" id="id_duree"> </div> </div> <div id="div_id_code_produit" class="form-group"> <label for="id_code_produit" class=" requiredField">
-                code_produit<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="code_produit" value="{{Souscriptiondevoyage.code_produit}}" maxlength="30" class="textinput textInput form-control" required="" id="id_code_produit"> </div> </div> <div id="div_id_date_debut" class="form-group"> <label for="id_date_debut" class=" requiredField">
-                date_debut<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="date_debut" value="{{Souscriptiondevoyage.date_debut}}" maxlength="128" class="textinput textInput form-control" required="" id="id_date_debut"> </div> </div> 
+                duree<span class="asteriskField">*</span> </label> <div class=""> <input type="number" name="duree" value="{{Souscriptiondevoyage.duree}}" class="numberinput form-control" required="" id="id_duree"> </div> </div> <div id="div_id_date_debut" class="form-group"> <label for="id_date_debut" class=" requiredField">
+                
+                date_debut<span class="asteriskField">*</span> </label> <div class=""> <input type="date" name="date_debut" value="{{Souscriptiondevoyage.date_debut}}" maxlength="128" class="textinput textInput form-control" required="" id="id_date_debut"> </div> </div> 
     <div class="form-group row">  
     <label class="col-sm-1 col-form-label"></label>  
     <div class="col-sm-4">  

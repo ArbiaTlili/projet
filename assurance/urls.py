@@ -11,10 +11,8 @@ urlpatterns = [
     path('clientèle',views.base3, name="clientèle"),
     path('backoffice',views.base1, name="backoffice"),
     path('décision',views.décision, name="décision"),
-    #client
-    path('client',views.base4, name="client"),
-    #about
-    path('about',views.base5, name="about"),
+    path('navbar',views.navbar, name="navbar"),
+    path('navbar1',views.navbar1, name="navbar1"),
     #home
     path('home',views.home, name="home"),
     # produit assurance
@@ -67,7 +65,15 @@ urlpatterns = [
     path('Souscriptionvoyage/edit/<int:id>', views.editSV),  
     path('Souscriptionvoyage/update/<int:id>', views.updateSV),  
     path('Souscriptionvoyage/delete/<int:id>', views.destroySV),
-  #Beneficiaire
-  path('beneficiaire', views.beneficiaire ,name='beneficiaire'),
+#Beneficiaire
+    path('beneficiaire', views.beneficiaire ,name='beneficiaire'),
+    path('beneficiaire/show',views.showb), 
 
+
+#Decision
+    path('decision/show',views.showD, name= 'Decision'), 
+    path('decision/edit/<int:id>', views.editD),  
+    path('decision/update/<int:id>', views.updateD),
+    path('decision/update1', views.updateD1), 
+    path('decision/update2', views.updateD2),
 ]

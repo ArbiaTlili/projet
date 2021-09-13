@@ -18,47 +18,43 @@
           <p>{{ message }}</p>
       </div>
       {% endfor %}
-<div class="table-wrapper">
-    <div class="table-title">
+
+   <div class="table-wrapper">
+  <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
-						<h2><b>Liste des souscriptions voyage</b></h2>
+						<h2><b>Liste barème des bénéficiaire</b></h2>
 					</div>
 					<div class="col-sm-6">
                    
 
-						<a href="/assurance/Souscriptionvoyage" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New </span></a>
+						<a href="/assurance/beneficiaire" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New </span></a>
 										
 					</div>
                 </div>
-            </div> 
-<table class="table table-striped table-bordered col-xl-">  
+            </div>                           
+<table class="table table-striped table-bordered table-sm">  
     <thead class="thead-dark">  
     <tr>  
-        <th>code_assureur</th>  
-        <th>code_produit</th>  
-        <th>type_couverture</th> 
-        <th>duree</th> 
-        <th>montant_assurance </th> 
-        <th>date_debut</th> 
-         <th>Actions</th> 
-     
+       
+        <th> id_beneficiaire</th>  
+        <th>num_souscription </th>  
+        <th>nom_beneficiaire</th>  
+        <th>prenom_beneficiaire</th> 
+        <th>relation </th>
+        <th>num_document</th>
     </tr>  
     </thead>  
     <tbody>  
-{% for Souscriptiondevoyage in Souscriptiondevoyages %}  
+{% for Beneficiaire in Beneficiaires %}  
     <tr>  
-        <td>{{ Souscriptiondevoyage.code_assureur }}</td> 
-        <td>{{ Souscriptiondevoyage.code_produit }}</td> 
-        <td>{{ Souscriptiondevoyage.type_couverture }}</td> 
-        <td>{{ Souscriptiondevoyage.duree }}</td>
-        <td>{{ Souscriptiondevoyage.montant_assurance }}</td> 
-         <td>{{ Souscriptiondevoyage.date_debut }}</td>
        
-        <td>   
-            <a href="/assurance/Souscriptionvoyage/edit/{{ Souscriptiondevoyage.Num_souscription_voyage }}" class="btn btn-warning waves-effect"><i class="bi bi-pencil-square"></i></a> 
-            <a href="/assurance/Souscriptionvoyage/delete/{{ Souscriptiondevoyage.Num_souscription_voyage }}"class="btn btn-danger " class="bi bi-trash"><i class="bi bi-trash"></i></a>  
-        </td>  
+        <td>{{ Beneficiaire.id_beneficiaire }}</td>  
+        <td>{{ Beneficiaire.num_souscription }}</td>  
+        <td>{{ Beneficiaire.nom_beneficiaire }}</td> 
+        <td>{{ Beneficiaire.prenom_beneficiaire }}</td>  
+        <td>{{ Beneficiaire.relation }}</td> 
+        <td>{{ Beneficiaire.num_document }}</td> 
     </tr>  
 {% endfor %}  
     </tbody>  
