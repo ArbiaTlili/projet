@@ -46,7 +46,8 @@
   <div id="div_id2" class="form-group">    <div class="multi-field-wrapper">
       <div class="multi-fields">
         <div class="multi-field">
-          <select type="text" class="select form-control" onchange="addBenefits(event)" name="stuff[]"> {% for beneficiaire in Beneficiaires %}
+          <b>Bénéficiaire(s):</b>
+          <select type="text" class="select form-control" onchange="addBenefits(event)" name="stuff[]">  {% for beneficiaire in Beneficiaires %}
            <option value="{{ beneficiaire.id_beneficiaire }}">{{ beneficiaire.nom_beneficiaire }}</option>
             {% endfor %}
           </select>
