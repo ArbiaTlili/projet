@@ -49,14 +49,11 @@
         <td>{{ Souscriptiondecredit.montant_assurance }}</td> 
         <td id="{{ Souscriptiondecredit.Num_souscription_credit }}">{{ Souscriptiondecredit.etat_sous_credit }}</td> 
         
-        <td>    
-            <a href="/assurance/decision/edit/{{ Souscriptiondecredit.Num_souscription_credit }}"class="btn btn-warning waves-effect"><i class="bi bi-pencil-square"></i></a>  
-        </td>  
+        
         <td >    
-            <button value={{ Souscriptiondecredit.Num_souscription_credit }} id="at" class="btn btn-warning waves-effect target"><i class="bi bi-pencil"></i></button>  
-        </td>  
-        <td >    
-            <button value={{ Souscriptiondecredit.Num_souscription_credit }} id="valide" class="btn btn-warning waves-effect target1"><i class="bi bi-box"></i></button>  
+            <button value={{ Souscriptiondecredit.Num_souscription_credit }} id="at" class="btn btn-warning waves-effect target"><i class="fa fa-check-circle" style="font-size:16px;color:green"></i></button>  
+         
+            <button value={{ Souscriptiondecredit.Num_souscription_credit }} id="valide" class="btn btn-warning waves-effect target1"><i class="fa fa-refresh fa-spin"></i></button>  
         </td>  
     </tr>  
 {% endfor %}  
@@ -71,15 +68,18 @@ $( "#target" ).click(function() {
 <script >
 $('.target1').on('click', function(){
   
+  var id=$(this).val()
+  
               $.ajax({
              url: '/assurance/decision/update1',
              method : 'POST',
-             data: {id:$('.target1').val()},
+             data: {id:id},
              beforeSend: function() {
               // things to do before submit
              },
              success: function(response) {
-                 $('#'+$('.target1').val() ).text("En attente");      
+               
+                 $('#'+id ).text("En attente");      
               
               }
               });
@@ -90,17 +90,17 @@ $('.target1').on('click', function(){
 <script >
 $('.target').click( function(){
   
-       
+     var id=$(this).val()   
               $.ajax({
              url: '/assurance/decision/update2',
              method : 'POST',
-             data: {id:$('.target').val()},
+             data: {id:id},
              beforeSend: function() {
               // things to do before submit
              },
              success: function(response) {
 
-               $('#'+$('.target').val() ).text("Valide");      
+               $('#'+id ).text("Valide");      
               }
               });
   return false;

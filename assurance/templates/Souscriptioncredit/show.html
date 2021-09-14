@@ -57,6 +57,11 @@
         <td>    
             <a href="/assurance/Souscriptioncredit/delete/{{ Souscriptiondecredit.Num_souscription_credit }}"class="btn btn-danger px-3" class="bi bi-trash"><i class="bi bi-trash"></i></a>  
         </td>  
+        {% if Souscriptiondecredit.etat_sous_credit == "Valide"   %}
+          <td>    
+            <a href=# class="btn btn-info px-3" class="icon-print"><i class="fa fa-print" style="font-size:18px" ></i></a>  
+        </td>  
+         {% endif  %}
     </tr>  
 {% endfor %}  
     </tbody>  
