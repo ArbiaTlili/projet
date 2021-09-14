@@ -83,8 +83,9 @@ def produitAssurance(request):
                 return redirect('/assurance/produitAssurance/show')  
             except Exception as e:  
                 logger.error( str( e))  
-    else:  
-        messages.warning(request,"verifier tous les champs")
+        else:  
+            messages.warning(request,"verifier tous les champs")
+    else:    
         form = ProduitassuranceForm()  
     return render(request,'produitAssurance/index.html',{'form':form})  
 def showPA(request): 
@@ -141,8 +142,9 @@ def Assureurindex(request):
                 return redirect('/assurance/Assureur/show')  
             except Exception as e:  
                 logger.error( str( e))  
-    else:  
-        messages.warning(request,"verifier tous les champs")
+        else:  
+            messages.warning(request,"verifier tous les champs")
+    else:    
         form = AssureurForm()  
     return render(request,'Assureur/index.html',{'form':form})  
 def showA(request): 
@@ -194,8 +196,9 @@ def Baremevoyageindex(request):
                 return redirect('/assurance/Baremevoyage/show')  
             except Exception as e:  
                 logger.error( str( e))  
-    else:  
-        messages.warning(request,"verifier tous les champs")
+        else:  
+           messages.warning(request,"verifier tous les champs")
+    else:    
         form = BaremeassurancevoyageForm()  
     return render(request,'Baremevoyage/index1.html',{'form':form})  
 def showB(request): 
@@ -248,8 +251,9 @@ def Baremecreditindex(request):
                 return redirect('/assurance/Baremecredit/show')  
             except Exception as e:  
                 logger.error( str( e))  
-    else:  
-        messages.warning(request,"verifier tous les champs")
+        else:  
+            messages.warning(request,"verifier tous les champs")
+    else:    
         form = BaremeassurancecreditForm()  
     return render(request,'Baremecredit/index2.html',{'form':form})  
 def showC(request): 
@@ -299,8 +303,9 @@ def Souscriptioncreditindex(request):
                 return redirect('/assurance/Souscriptioncredit/show')  
             except Exception as e:  
                 logger.error( str( e))  
-    else:  
-        messages.warning(request,"verifier tous les champs")
+        else:  
+            messages.warning(request,"verifier tous les champs")
+    else:    
         form = SouscriptioncreditForm()  
     return render(request,'Souscriptioncredit/index3.html',{'form':form})  
 def showS(request): 
@@ -334,8 +339,9 @@ def Souscriptionvoyageindex(request):
                 return redirect('/assurance/Souscriptionvoyage/show')  
             except Exception as e:  
                 logger.error( str( e))  
-    else:  
-        messages.warning(request,"verifier tous les champs")
+        else:  
+            messages.warning(request,"verifier tous les champs")
+    else:    
         form = SouscriptionvoyageForm()  
     return render(request,'Souscriptionvoyage/index4.html',{'form':form,'Beneficiaires':Beneficiaires})  
 def showSV(request): 
@@ -386,8 +392,9 @@ def beneficiaire(request):
                 return redirect('/assurance/beneficiaire')  
             except Exception as e:  
                 logger.error( str( e))  
-    else:  
-        messages.warning(request,"verifier tous les champs")
+        else:  
+           messages.warning(request,"verifier tous les champs")
+    else:    
         form = beneficiaireForm()  
     return render(request,'beneficiaire/index.html',{'form':form}) 
 

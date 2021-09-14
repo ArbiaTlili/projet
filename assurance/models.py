@@ -97,6 +97,10 @@ def __str__(self):
 class Assureur(models.Model):
     code_assureur = models.AutoField(primary_key = True)
     Nom_assureur = models.CharField(max_length=40)
+    code_NCP=models.ForeignKey(
+    'Comptebancaire',
+    on_delete=models.CASCADE,null=True
+    )
     Adresse = models.CharField(max_length=40)
     contact = models.CharField(max_length=40)
     Telephone = PhoneNumberField(null=False, blank=False, unique=True)
@@ -232,7 +236,10 @@ class Souscriptiondevoyage(models.Model):
 
 class Beneficiaire(models.Model):
     id_beneficiaire = models.AutoField(primary_key = True) 
-    num_souscription = models.IntegerField(null=False)
+    Num_souscription_voyage = models.ForeignKey(
+    'Souscriptiondevoyage',
+    on_delete=models.CASCADE,null=True
+    )
     nom_beneficiaire = models.CharField(max_length=40)
     prenom_beneficiaire = models.CharField(max_length=40)
     date_naissance = models.DateTimeField(auto_now=True)
