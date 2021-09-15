@@ -49,7 +49,7 @@
 {% for Baremedevoyage in Baremedevoyages %}  
     <tr>  
        
-        <td>{{ Baremedevoyage.code_produit }}</td>  
+        <td>{{ Baremedevoyage.Code_produit }}</td>  
         <td>{{ Baremedevoyage.duree }}</td>  
         <td>{{ Baremedevoyage.taux_assureur }}</td> 
         <td>{{ Baremedevoyage.marge_banque }}</td> 
@@ -57,7 +57,7 @@
         <td>{{ Baremedevoyage.type_couverture }}</td> 
         <td>   
             <a href="/assurance/Baremevoyage/edit/{{ Baremedevoyage.id_bareme_voyage }}"class="btn btn-warning waves-effect"><i class="bi bi-pencil-square"></i></a>  
-              
+            <a href="/assurance/Baremevoyage/delete/{{ Baremedevoyage.id_bareme_voyage }}"class="btn btn-danger " class="bi bi-trash"><i class="bi bi-trash"></i></a>   
         </td>  
     </tr>  
 {% endfor %}  

@@ -37,7 +37,7 @@
       <table class="table table-striped table-bordered table-sm">  
     <thead class="thead-dark">  
     <tr>  
-       
+        <th> code_produit</th>
         <th> libelle_produit</th>  
         <th> type_produit</th>  
         <th> code_assureur</th>  
@@ -47,7 +47,7 @@
       <tbody>
 {% for Produitassurance in Produitassurances %}  
     <tr>  
-       
+        <td>{{ Produitassurance.code_produit }}</td> 
         <td>{{ Produitassurance.libelle_produit }}</td>  
         <td>{{ Produitassurance.type_produit }}</td>  
         <td>{{ Produitassurance.code_assureur }}</td>  

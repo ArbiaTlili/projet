@@ -101,6 +101,7 @@ class Assureur(models.Model):
     'Comptebancaire',
     on_delete=models.CASCADE,null=True
     )
+    code_NCP = models.OneToOneField("Comptebancaire", on_delete=models.CASCADE, null= True)
     Adresse = models.CharField(max_length=40)
     contact = models.CharField(max_length=40)
     Telephone = PhoneNumberField(null=False, blank=False, unique=True)
@@ -116,10 +117,16 @@ def __str__(self):
 
 class Produitassurance(models.Model):
     code_produit = models.AutoField(primary_key = True)
-    libelle_produit = models.CharField(max_length=20)
-    Num_parteneriat = models.IntegerField(null=False)
-    type_produit = models.CharField(max_length=30)
+    libelle_produit = models.CharField(max_length=20, null=False)
+    Assurance_Crédit='Assurance crédit'
+    Assurance_Voyage='Assurance voyage'
+    ASSURANCE_CHOICES = [   
+      ('Assurance_Crédit', 'Assurance crédit'),
+      ('Assurance_Voyage', 'Assurance voyage'),
+      ]
+    type_produit= models.CharField(choices=ASSURANCE_CHOICES, max_length=50)
     code_assureur =models.ForeignKey('Assureur' ,on_delete=models.CASCADE)
+    Num_parteneriat = models.IntegerField(blank=True)
     part_banque =models.CharField(max_length=30)
     part_assureur =models.CharField(max_length=30)
     retenue_source=models.CharField(max_length=30)
@@ -131,17 +138,14 @@ class Produitassurance(models.Model):
     montant_seuil =models.IntegerField(null=False)
     etat_produit =models.CharField(max_length=30)
     
-def __str__(self):
-    return "code_produit"
+
 
 
 
 class Baremedecredit(models.Model):
     id_bareme_credit = models.AutoField(primary_key = True) 
-    code_produit = models.ForeignKey(
-    'Produitassurance',
-    on_delete=models.CASCADE, related_name ='produitassurancee'
-    )
+    code_assureur =models.ForeignKey('Assureur' ,on_delete=models.CASCADE, null= True)
+    code_produit = models.OneToOneField("Produitassurance", on_delete=models.CASCADE, null= True)
     age_min =models.IntegerField(null=False)
     age_max =models.IntegerField(null=False)
     date_debut = models.DateTimeField(auto_now=True)
@@ -149,17 +153,14 @@ class Baremedecredit(models.Model):
     taux_assureur = models.IntegerField(null=False)
     marge_banque = models.IntegerField(null=False)
     etat_bareme= models.CharField(max_length=30)
-    produitassurancee = models.OneToOneField("Produitassurance", on_delete=models.CASCADE, null= True)
+    
 
  
     
         
 class Baremedevoyage(models.Model):
     id_bareme_voyage = models.AutoField(primary_key =True)
-    code_produit = models.ForeignKey(
-    'Produitassurance',
-    on_delete=models.CASCADE,related_name = 'Produitassurance'
-    )  
+    code_produit = models.OneToOneField("Produitassurance", on_delete=models.CASCADE, null=True)
     duree = models.IntegerField(null=False)
     taux_assureur = models.IntegerField(null=False)
     marge_banque = models.IntegerField(null=False)
@@ -182,14 +183,8 @@ class Baremedevoyage(models.Model):
 
 class Souscriptiondecredit(models.Model):
     Num_souscription_credit = models.AutoField(primary_key = True)
-    Num_dossierCredit = models.ForeignKey(
-    'Credit',
-    on_delete=models.CASCADE,
-    )
-    code_produit = models.ForeignKey(
-    'Produitassurance',
-    on_delete=models.CASCADE,
-    )
+    Num_dossierCredit = models.OneToOneField("Credit", on_delete=models.CASCADE, null=True)
+    code_produit = models.OneToOneField("Produitassurance", on_delete=models.CASCADE, null=True)
     montant_assurance = models.IntegerField(null=False)
     Valide='Valide'
     En_attente='En attente'
@@ -205,16 +200,13 @@ class Souscriptiondecredit(models.Model):
 
 class Souscriptiondevoyage(models.Model):
     Num_souscription_voyage = models.AutoField(primary_key = True)
-    Num_fiche_client = models.ForeignKey(
-    'ClientUIB',
-    on_delete=models.CASCADE,
-    )
+    Num_fiche_client = models.OneToOneField("ClientUIB", on_delete=models.CASCADE, null=True)
     Num_compte = models.IntegerField(null=True)
     code_assureur = models.ForeignKey(
     'Assureur',
     on_delete=models.CASCADE,
     )
-    code_produit = models.ForeignKey(
+    Code_produit = models.ForeignKey(
     'Produitassurance',
     on_delete=models.CASCADE, null=True
     )

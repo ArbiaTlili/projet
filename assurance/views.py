@@ -90,11 +90,7 @@ def produitAssurance(request):
     return render(request,'produitAssurance/index.html',{'form':form})  
 def showPA(request): 
 
-    if request.method == 'GET': # If the form is submitted
-        
-        search_query = request.GET.get('search_box', None)
-        logger.error(search_query)
-        # Do whatever you need with the word the user looked for
+    
 
     # Your code
     Produitassurances = Produitassurance.objects.all()  
