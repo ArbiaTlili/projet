@@ -25,6 +25,14 @@ urlpatterns = [
     path('produitAssurance/update/<int:id>', views.updatePA),  
     path('produitAssurance/delete/<int:id>', views.destroyPA),  
     
+     # produit credit
+
+    path('produitcredit', views.produitcredit ,name='produitcredit'),  
+    
+    path('produitcredit/show',views.showPC), 
+    path('produitcredit/edit/<int:id>', views.editPC),  
+    path('produitcredit/update/<int:id>', views.updatePC),  
+    path('produitcredit/delete/<int:id>', views.destroyPC),
     # Assureur
 
     path('Assureur', views.Assureurindex ,name='Assureurindex'),  

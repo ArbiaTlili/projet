@@ -24,12 +24,12 @@
   <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
-						<h2><b>Liste des produits d'assurance voyage</b></h2>
+						<h2><b>Liste des produits crédit</b></h2>
 					</div>
 					<div class="col-sm-6">
                    
 
-						<a href="/assurance/produitAssurance" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New </span></a>
+						<a href="/assurance/produitcredit" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New </span></a>
 										
 					</div>
                 </div>
@@ -39,21 +39,19 @@
     <tr>  
         <th> code_produit</th>
         <th> libelle_produit</th>  
-        <th> type_produit</th>  
         <th> code_assureur</th>  
         <th>Actions</th>  
     </tr>  
     </thead>  
       <tbody>
-{% for Produitvoyage in Produitvoyages %}  
+{% for Produitcredit in Produitcredits %}  
     <tr>  
-        <td>{{ Produitvoyage.code_produit }}</td> 
-        <td>{{ Produitvoyage.libelle_produit }}</td>  
-        <td>{{ Produitvoyage.type_produit }}</td>  
-        <td>{{ Produitvoyage.code_assureur }}</td>  
+        <td>{{ Produitcredit.code_produitC }}</td> 
+        <td>{{ Produitcredit.libelle_produit }}</td>   
+        <td>{{ Produitcredit.code_assureur }}</td>  
         <td>  
-            <a href="/assurance/produitAssurance/edit/{{ Produitvoyage.code_produit }}" class="btn btn-warning waves-effect"><i class="bi bi-pencil-square"></i></a>  
-            <a href="/assurance/produitAssurance/delete/{{ Produitvoyage.code_produit }}" class="btn btn-danger px-3" class="bi bi-trash"><i class="bi bi-trash"></i></a>  
+            <a href="/assurance/produitcredit/edit/{{ Produitcredit.code_produitC }}" class="btn btn-warning waves-effect"><i class="bi bi-pencil-square"></i></a>  
+            <a href="/assurance/produitcredit/delete/{{ Produitcredit.code_produitC }}" class="btn btn-danger px-3" class="bi bi-trash"><i class="bi bi-trash"></i></a>  
             
            
         </td>  

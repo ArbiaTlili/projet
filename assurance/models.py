@@ -104,7 +104,7 @@ class Assureur(models.Model):
     code_NCP = models.OneToOneField("Comptebancaire", on_delete=models.CASCADE, null= True)
     Adresse = models.CharField(max_length=40)
     contact = models.CharField(max_length=40)
-    Telephone = PhoneNumberField(null=False, blank=False, unique=True)
+    Telephone = PhoneNumberField(null=False, blank=False)
     fax = models.CharField(max_length=20)
     Email = models.EmailField(max_length=254)
     Agence = models.CharField(max_length=20)
@@ -114,29 +114,51 @@ def __str__(self):
 
     
     
-
-class Produitassurance(models.Model):
-    code_produit = models.AutoField(primary_key = True)
+class Produitcredit(models.Model):
+    code_produitC = models.AutoField(primary_key = True)
     libelle_produit = models.CharField(max_length=20, null=False)
-    Assurance_Crédit='Assurance crédit'
-    Assurance_Voyage='Assurance voyage'
-    ASSURANCE_CHOICES = [   
-      ('Assurance_Crédit', 'Assurance crédit'),
-      ('Assurance_Voyage', 'Assurance voyage'),
-      ]
-    type_produit= models.CharField(choices=ASSURANCE_CHOICES, max_length=50)
     code_assureur =models.ForeignKey('Assureur' ,on_delete=models.CASCADE)
     Num_parteneriat = models.IntegerField(blank=True)
-    part_banque =models.CharField(max_length=30)
-    part_assureur =models.CharField(max_length=30)
-    retenue_source=models.CharField(max_length=30)
-    TVA =models.IntegerField()
-    Frais_MEP_asssureur=models.CharField(max_length=30)
-    Frais_MEP_banque =models.CharField(max_length=30)
+    part_banque =models.CharField(max_length=30, blank=True)
+    part_assureur =models.CharField(max_length=30,blank=True )
+    retenue_source=models.CharField(max_length=30, blank=True)
+    TVA =models.IntegerField(blank=True)
+    Frais_MEP_asssureur=models.CharField(max_length=30, blank=True)
+    Frais_MEP_banque =models.CharField(max_length=30, blank=True)
     Niveau_validation =models.CharField(max_length=30)
     age_seuil =models.IntegerField(null=False)
     montant_seuil =models.IntegerField(null=False)
-    etat_produit =models.CharField(max_length=30)
+    Valide='Valide'
+    En_attente='En attente'
+    COUVERTURE_CHOICES = [   
+      ('Valide', 'Valide'),
+      ('En attente', 'En attente'),
+      ]
+    etat_produit= models.CharField(choices=COUVERTURE_CHOICES, max_length=40) 
+
+
+class Produitvoyage(models.Model):
+    code_produit = models.AutoField(primary_key = True)
+    libelle_produit = models.CharField(max_length=20, null=False)
+    code_assureur =models.ForeignKey('Assureur' ,on_delete=models.CASCADE)
+    Num_parteneriat = models.IntegerField(blank=True)
+    part_banque =models.CharField(max_length=30, blank=True)
+    part_assureur =models.CharField(max_length=30,blank=True )
+    retenue_source=models.CharField(max_length=30, blank=True)
+    TVA =models.IntegerField(blank=True)
+    Frais_MEP_asssureur=models.CharField(max_length=30, blank=True)
+    Frais_MEP_banque =models.CharField(max_length=30, blank=True)
+    Niveau_validation =models.CharField(max_length=30)
+    age_seuil =models.IntegerField(null=False)
+    montant_seuil =models.IntegerField(null=False)
+    Valide='Valide'
+    En_attente='En attente'
+    COUVERTURE_CHOICES = [   
+      ('Valide', 'Valide'),
+      ('En attente', 'En attente'),
+      ]
+    etat_produit= models.CharField(choices=COUVERTURE_CHOICES, max_length=40) 
+    
     
 
 
@@ -145,7 +167,7 @@ class Produitassurance(models.Model):
 class Baremedecredit(models.Model):
     id_bareme_credit = models.AutoField(primary_key = True) 
     code_assureur =models.ForeignKey('Assureur' ,on_delete=models.CASCADE, null= True)
-    code_produit = models.OneToOneField("Produitassurance", on_delete=models.CASCADE, null= True)
+    code_produitC = models.ForeignKey("Produitcredit", on_delete=models.CASCADE, null= True)
     age_min =models.IntegerField(null=False)
     age_max =models.IntegerField(null=False)
     date_debut = models.DateTimeField(auto_now=True)
@@ -160,7 +182,7 @@ class Baremedecredit(models.Model):
         
 class Baremedevoyage(models.Model):
     id_bareme_voyage = models.AutoField(primary_key =True)
-    code_produit = models.OneToOneField("Produitassurance", on_delete=models.CASCADE, null=True)
+    code_produit = models.OneToOneField("Produitvoyage", on_delete=models.CASCADE, null=True)
     duree = models.IntegerField(null=False)
     taux_assureur = models.IntegerField(null=False)
     marge_banque = models.IntegerField(null=False)
@@ -184,7 +206,7 @@ class Baremedevoyage(models.Model):
 class Souscriptiondecredit(models.Model):
     Num_souscription_credit = models.AutoField(primary_key = True)
     Num_dossierCredit = models.OneToOneField("Credit", on_delete=models.CASCADE, null=True)
-    code_produit = models.OneToOneField("Produitassurance", on_delete=models.CASCADE, null=True)
+    code_produitC = models.OneToOneField("Produitcredit", on_delete=models.CASCADE, null=True)
     montant_assurance = models.IntegerField(null=False)
     Valide='Valide'
     En_attente='En attente'
@@ -201,13 +223,16 @@ class Souscriptiondecredit(models.Model):
 class Souscriptiondevoyage(models.Model):
     Num_souscription_voyage = models.AutoField(primary_key = True)
     Num_fiche_client = models.OneToOneField("ClientUIB", on_delete=models.CASCADE, null=True)
-    Num_compte = models.IntegerField(null=True)
+    code_NCP=models.ForeignKey(
+    'Comptebancaire',
+    on_delete=models.CASCADE,null=True
+    )
     code_assureur = models.ForeignKey(
     'Assureur',
     on_delete=models.CASCADE,
     )
-    Code_produit = models.ForeignKey(
-    'Produitassurance',
+    code_produit = models.ForeignKey(
+    'Produitvoyage',
     on_delete=models.CASCADE, null=True
     )
     I='Individuel'

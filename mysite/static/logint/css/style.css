@@ -31,8 +31,8 @@ body{
     color: #3a3e42 ;
     
 }
-.btn{
-    background: #e7372d;
+.btn-primary{
+    background: #1d1e5e;
     border-radius: 30px;
 } 
 .form{
@@ -54,14 +54,14 @@ body{
 }
 
 .AppForm .AppFormLeft button{
-    background: #e7372d;
+    background: rgb(38, 40, 139);
     border-radius: 30px;
 }
 .AppForm .AppFormLeft p span{
   color: #f7f9fc;
 }
 .AppForm .AppFormRight{
-    background-image: url("{%static 'assets/img/logo.png' %}" );
+    
     height: 450px;
     background-size: 100% 100%;
     background-position: center;
@@ -92,8 +92,8 @@ body{
 
 
 .img-fluid{
-    padding: -100px;
-  background: url(assets/img/logo.jpg);
+  padding: -100px;
+ 
   background-repeat: no-repeat;
   background-size: 100% 100%;
   max-width:100%;
@@ -105,7 +105,7 @@ body{
   .w {
     --w:60vmin;
     --h:40vmin;
-    --img:url(https://www.uib.com.tn/images/banners-uib/NotreOffre/Clients-PLATINE/UIB--Clients-PLATINE-ESPACE-HDG-.jpg);
+    --img:url(https://www.biat.com.tn/sites/default/files/inline-images/biat1_0.jpg);
     display:grid;
     width:calc(var(--w)); 
     height:calc(var(--h));

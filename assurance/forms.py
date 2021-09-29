@@ -1,6 +1,6 @@
 from django import forms 
   
-from assurance.models import Produitassurance ,Assureur ,Baremedevoyage, Baremedecredit, Souscriptiondecredit, Souscriptiondevoyage, Beneficiaire
+from assurance.models import Produitvoyage ,Produitcredit,Assureur ,Baremedevoyage, Baremedecredit, Souscriptiondecredit, Souscriptiondevoyage, Beneficiaire
 class BuzCustomField(forms.CharField):
     
     def clean(self, value):
@@ -21,7 +21,15 @@ class ProduitassuranceForm(forms.ModelForm):
    
 
     class Meta:  
-        model = Produitassurance  
+        model = Produitvoyage 
+        fields = "__all__" 
+
+class ProduitcreditForm(forms.ModelForm):  
+
+   
+
+    class Meta:  
+        model = Produitcredit  
         fields = "__all__" 
 
 class AssureurForm(forms.ModelForm):  

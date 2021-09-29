@@ -3,8 +3,8 @@ from django.http import HttpResponse
 from rest_framework.renderers import TemplateHTMLRenderer
 from django.shortcuts import render, redirect  
 from django.contrib import messages
-from assurance.forms import ProduitassuranceForm ,AssureurForm, BaremeassurancevoyageForm, BaremeassurancecreditForm, SouscriptioncreditForm, SouscriptionvoyageForm, beneficiaireForm  
-from assurance.models import Produitassurance ,Assureur, Baremedevoyage, Baremedecredit, Souscriptiondecredit,  Souscriptiondevoyage, Beneficiaire
+from assurance.forms import ProduitassuranceForm, ProduitcreditForm, AssureurForm, BaremeassurancevoyageForm, BaremeassurancecreditForm, SouscriptioncreditForm, SouscriptionvoyageForm, beneficiaireForm  
+from assurance.models import Produitvoyage , Produitcredit, Assureur, Baremedevoyage, Baremedecredit, Souscriptiondecredit,  Souscriptiondevoyage, Beneficiaire
 from django.contrib.auth.models import Permission
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
@@ -93,14 +93,14 @@ def showPA(request):
     
 
     # Your code
-    Produitassurances = Produitassurance.objects.all()  
-    return render(request,"produitAssurance/show.html",{'Produitassurances':Produitassurances})  
+    Produitvoyages = Produitvoyage.objects.all()  
+    return render(request,"produitAssurance/show.html",{'Produitvoyages':Produitvoyages})  
 def editPA(request, id):  
-    Produitassurance1 = Produitassurance.objects.get(code_produit=id)  
-    return render(request,'produitAssurance/edit.html', {'Produitassurance':Produitassurance1})  
+    Produitvoyage1 = Produitvoyage.objects.get(code_produit=id)  
+    return render(request,'produitAssurance/edit.html', {'Produitvoyage':Produitvoyage1})  
 def updatePA(request, id):  
-    Produitassurance1 = Produitassurance.objects.get(code_produit=id)  
-    form = ProduitassuranceForm(request.POST, instance = Produitassurance1)  
+    Produitvoyage1 = Produitvoyage.objects.get(code_produit=id)  
+    form = ProduitassuranceForm(request.POST, instance = Produitvoyage1)  
     logger.error(form.errors.as_data())
     if form.is_valid():
         try:  
@@ -113,14 +113,65 @@ def updatePA(request, id):
                 logger.error( str( e))   
 
          
-    return render(request, 'produitAssurance/edit.html', {'Produitassurance': Produitassurance1})  
+    return render(request, 'produitAssurance/edit.html', {'Produitvoyage': Produitvoyage1})  
 def destroyPA(request, id):  
-    Produitassurance1 = Produitassurance.objects.get(code_produit=id)  
-    Produitassurance1.delete() 
+    Produitvoyage1 = Produitvoyage.objects.get(code_produit=id)  
+    Produitvoyage1.delete() 
     messages.warning(request, 'Delete successful!')
     return redirect("/assurance/produitAssurance/show")
 
 
+def produitcredit(request):  
+   
+    if request.method == "POST":  
+        form = ProduitcreditForm(request.POST)  
+        logger.error("sssssssssssss")
+        logger.error(form.errors.as_data())
+        logger.error(form.is_valid())
+        if form.is_valid():
+            try:  
+               
+                myform=form.save()  
+                messages.success(request,"produit ajouter avec success")
+                return redirect('/assurance/produitcredit/show')  
+            except Exception as e:  
+                logger.error( str( e))  
+        else:  
+            messages.warning(request,"verifier tous les champs")
+    else:    
+        form = ProduitcreditForm()  
+    return render(request,'produitcredit/index.html',{'form':form})  
+def showPC(request): 
+
+    
+
+    # Your code
+    Produitcredits = Produitcredit.objects.all()  
+    return render(request,"produitcredit/show.html", {'Produitcredits':Produitcredits})  
+def editPC(request, id):  
+    Produitcredit1 = Produitcredit.objects.get(code_produitC=id)  
+    return render(request,'produitcredit/edit.html', {'Produitcredit':Produitcredit1})  
+def updatePC(request, id):  
+    Produitcredit1 = Produitcredit.objects.get(code_produitC=id)  
+    form = ProduitcreditForm(request.POST, instance = Produitcredit1)  
+    logger.error(form.errors.as_data())
+    if form.is_valid():
+        try:  
+                logger.error("save begin")
+                logger.error(form)
+                myform=form.save()  
+                messages.success(request, 'Update successful!')
+                return redirect('/assurance/produitcredit/show')  
+        except Exception as e:  
+                logger.error( str( e))   
+
+         
+    return render(request, 'produitcredit/edit.html', {'Produitcredit': Produitcredit1})  
+def destroyPC(request, id):  
+    Produitcredit1 = Produitcredit.objects.get(code_produitC=id)  
+    Produitcredit1.delete() 
+    messages.warning(request, 'Delete successful!')
+    return redirect("/assurance/produitcredit/show")
 
     # -----------------------------Assureur-----------------------------------
 def Assureurindex(request):  
