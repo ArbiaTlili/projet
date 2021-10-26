@@ -50,14 +50,7 @@ def décision(request):
     }
     return render(request, 'assurance/décision.html', context)
 
-     
-def base4(request):
-      
-    return render(request, 'base4.html')
-
-def base5(request):
-      
-    return render(request, 'base5.html') 
+    
 
 def navbar(request):
       
@@ -107,7 +100,7 @@ def updatePA(request, id):
                 logger.error("save begin")
                 logger.error(form)
                 myform=form.save()  
-                messages.success(request, 'Update successful!')
+                messages.success(request, 'modification avec succès!')
                 return redirect('/assurance/produitAssurance/show')  
         except Exception as e:  
                 logger.error( str( e))   
@@ -117,7 +110,7 @@ def updatePA(request, id):
 def destroyPA(request, id):  
     Produitvoyage1 = Produitvoyage.objects.get(code_produit=id)  
     Produitvoyage1.delete() 
-    messages.warning(request, 'Delete successful!')
+    messages.warning(request, 'suppression avec succès!')
     return redirect("/assurance/produitAssurance/show")
 
 
@@ -160,7 +153,7 @@ def updatePC(request, id):
                 logger.error("save begin")
                 logger.error(form)
                 myform=form.save()  
-                messages.success(request, 'Update successful!')
+                messages.success(request, 'modifiacation avec succés!')
                 return redirect('/assurance/produitcredit/show')  
         except Exception as e:  
                 logger.error( str( e))   
@@ -170,7 +163,7 @@ def updatePC(request, id):
 def destroyPC(request, id):  
     Produitcredit1 = Produitcredit.objects.get(code_produitC=id)  
     Produitcredit1.delete() 
-    messages.warning(request, 'Delete successful!')
+    messages.warning(request, 'suppression avec succés!')
     return redirect("/assurance/produitcredit/show")
 
     # -----------------------------Assureur-----------------------------------
@@ -212,7 +205,7 @@ def updateA(request, id):
                 logger.error("save begin")
                 logger.error(form)
                 myform=form.save()  
-                messages.success(request, 'Update successful!')
+                messages.success(request, 'modification avec succés!')
                 return redirect('/assurance/Assureur/show')  
         except Exception as e:  
                 logger.error( str( e))   
@@ -222,7 +215,7 @@ def updateA(request, id):
 def destroyA(request, id):  
     instance = Assureur.objects.get(code_assureur=id)
     instance.delete() 
-    messages.warning(request, 'Delete successful!')
+    messages.warning(request, 'suppression avec succés!')
     return redirect("/assurance/Assureur/show")
 
 
@@ -270,7 +263,7 @@ def updateB(request, id):
                 logger.error("save begin")
                 logger.error(form)
                 myform=form.save()  
-                messages.success(request, 'Update successful!')
+                messages.success(request, 'modification avec succès!')
                 return redirect('/assurance/Baremevoyage/show')  
             except Exception as e:  
                 logger.error( str( e))   
@@ -280,7 +273,7 @@ def updateB(request, id):
 def destroyB(request, id):  
     instance = Baremedevoyage.objects.get(id_bareme_voyage=id)
     instance.delete()
-    messages.warning(request, 'Deleted successful!')
+    messages.warning(request, 'suppression avec succès!')
     return redirect("/assurance/Baremevoyage/show")
 
  # -----------------------------Bareme assurance credit-----------------------------------
@@ -321,7 +314,7 @@ def updateC(request, id):
                 logger.error("save begin")
                 logger.error(form)
                 myform=form.save()  
-                messages.success(request, 'Update successful!')
+                messages.success(request, 'modification avec succès!')
                 return redirect('/assurance/Baremecredit/show')  
         except Exception as e:  
                 logger.error( str( e))   
@@ -331,7 +324,7 @@ def updateC(request, id):
 def destroyC(request, id):  
     instance = Baremedecredit.objects.get(id_bareme_credit=id)
     instance.delete() 
-    messages.warning(request, 'Delete successful!')
+    messages.warning(request, 'suppression avec succès!')
     return redirect("/assurance/Baremecredit/show")
 
 
@@ -366,7 +359,7 @@ def showS(request):
 def destroyS(request, id):  
     instance = Souscriptiondecredit.objects.get(Num_souscription_credit=id)
     instance.delete() 
-    messages.warning(request, 'Delete successful!')
+    messages.warning(request, 'suppression avec succès!')
     return redirect("/assurance/Souscriptioncredit/show")
 
 
@@ -420,7 +413,7 @@ def updateSV(request, id):
 def destroySV(request, id):  
     instance = Souscriptiondevoyage.objects.get(Num_souscription_voyage=id)
     instance.delete() 
-    messages.warning(request, 'Delete successful!')
+    messages.warning(request, 'suppression avec succès!')
     return redirect("/assurance/Souscriptionvoyage/show")
 
 # -----------------------------beneficiaire-----------------------------------
@@ -486,7 +479,19 @@ def updateD2( request):
         Souscriptiondecredit1.etat_sous_credit="Valide"
         Souscriptiondecredit1.save()
         return JsonResponse({"data": "done"}, status=200) 
-    return JsonResponse({"data": "error"}, status=400)             
+    return JsonResponse({"data": "error"}, status=400)  
+@csrf_exempt  
+def updateD3( request): 
+    if request.is_ajax and request.method == "POST":
+        for key in request.POST:  # "for key in request.GET" works too.
+    # Add filtering logic here.
+            valuelist = request.POST.getlist(key)
+            logger.error(valuelist[0])
+        Souscriptiondecredit1 = Souscriptiondecredit.objects.get(Num_souscription_credit=valuelist[0])  
+        Souscriptiondecredit1.etat_sous_credit="Refusé"
+        Souscriptiondecredit1.save()
+        return JsonResponse({"data": "done"}, status=200) 
+    return JsonResponse({"data": "error"}, status=400)          
 def updateD( request):
     logger.critical('Payment system is not responding')
     logger.error("form.errors.as_data()")  

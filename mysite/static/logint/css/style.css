@@ -32,7 +32,7 @@ body{
     
 }
 .btn-primary{
-    background: #1d1e5e;
+    background: #fc511c;
     border-radius: 30px;
 } 
 .form{
@@ -54,7 +54,7 @@ body{
 }
 
 .AppForm .AppFormLeft button{
-    background: rgb(38, 40, 139);
+    background: rgb(241, 79, 51);
     border-radius: 30px;
 }
 .AppForm .AppFormLeft p span{
@@ -105,7 +105,7 @@ body{
   .w {
     --w:60vmin;
     --h:40vmin;
-    --img:url(https://www.biat.com.tn/sites/default/files/inline-images/biat1_0.jpg);
+    --img:url(https://www.uib.com.tn/images/banners-uib/NotreOffre/Clients-PLATINE/UIB--Clients-PLATINE-ESPACE-HDG-.jpg);
     display:grid;
     width:calc(var(--w)); 
     height:calc(var(--h));

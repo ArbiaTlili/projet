@@ -39,8 +39,9 @@
     <tr>  
         <th> code_produit</th>
         <th> libelle_produit</th>  
-        <th> type_produit</th>  
-        <th> code_assureur</th>  
+         
+        <th> code_assureur</th> 
+        <th> état_produit</th>  
         <th>Actions</th>  
     </tr>  
     </thead>  
@@ -49,8 +50,9 @@
     <tr>  
         <td>{{ Produitvoyage.code_produit }}</td> 
         <td>{{ Produitvoyage.libelle_produit }}</td>  
-        <td>{{ Produitvoyage.type_produit }}</td>  
+          
         <td>{{ Produitvoyage.code_assureur }}</td>  
+        <td>{{ Produitvoyage.etat_produit }}</td>
         <td>  
             <a href="/assurance/produitAssurance/edit/{{ Produitvoyage.code_produit }}" class="btn btn-warning waves-effect"><i class="bi bi-pencil-square"></i></a>  
             <a href="/assurance/produitAssurance/delete/{{ Produitvoyage.code_produit }}" class="btn btn-danger px-3" class="bi bi-trash"><i class="bi bi-trash"></i></a>  

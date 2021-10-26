@@ -85,4 +85,5 @@ urlpatterns = [
     path('decision/update/<int:id>', views.updateD),
     path('decision/update1', views.updateD1), 
     path('decision/update2', views.updateD2),
+    path('decision/update3', views.updateD3),
 ]

@@ -45,13 +45,14 @@
        
         <td>{{ Souscriptiondecredit.Num_souscription_credit }}</td>  
         <td>{{ Souscriptiondecredit.Num_dossierCredit }}</td>  
-        <td>{{ Souscriptiondecredit.code_produit }}</td> 
+        <td>{{ Souscriptiondecredit.code_produitC }}</td> 
         <td>{{ Souscriptiondecredit.montant_assurance }}</td> 
         <td id="{{ Souscriptiondecredit.Num_souscription_credit }}">{{ Souscriptiondecredit.etat_sous_credit }}</td> 
         
         
         <td >    
             <button value={{ Souscriptiondecredit.Num_souscription_credit }} id="at" class="btn btn-success waves-effect target"><i class="fa fa-check-circle" style="font-size:16px"></i></button>  
+            <button value={{ Souscriptiondecredit.Num_souscription_credit }} id="re" class="btn btn-danger waves-effect target2"><i class="fa fa fa-times" style="font-size:16px"></i></button>  
          
             <button value={{ Souscriptiondecredit.Num_souscription_credit }} id="valide" class="btn btn-warning waves-effect target1"><i class="fa fa-refresh fa-spin"></i></button>  
         </td>  
@@ -101,6 +102,26 @@ $('.target').click( function(){
              success: function(response) {
 
                $('#'+id ).text("Valide");      
+              }
+              });
+  return false;
+
+});
+</script>
+<script >
+$('.target2').click( function(){
+  
+     var id=$(this).val()   
+              $.ajax({
+             url: '/assurance/decision/update3',
+             method : 'POST',
+             data: {id:id},
+             beforeSend: function() {
+              // things to do before submit
+             },
+             success: function(response) {
+
+               $('#'+id ).text("Refusé");      
               }
               });
   return false;

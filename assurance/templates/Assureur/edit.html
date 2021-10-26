@@ -25,12 +25,10 @@
         
 
 <div id="div_id_Nom_assureur" class="form-group"> <label for="id_Nom_assureur" class=" requiredField">
-                Nom assureur<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="Nom_assureur" value="{{Assureur.Nom_assureur}}" maxlength="40" class="textinput textInput form-control" required="" id="id_Nom_assureur"> </div> </div>
-                
+                Nom assureur<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="Nom_assureur" value="{{Assureur.Nom_assureur}}" maxlength="40" class="textinput textInput form-control" required="" id="id_Nom_assureur"> </div> </div> <div id="div_id_code_NCP" class="form-group"> <label for="id_code_NCP" class=" requiredField">
+                Code NCP<span class="asteriskField">*</span> </label> <div class=""> <select name="code_NCP" class="select form-control" required="" id="id_code_NCP"> <option value="{{Assureur.code_NCP.code_NCP}}" selected="">{{Assureur.code_NCP}}</option> 
 
-
-                
-                 <div id="div_id_Adresse" class="form-group"> <label for="id_Adresse" class=" requiredField">
+</select> </div> </div><div id="div_id_Adresse" class="form-group"> <label for="id_Adresse" class=" requiredField"> 
                 Adresse<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="Adresse" value="{{Assureur.Adresse}}" maxlength="40" class="textinput textInput form-control" required="" id="id_Adresse"> </div> </div> <div id="div_id_contact" class="form-group"> <label for="id_contact" class=" requiredField">
                 Contact<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="contact" value="{{Assureur.contact}}" maxlength="40" class="textinput textInput form-control" required="" id="id_contact"> </div> </div> <div id="div_id_Telephone" class="form-group"> <label for="id_Telephone" class=" requiredField">
                 Telephone<span class="asteriskField">*</span> </label> <div class=""> <input type="tel" name="Telephone" value="{{Assureur.Telephone}}" maxlength="128" class="textinput textInput form-control is-invalid" required="" id="id_Telephone">  </div> </div> <div id="div_id_fax" class="form-group"> <label for="id_fax" class=" requiredField">

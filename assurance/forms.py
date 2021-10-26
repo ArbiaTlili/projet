@@ -1,20 +1,6 @@
 from django import forms 
   
 from assurance.models import Produitvoyage ,Produitcredit,Assureur ,Baremedevoyage, Baremedecredit, Souscriptiondecredit, Souscriptiondevoyage, Beneficiaire
-class BuzCustomField(forms.CharField):
-    
-    def clean(self, value):
-        """
-        Validates the given value and returns its "cleaned" value as an
-        appropriate Python object.
-
-        Raises ValidationError for any errors.
-        """
-        value = self.to_python(value)
-        value = Buz.objects.get(value)
-        self.validate(value)
-        self.run_validators(value)
-        return value
 
 class ProduitassuranceForm(forms.ModelForm):  
 
